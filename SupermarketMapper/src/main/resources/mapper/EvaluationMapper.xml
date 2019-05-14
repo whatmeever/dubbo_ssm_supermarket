@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.supermarket.mapper.EvaluationMapper" >
+  <resultMap id="BaseResultMap" type="com.supermarket.pojo.Evaluation" >
+    <id column="eid" property="eid" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="fdid" property="fdid" jdbcType="VARCHAR" />
+    <result column="grade" property="grade" jdbcType="INTEGER" />
+    <result column="eva_date" property="evaDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.supermarket.pojo.Evaluation" extends="BaseResultMap" >
+    <result column="detial" property="detial" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    eid, user_id, fdid, grade, eva_date
+  </sql>
+  <sql id="Blob_Column_List" >
+    detial
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.supermarket.pojo.EvaluationExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from evaluation
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.supermarket.pojo.EvaluationExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from evaluation
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from evaluation
+    where eid = #{eid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from evaluation
+    where eid = #{eid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.supermarket.pojo.EvaluationExample" >
+    delete from evaluation
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.supermarket.pojo.Evaluation" >
+    insert into evaluation (eid, user_id, fdid, 
+      grade, eva_date, detial
+      )
+    values (#{eid,jdbcType=INTEGER}, #{userId,jdbcType=VARCHAR}, #{fdid,jdbcType=VARCHAR}, 
+      #{grade,jdbcType=INTEGER}, #{evaDate,jdbcType=TIMESTAMP}, #{detial,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.supermarket.pojo.Evaluation" >
+    insert into evaluation
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="eid != null" >
+        eid,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="fdid != null" >
+        fdid,
+      </if>
+      <if test="grade != null" >
+        grade,
+      </if>
+      <if test="evaDate != null" >
+        eva_date,
+      </if>
+      <if test="detial != null" >
+        detial,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="eid != null" >
+        #{eid,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="fdid != null" >
+        #{fdid,jdbcType=VARCHAR},
+      </if>
+      <if test="grade != null" >
+        #{grade,jdbcType=INTEGER},
+      </if>
+      <if test="evaDate != null" >
+        #{evaDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="detial != null" >
+        #{detial,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.supermarket.pojo.EvaluationExample" resultType="java.lang.Integer" >
+    select count(*) from evaluation
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update evaluation
+    <set >
+      <if test="record.eid != null" >
+        eid = #{record.eid,jdbcType=INTEGER},
+      </if>
+      <if test="record.userId != null" >
+        user_id = #{record.userId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fdid != null" >
+        fdid = #{record.fdid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.grade != null" >
+        grade = #{record.grade,jdbcType=INTEGER},
+      </if>
+      <if test="record.evaDate != null" >
+        eva_date = #{record.evaDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.detial != null" >
+        detial = #{record.detial,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update evaluation
+    set eid = #{record.eid,jdbcType=INTEGER},
+      user_id = #{record.userId,jdbcType=VARCHAR},
+      fdid = #{record.fdid,jdbcType=VARCHAR},
+      grade = #{record.grade,jdbcType=INTEGER},
+      eva_date = #{record.evaDate,jdbcType=TIMESTAMP},
+      detial = #{record.detial,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update evaluation
+    set eid = #{record.eid,jdbcType=INTEGER},
+      user_id = #{record.userId,jdbcType=VARCHAR},
+      fdid = #{record.fdid,jdbcType=VARCHAR},
+      grade = #{record.grade,jdbcType=INTEGER},
+      eva_date = #{record.evaDate,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.supermarket.pojo.Evaluation" >
+    update evaluation
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="fdid != null" >
+        fdid = #{fdid,jdbcType=VARCHAR},
+      </if>
+      <if test="grade != null" >
+        grade = #{grade,jdbcType=INTEGER},
+      </if>
+      <if test="evaDate != null" >
+        eva_date = #{evaDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="detial != null" >
+        detial = #{detial,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where eid = #{eid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.supermarket.pojo.Evaluation" >
+    update evaluation
+    set user_id = #{userId,jdbcType=VARCHAR},
+      fdid = #{fdid,jdbcType=VARCHAR},
+      grade = #{grade,jdbcType=INTEGER},
+      eva_date = #{evaDate,jdbcType=TIMESTAMP},
+      detial = #{detial,jdbcType=LONGVARCHAR}
+    where eid = #{eid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.supermarket.pojo.Evaluation" >
+    update evaluation
+    set user_id = #{userId,jdbcType=VARCHAR},
+      fdid = #{fdid,jdbcType=VARCHAR},
+      grade = #{grade,jdbcType=INTEGER},
+      eva_date = #{evaDate,jdbcType=TIMESTAMP}
+    where eid = #{eid,jdbcType=INTEGER}
+  </update>
+</mapper>

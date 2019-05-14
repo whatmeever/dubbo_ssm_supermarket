@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.supermarket.mapper.FreshGoodsMapper" >
+  <resultMap id="BaseResultMap" type="com.supermarket.pojo.FreshGoods" >
+    <id column="fdid" property="fdid" jdbcType="VARCHAR" />
+    <result column="good_name" property="goodName" jdbcType="VARCHAR" />
+    <result column="gtid" property="gtid" jdbcType="INTEGER" />
+    <result column="img" property="img" jdbcType="VARCHAR" />
+    <result column="price" property="price" jdbcType="DOUBLE" />
+    <result column="discount" property="discount" jdbcType="INTEGER" />
+    <result column="preference" property="preference" jdbcType="INTEGER" />
+    <result column="if_promotion" property="ifPromotion" jdbcType="INTEGER" />
+    <result column="last_sales" property="lastSales" jdbcType="INTEGER" />
+    <result column="current_sales" property="currentSales" jdbcType="INTEGER" />
+    <result column="count_sales" property="countSales" jdbcType="INTEGER" />
+    <result column="summery" property="summery" jdbcType="VARCHAR" />
+    <result column="attr1" property="attr1" jdbcType="VARCHAR" />
+    <result column="attr2" property="attr2" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    fdid, good_name, gtid, img, price, discount, preference, if_promotion, last_sales, 
+    current_sales, count_sales, summery, attr1, attr2
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.supermarket.pojo.FreshGoodsExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from fresh_goods
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from fresh_goods
+    where fdid = #{fdid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from fresh_goods
+    where fdid = #{fdid,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.supermarket.pojo.FreshGoodsExample" >
+    delete from fresh_goods
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.supermarket.pojo.FreshGoods" >
+    insert into fresh_goods (fdid, good_name, gtid, 
+      img, price, discount, 
+      preference, if_promotion, last_sales, 
+      current_sales, count_sales, summery, 
+      attr1, attr2)
+    values (#{fdid,jdbcType=VARCHAR}, #{goodName,jdbcType=VARCHAR}, #{gtid,jdbcType=INTEGER}, 
+      #{img,jdbcType=VARCHAR}, #{price,jdbcType=DOUBLE}, #{discount,jdbcType=INTEGER}, 
+      #{preference,jdbcType=INTEGER}, #{ifPromotion,jdbcType=INTEGER}, #{lastSales,jdbcType=INTEGER}, 
+      #{currentSales,jdbcType=INTEGER}, #{countSales,jdbcType=INTEGER}, #{summery,jdbcType=VARCHAR}, 
+      #{attr1,jdbcType=VARCHAR}, #{attr2,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.supermarket.pojo.FreshGoods" >
+    insert into fresh_goods
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="fdid != null" >
+        fdid,
+      </if>
+      <if test="goodName != null" >
+        good_name,
+      </if>
+      <if test="gtid != null" >
+        gtid,
+      </if>
+      <if test="img != null" >
+        img,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+      <if test="discount != null" >
+        discount,
+      </if>
+      <if test="preference != null" >
+        preference,
+      </if>
+      <if test="ifPromotion != null" >
+        if_promotion,
+      </if>
+      <if test="lastSales != null" >
+        last_sales,
+      </if>
+      <if test="currentSales != null" >
+        current_sales,
+      </if>
+      <if test="countSales != null" >
+        count_sales,
+      </if>
+      <if test="summery != null" >
+        summery,
+      </if>
+      <if test="attr1 != null" >
+        attr1,
+      </if>
+      <if test="attr2 != null" >
+        attr2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="fdid != null" >
+        #{fdid,jdbcType=VARCHAR},
+      </if>
+      <if test="goodName != null" >
+        #{goodName,jdbcType=VARCHAR},
+      </if>
+      <if test="gtid != null" >
+        #{gtid,jdbcType=INTEGER},
+      </if>
+      <if test="img != null" >
+        #{img,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="discount != null" >
+        #{discount,jdbcType=INTEGER},
+      </if>
+      <if test="preference != null" >
+        #{preference,jdbcType=INTEGER},
+      </if>
+      <if test="ifPromotion != null" >
+        #{ifPromotion,jdbcType=INTEGER},
+      </if>
+      <if test="lastSales != null" >
+        #{lastSales,jdbcType=INTEGER},
+      </if>
+      <if test="currentSales != null" >
+        #{currentSales,jdbcType=INTEGER},
+      </if>
+      <if test="countSales != null" >
+        #{countSales,jdbcType=INTEGER},
+      </if>
+      <if test="summery != null" >
+        #{summery,jdbcType=VARCHAR},
+      </if>
+      <if test="attr1 != null" >
+        #{attr1,jdbcType=VARCHAR},
+      </if>
+      <if test="attr2 != null" >
+        #{attr2,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.supermarket.pojo.FreshGoodsExample" resultType="java.lang.Integer" >
+    select count(*) from fresh_goods
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update fresh_goods
+    <set >
+      <if test="record.fdid != null" >
+        fdid = #{record.fdid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.goodName != null" >
+        good_name = #{record.goodName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.gtid != null" >
+        gtid = #{record.gtid,jdbcType=INTEGER},
+      </if>
+      <if test="record.img != null" >
+        img = #{record.img,jdbcType=VARCHAR},
+      </if>
+      <if test="record.price != null" >
+        price = #{record.price,jdbcType=DOUBLE},
+      </if>
+      <if test="record.discount != null" >
+        discount = #{record.discount,jdbcType=INTEGER},
+      </if>
+      <if test="record.preference != null" >
+        preference = #{record.preference,jdbcType=INTEGER},
+      </if>
+      <if test="record.ifPromotion != null" >
+        if_promotion = #{record.ifPromotion,jdbcType=INTEGER},
+      </if>
+      <if test="record.lastSales != null" >
+        last_sales = #{record.lastSales,jdbcType=INTEGER},
+      </if>
+      <if test="record.currentSales != null" >
+        current_sales = #{record.currentSales,jdbcType=INTEGER},
+      </if>
+      <if test="record.countSales != null" >
+        count_sales = #{record.countSales,jdbcType=INTEGER},
+      </if>
+      <if test="record.summery != null" >
+        summery = #{record.summery,jdbcType=VARCHAR},
+      </if>
+      <if test="record.attr1 != null" >
+        attr1 = #{record.attr1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.attr2 != null" >
+        attr2 = #{record.attr2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update fresh_goods
+    set fdid = #{record.fdid,jdbcType=VARCHAR},
+      good_name = #{record.goodName,jdbcType=VARCHAR},
+      gtid = #{record.gtid,jdbcType=INTEGER},
+      img = #{record.img,jdbcType=VARCHAR},
+      price = #{record.price,jdbcType=DOUBLE},
+      discount = #{record.discount,jdbcType=INTEGER},
+      preference = #{record.preference,jdbcType=INTEGER},
+      if_promotion = #{record.ifPromotion,jdbcType=INTEGER},
+      last_sales = #{record.lastSales,jdbcType=INTEGER},
+      current_sales = #{record.currentSales,jdbcType=INTEGER},
+      count_sales = #{record.countSales,jdbcType=INTEGER},
+      summery = #{record.summery,jdbcType=VARCHAR},
+      attr1 = #{record.attr1,jdbcType=VARCHAR},
+      attr2 = #{record.attr2,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.supermarket.pojo.FreshGoods" >
+    update fresh_goods
+    <set >
+      <if test="goodName != null" >
+        good_name = #{goodName,jdbcType=VARCHAR},
+      </if>
+      <if test="gtid != null" >
+        gtid = #{gtid,jdbcType=INTEGER},
+      </if>
+      <if test="img != null" >
+        img = #{img,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        price = #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="discount != null" >
+        discount = #{discount,jdbcType=INTEGER},
+      </if>
+      <if test="preference != null" >
+        preference = #{preference,jdbcType=INTEGER},
+      </if>
+      <if test="ifPromotion != null" >
+        if_promotion = #{ifPromotion,jdbcType=INTEGER},
+      </if>
+      <if test="lastSales != null" >
+        last_sales = #{lastSales,jdbcType=INTEGER},
+      </if>
+      <if test="currentSales != null" >
+        current_sales = #{currentSales,jdbcType=INTEGER},
+      </if>
+      <if test="countSales != null" >
+        count_sales = #{countSales,jdbcType=INTEGER},
+      </if>
+      <if test="summery != null" >
+        summery = #{summery,jdbcType=VARCHAR},
+      </if>
+      <if test="attr1 != null" >
+        attr1 = #{attr1,jdbcType=VARCHAR},
+      </if>
+      <if test="attr2 != null" >
+        attr2 = #{attr2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where fdid = #{fdid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.supermarket.pojo.FreshGoods" >
+    update fresh_goods
+    set good_name = #{goodName,jdbcType=VARCHAR},
+      gtid = #{gtid,jdbcType=INTEGER},
+      img = #{img,jdbcType=VARCHAR},
+      price = #{price,jdbcType=DOUBLE},
+      discount = #{discount,jdbcType=INTEGER},
+      preference = #{preference,jdbcType=INTEGER},
+      if_promotion = #{ifPromotion,jdbcType=INTEGER},
+      last_sales = #{lastSales,jdbcType=INTEGER},
+      current_sales = #{currentSales,jdbcType=INTEGER},
+      count_sales = #{countSales,jdbcType=INTEGER},
+      summery = #{summery,jdbcType=VARCHAR},
+      attr1 = #{attr1,jdbcType=VARCHAR},
+      attr2 = #{attr2,jdbcType=VARCHAR}
+    where fdid = #{fdid,jdbcType=VARCHAR}
+  </update>
+</mapper>
