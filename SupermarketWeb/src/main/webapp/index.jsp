@@ -11,13 +11,13 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="keywords" content="" />
 	<script>
-		addEventListener("load", function () {
+/*		addEventListener("load", function () {
 			setTimeout(hideURLbar, 0);
 		}, false);
 
 		function hideURLbar() {
 			window.scrollTo(0, 1);
-		}
+		}*/
 	</script>
 	<!--//tags -->
 	<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
@@ -45,7 +45,7 @@
 			<div class="col-md-4 logo_agile">
 				<h1>
 					<a href="index.jsp">
-						<span>G</span>rocery
+						<span>F</span>resh
 						<span>S</span>hoppy
 						<img src="images/logo2.png" alt=" ">
 					</a>
@@ -57,29 +57,29 @@
 				<ul>
 					<li>
 						<a class="play-icon popup-with-zoom-anim" href="#small-dialog1">
-							<span class="fa fa-map-marker" aria-hidden="true"></span> Shop Locator</a>
+							<span class="fa fa-map-marker" aria-hidden="true"></span>商店定位</a>
 					</li>
 					<li>
 						<a href="#" data-toggle="modal" data-target="#myModal1">
-							<span class="fa fa-truck" aria-hidden="true"></span>Track Order</a>
+							<span class="fa fa-truck" aria-hidden="true"></span>订单跟踪</a>
 					</li>
 					<li>
-						<span class="fa fa-phone" aria-hidden="true"></span> 001 234 5678
+						<span class="fa fa-phone" aria-hidden="true"></span> 18966836506
 					</li>
 					<li>
 						<a href="#" data-toggle="modal" data-target="#myModal1">
-							<span class="fa fa-unlock-alt" aria-hidden="true"></span> Sign In </a>
+							<span class="fa fa-unlock-alt" aria-hidden="true"></span> 登录 </a>
 					</li>
 					<li>
 						<a href="#" data-toggle="modal" data-target="#myModal2">
-							<span class="fa fa-pencil-square-o" aria-hidden="true"></span> Sign Up </a>
+							<span class="fa fa-pencil-square-o" aria-hidden="true"></span> 注册 </a>
 					</li>
 				</ul>
 				<!-- //header lists -->
 				<!-- search -->
 				<div class="agileits_search">
 					<form action="#" method="post">
-						<input name="Search" type="search" placeholder="How can we help you today?" required="">
+						<input name="Search" type="search" placeholder="今天要来点什么？" required="">
 						<button type="submit" class="btn btn-default" aria-label="Left Align">
 							<span class="fa fa-search" aria-hidden="true"> </span>
 						</button>
@@ -498,9 +498,9 @@
 					<div class="modal_body_left modal_body_left1">
 						<h3 class="agileinfo_sign">Sign In </h3>
 						<p>
-							Sign In now, Let's start your Grocery Shopping. Don't have an account?
+							请登录, 开启您的生鲜之旅。 没有账号?
 							<a href="#" data-toggle="modal" data-target="#myModal2">
-								Sign Up Now</a>
+								请注册</a>
 						</p>
 						<form action="#" method="post">
 							<div class="styled-input agile-styled-input-top">
@@ -847,175 +847,6 @@
 			<!-- //tittle heading -->
 			<!-- product left -->
 			<div class="side-bar col-md-3">
-				<div class="search-hotel">
-					<h3 class="agileits-sear-head">Search Here..</h3>
-					<form action="#" method="post">
-						<input type="search" placeholder="Product name..." name="search" required="">
-						<input type="submit" value=" ">
-					</form>
-				</div>
-				<!-- price range -->
-				<div class="range">
-					<h3 class="agileits-sear-head">Price range</h3>
-					<ul class="dropdown-menu6">
-						<li>
-
-							<div id="slider-range"></div>
-							<input type="text" id="amount" style="border: 0; color: #ffffff; font-weight: normal;" />
-						</li>
-					</ul>
-				</div>
-				<!-- //price range -->
-				<!-- food preference -->
-				<div class="left-side">
-					<h3 class="agileits-sear-head">Food Preference</h3>
-					<ul>
-						<li>
-							<input type="checkbox" class="checked">
-							<span class="span">Vegetarian</span>
-						</li>
-						<li>
-							<input type="checkbox" class="checked">
-							<span class="span">Non-Vegetarian</span>
-						</li>
-					</ul>
-				</div>
-				<!-- //food preference -->
-				<!-- discounts -->
-				<div class="left-side">
-					<h3 class="agileits-sear-head">Discount</h3>
-					<ul>
-						<li>
-							<input type="checkbox" class="checked">
-							<span class="span">5% or More</span>
-						</li>
-						<li>
-							<input type="checkbox" class="checked">
-							<span class="span">10% or More</span>
-						</li>
-						<li>
-							<input type="checkbox" class="checked">
-							<span class="span">20% or More</span>
-						</li>
-						<li>
-							<input type="checkbox" class="checked">
-							<span class="span">30% or More</span>
-						</li>
-						<li>
-							<input type="checkbox" class="checked">
-							<span class="span">50% or More</span>
-						</li>
-						<li>
-							<input type="checkbox" class="checked">
-							<span class="span">60% or More</span>
-						</li>
-					</ul>
-				</div>
-				<!-- //discounts -->
-				<!-- reviews -->
-				<div class="customer-rev left-side">
-					<h3 class="agileits-sear-head">Customer Review</h3>
-					<ul>
-						<li>
-							<a href="#">
-								<i class="fa fa-star" aria-hidden="true"></i>
-								<i class="fa fa-star" aria-hidden="true"></i>
-								<i class="fa fa-star" aria-hidden="true"></i>
-								<i class="fa fa-star" aria-hidden="true"></i>
-								<i class="fa fa-star" aria-hidden="true"></i>
-								<span>5.0</span>
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								<i class="fa fa-star" aria-hidden="true"></i>
-								<i class="fa fa-star" aria-hidden="true"></i>
-								<i class="fa fa-star" aria-hidden="true"></i>
-								<i class="fa fa-star" aria-hidden="true"></i>
-								<i class="fa fa-star-o" aria-hidden="true"></i>
-								<span>4.0</span>
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								<i class="fa fa-star" aria-hidden="true"></i>
-								<i class="fa fa-star" aria-hidden="true"></i>
-								<i class="fa fa-star" aria-hidden="true"></i>
-								<i class="fa fa-star-half-o" aria-hidden="true"></i>
-								<i class="fa fa-star-o" aria-hidden="true"></i>
-								<span>3.5</span>
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								<i class="fa fa-star" aria-hidden="true"></i>
-								<i class="fa fa-star" aria-hidden="true"></i>
-								<i class="fa fa-star" aria-hidden="true"></i>
-								<i class="fa fa-star-o" aria-hidden="true"></i>
-								<i class="fa fa-star-o" aria-hidden="true"></i>
-								<span>3.0</span>
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								<i class="fa fa-star" aria-hidden="true"></i>
-								<i class="fa fa-star" aria-hidden="true"></i>
-								<i class="fa fa-star-half-o" aria-hidden="true"></i>
-								<i class="fa fa-star-o" aria-hidden="true"></i>
-								<i class="fa fa-star-o" aria-hidden="true"></i>
-								<span>2.5</span>
-							</a>
-						</li>
-					</ul>
-				</div>
-				<!-- //reviews -->
-				<!-- cuisine -->
-				<div class="left-side">
-					<h3 class="agileits-sear-head">Cuisine</h3>
-					<ul>
-						<li>
-							<input type="checkbox" class="checked">
-							<span class="span">South American</span>
-						</li>
-						<li>
-							<input type="checkbox" class="checked">
-							<span class="span">French</span>
-						</li>
-						<li>
-							<input type="checkbox" class="checked">
-							<span class="span">Greek</span>
-						</li>
-						<li>
-							<input type="checkbox" class="checked">
-							<span class="span">Chinese</span>
-						</li>
-						<li>
-							<input type="checkbox" class="checked">
-							<span class="span">Japanese</span>
-						</li>
-						<li>
-							<input type="checkbox" class="checked">
-							<span class="span">Italian</span>
-						</li>
-						<li>
-							<input type="checkbox" class="checked">
-							<span class="span">Mexican</span>
-						</li>
-						<li>
-							<input type="checkbox" class="checked">
-							<span class="span">Thai</span>
-						</li>
-						<li>
-							<input type="checkbox" class="checked">
-							<span class="span">Indian</span>
-						</li>
-						<li>
-							<input type="checkbox" class="checked">
-							<span class="span"> Spanish </span>
-						</li>
-					</ul>
-				</div>
-				<!-- //cuisine -->
 				<!-- deals -->
 				<div class="deal-leftmk left-side">
 					<h3 class="agileits-sear-head">Special Deals</h3>
