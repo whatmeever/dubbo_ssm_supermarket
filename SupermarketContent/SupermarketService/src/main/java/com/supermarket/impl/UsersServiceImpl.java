@@ -24,4 +24,14 @@ public class UsersServiceImpl implements UsersService {
     public int countByExample(UsersExample example) {
         return usersMapper.countByExample(example);
     }
+
+    @Override
+    public int updateByPrimaryKey(Users record) {
+        return usersMapper.updateByPrimaryKey(record);
+    }
+
+    @Override
+    public Users selectByPrimaryKey(String userId) {
+        return usersMapper.selectByPrimaryKey(userId);
+    }
 }

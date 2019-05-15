@@ -7,6 +7,8 @@ import com.supermarket.pojo.Users;
 import com.supermarket.pojo.UsersExample;
 import com.supermarket.service.UsersService;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
@@ -53,5 +55,24 @@ public class UsersController {
         usersDataUtil.setCount(count);
         usersDataUtil.setData(list);
         return usersDataUtil;
+    }
+    //审核新用户
+    @ResponseBody
+    @PostMapping("/reviewNewUser")
+    public int reviewNewUser(HttpServletRequest req){
+        String userId = req.getParameter("userId");
+        Users users = usersService.selectByPrimaryKey(userId);
+        users.setIfNew(1);
+        int i = usersService.updateByPrimaryKey(users);
+        return i;
+    }
+
+    //通过userId获得一个用户
+    @ResponseBody
+    @PostMapping("/getUserByUserId")
+    public Users getUserByUserId(HttpServletRequest req){
+        String userId = req.getParameter("userId");
+        Users users = usersService.selectByPrimaryKey(userId);
+        return users;
     }
 }
