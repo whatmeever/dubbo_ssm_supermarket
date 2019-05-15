@@ -1,8 +1,11 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+		 pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>首页--layui后台管理模板</title>
+	<title>千峰生鲜超市后台首页</title>
 	<meta name="renderer" content="webkit">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -33,7 +36,7 @@
 				</div>
 				<div class="panel_word userAll">
 					<span></span>
-					<cite>新增人数</cite>
+					<cite>新增用户</cite>
 				</div>
 			</a>
 		</div>
@@ -51,26 +54,26 @@
 		<div class="panel col">
 			<a href="javascript:;" data-url="page/img/images.html">
 				<div class="panel_icon" style="background-color:#5FB878;">
-					<i class="layui-icon" data-icon="&#xe64a;">&#xe64a;</i>
+					<i class="layui-icon" data-icon="&#xe857;">&#xe857;</i>
 				</div>
 				<div class="panel_word imgAll">
 					<span></span>
-					<cite>图片总数</cite>
+					<cite>商品总数</cite>
 				</div>
 			</a>
 		</div>
 		<div class="panel col">
 			<a href="javascript:;" data-url="page/news/newsList.html">
 				<div class="panel_icon" style="background-color:#F7B824;">
-					<i class="iconfont icon-wenben" data-icon="icon-wenben"></i>
+					<i class="layui-icon" data-icon="&#xe611;">&#xe611;</i>
 				</div>
 				<div class="panel_word waitNews">
 					<span></span>
-					<cite>待审核文章</cite>
+					<cite>评价总数</cite>
 				</div>
 			</a>
 		</div>
-		<div class="panel col max_panel">
+		<%--<div class="panel col max_panel">
 			<a href="javascript:;" data-url="page/news/newsList.html">
 				<div class="panel_icon" style="background-color:#2F4056;">
 					<i class="iconfont icon-text" data-icon="icon-text"></i>
@@ -81,7 +84,7 @@
 					<cite>文章列表</cite>
 				</div>
 			</a>
-		</div>
+		</div>--%>
 	</div>
 	<blockquote class="layui-elem-quote explain">
 		<p>本模板基于Layui实现，支持除LayIM外所有的Layui组件。<a href="http://layim.layui.com/" target="_blank" class="layui-btn layui-btn-mini">前往获取LayIM授权</a><a href="https://git.oschina.net/layuicms/layuicms" target="_blank" class="layui-btn layui-btn-mini layui-btn-danger">码云下载</a><a href="https://github.com/BrotherMa/layuiCMS" target="_blank" class="layui-btn layui-btn-mini layui-btn-danger">GitHub下载</a>　<span style="color:#1E9FFF;">郑重提示：网站所有数据均为静态数据，无数据库，除打开的窗口和部分小改动外所有操作刷新后无效，关闭窗口或清除缓存后，所有操作无效，请知悉</span></p>

@@ -576,6 +576,66 @@ public class UsersExample implements Serializable {
             addCriterion("integral not between", value1, value2, "integral");
             return (Criteria) this;
         }
+
+        public Criteria andIfNewIsNull() {
+            addCriterion("if_new is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIfNewIsNotNull() {
+            addCriterion("if_new is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIfNewEqualTo(Integer value) {
+            addCriterion("if_new =", value, "ifNew");
+            return (Criteria) this;
+        }
+
+        public Criteria andIfNewNotEqualTo(Integer value) {
+            addCriterion("if_new <>", value, "ifNew");
+            return (Criteria) this;
+        }
+
+        public Criteria andIfNewGreaterThan(Integer value) {
+            addCriterion("if_new >", value, "ifNew");
+            return (Criteria) this;
+        }
+
+        public Criteria andIfNewGreaterThanOrEqualTo(Integer value) {
+            addCriterion("if_new >=", value, "ifNew");
+            return (Criteria) this;
+        }
+
+        public Criteria andIfNewLessThan(Integer value) {
+            addCriterion("if_new <", value, "ifNew");
+            return (Criteria) this;
+        }
+
+        public Criteria andIfNewLessThanOrEqualTo(Integer value) {
+            addCriterion("if_new <=", value, "ifNew");
+            return (Criteria) this;
+        }
+
+        public Criteria andIfNewIn(List<Integer> values) {
+            addCriterion("if_new in", values, "ifNew");
+            return (Criteria) this;
+        }
+
+        public Criteria andIfNewNotIn(List<Integer> values) {
+            addCriterion("if_new not in", values, "ifNew");
+            return (Criteria) this;
+        }
+
+        public Criteria andIfNewBetween(Integer value1, Integer value2) {
+            addCriterion("if_new between", value1, value2, "ifNew");
+            return (Criteria) this;
+        }
+
+        public Criteria andIfNewNotBetween(Integer value1, Integer value2) {
+            addCriterion("if_new not between", value1, value2, "ifNew");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria implements Serializable {

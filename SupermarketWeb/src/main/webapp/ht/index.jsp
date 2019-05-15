@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+		 pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,7 +23,7 @@
 		<!-- 顶部 -->
 		<div class="layui-header header">
 			<div class="layui-main">
-				<a href="#" class="logo">layui后台管理</a>
+				<a href="#" class="logo">千峰生鲜超市</a>
 				<!-- 显示/隐藏菜单 -->
 				<a href="javascript:;" class="iconfont hideMenu icon-menu1"></a>
 				<!-- 搜索 -->
@@ -125,14 +128,14 @@
 				</ul>
 				<div class="layui-tab-content clildFrame">
 					<div class="layui-tab-item layui-show">
-						<iframe src="page/main.html"></iframe>
+						<iframe src="page/main.jsp"></iframe>
 					</div>
 				</div>
 			</div>
 		</div>
 		<!-- 底部 -->
 		<div class="layui-footer footer">
-			<p>copyright @2017 请叫我马哥　　<a onclick="donation()" class="layui-btn layui-btn-danger layui-btn-small">捐赠作者</a></p>
+			<p>copyright @2019 千峰生鲜管理系统　　<%--<a onclick="donation()" class="layui-btn layui-btn-danger layui-btn-small">捐赠作者</a></p>--%>
 		</div>
 	</div>
 	
