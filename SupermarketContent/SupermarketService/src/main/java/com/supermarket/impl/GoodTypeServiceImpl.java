@@ -20,5 +20,10 @@ public class GoodTypeServiceImpl implements GoodTypeSerivce {
         return goodTypeMapper.selectByExample(example);
     }
 
+    @Override
+    public GoodType getGoodType(int gtid) {
+        return goodTypeMapper.selectByPrimaryKey(gtid);
+    }
+
 
 }

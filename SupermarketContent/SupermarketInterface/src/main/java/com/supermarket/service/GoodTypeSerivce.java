@@ -9,6 +9,6 @@ public interface GoodTypeSerivce {
     //查询商品的所有类型
     List<GoodType> getGoodTypes(GoodTypeExample example);
 
-
+    GoodType getGoodType(int gtid);
 
 }

@@ -21,4 +21,6 @@ public class GoodTypeController {
     public List<GoodType> getGoodTypes(){
         return goodTypeSerivce.getGoodTypes(example);
     }
+
+
 }
