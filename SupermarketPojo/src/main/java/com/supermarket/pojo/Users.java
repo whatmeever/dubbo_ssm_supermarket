@@ -21,6 +21,20 @@ public class Users implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    @Override
+    public String toString() {
+        return "Users{" +
+                "userId='" + userId + '\'' +
+                ", userName='" + userName + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", tel='" + tel + '\'' +
+                ", level=" + level +
+                ", integral=" + integral +
+                ", ifNew=" + ifNew +
+                '}';
+    }
+
     public String getUserId() {
         return userId;
     }

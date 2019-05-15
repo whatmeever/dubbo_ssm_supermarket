@@ -13,6 +13,7 @@
         <module>SupermarketMapper</module>
         <module>SupermarketContent</module>
         <module>SupermarketWeb</module>
+        <module>LayuiDataUtil</module>
     </modules>
     <properties>
         <spring-version>4.3.6.RELEASE</spring-version>
@@ -122,6 +123,11 @@
                 <groupId>jstl</groupId>
                 <artifactId>jstl</artifactId>
                 <version>1.2</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.pagehelper</groupId>
+                <artifactId>pagehelper</artifactId>
+                <version>5.1.2</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

@@ -19,4 +19,9 @@ public class UsersServiceImpl implements UsersService {
     public List<Users> selectByExample(UsersExample example) {
         return usersMapper.selectByExample(example);
     }
+
+    @Override
+    public int countByExample(UsersExample example) {
+        return usersMapper.countByExample(example);
+    }
 }
