@@ -6,7 +6,7 @@
 },{
 	"title" : "用户管理",
 	"icon" : "&#xe612;",
-	"href" : "page/news/newsList.html",
+	"href" : "page/userAdmin/useradmin.jsp",
 	"spread" : false
 },{
 	"title" : "商品管理",

@@ -41,13 +41,13 @@
 			</a>
 		</div>
 		<div class="panel col">
-			<a href="javascript:;" data-url="page/user/allUsers.html">
+			<a href="javascript:;" data-url="page/userAdmin/useradmin.jsp">
 				<div class="panel_icon" style="background-color:#009688;">
 					<i class="layui-icon" data-icon="&#xe613;">&#xe613;</i>
 				</div>
 				<div class="panel_word userAll">
 					<span></span>
-					<cite>用户总数</cite>
+					<cite>用户管理</cite>
 				</div>
 			</a>
 		</div>
@@ -74,7 +74,7 @@
 			</a>
 		</div>
 		<%--<div class="panel col max_panel">
-			<a href="javascript:;" data-url="page/news/newsList.html">
+			<a href="javascript:;" data-url="page/news/useradmin.jsp">
 				<div class="panel_icon" style="background-color:#2F4056;">
 					<i class="iconfont icon-text" data-icon="icon-text"></i>
 				</div>
