@@ -571,9 +571,8 @@
 		<div class="container">
 			<div class="agileits-navi_search">
 				<form action="#" method="post">
-					<select id="agileinfo-nav_search" name="agileinfo_search" required>
-						<option value="">All Categories</option>
-						<option value="Kitchen">Kitchen</option>
+					<select id="agileinfo-nav_search" class="goodType" name="agileinfo_search" required>
+					<%--<option value="Kitchen">Kitchen</option>
 						<option value="Household">Household</option>
 						<option value="Snacks &amp; Beverages">Snacks & Beverages</option>
 						<option value="Personal Care">Personal Care</option>
@@ -583,7 +582,7 @@
 						<option value="Soft Drinks &amp; Juices">Soft Drinks & Juices</option>
 						<option value="Frozen Food">Frozen Food</option>
 						<option value="Bread &amp; Bakery">Bread & Bakery</option>
-						<option value="Sweets">Sweets</option>
+						<option value="Sweets">Sweets</option>--%>
 					</select>
 				</form>
 			</div>
@@ -1959,6 +1958,27 @@
 	<!-- jquery -->
 	<script src="js/jquery-2.1.4.min.js"></script>
 	<!-- //jquery -->
+	<script>
+		$(function () {
+			function goodType() {
+				$.get("/getGoodTypes",function (data) {
+					var option = "<option value=''>所有种类</option>";
+					for (var key in data){
+						option += "<option value='"+data[key].gtid+"'>"+data[key].gtname+"</option>";
+					}
+					$(".goodType").append($(option));
+				});
+			}
+			//初始化种类下拉框
+			goodType();
+			//获取被选中的种类
+			$(".goodType").on("change",function () {
+				console.log($(this).find(":selected").val());
+			});
+
+		});
+
+	</script>
 
 	<!-- popup modal (for signin & signup)-->
 	<script src="js/jquery.magnific-popup.js"></script>
