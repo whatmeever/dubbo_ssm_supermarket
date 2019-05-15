@@ -29,7 +29,7 @@
 	<script type="text/javascript" src="../../../layui/layui.js"></script>
 	<script type="text/html" id="operate">
 		{{#  if(d.ifNew === 0){ }}
-		<a class="layui-btn layui-btn-xs" lay-event="ship">会员审核</a>
+		<a class="layui-btn layui-btn-xs" lay-event="review">会员审核</a>
 		{{#  } else { }}
 		<a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">会员信息</a>
 		{{#  } }}
@@ -66,9 +66,7 @@
 					,{field: 'operate', title: '操作',templet:'#operate'}
 				]]
 			});
-			$("#search").on("click",function () {
-				var userId = $("#userId").val();
-				var userName = $("#userName").val();
+			function reload(userId,userName){
 				table.reload('useradmin', {
 					method:'get'
 					, where: {//参数列表
@@ -78,7 +76,38 @@
 					, page: {
 						curr: 1
 					}
-				});
+				})
+			}
+			$("#search").on("click",function () {
+				var userId = $("#userId").val();
+				var userName = $("#userName").val();
+				reload(userId,userName);
+			});
+			table.on('tool(useradmin)', function(obj){
+				if (obj.event === 'review'){
+					var userId = obj.data.userId;
+					var index = layer.msg('审核中，请稍候',{icon: 16,time:false,shade:0.8});
+					setTimeout(function () {
+						console.log(userId);
+						$.post("/reviewNewUser",{userId:userId},function (data) {
+							if (parseInt(data) > 0){
+								layer.close(index);
+								layer.msg("审核完成");
+								reload("","");
+							}
+						});
+					},2000);
+				}
+				if (obj.event === 'detail'){
+					$.post("getUserByUserId",{userId:obj.data.userId},function (data) {
+						/*layer.open({
+							title:'用户信息',
+							content:"<div class='layui-form-item'>" +
+									"<div>"+
+									"</div>"
+						});*/
+					});
+				}
 			});
 		});
 	</script>
