@@ -15,6 +15,7 @@
 
     <dubbo:service interface="com.supermarket.service.UsersService" ref="usersServiceImpl"/>
     <dubbo:service interface="com.supermarket.service.GoodTypeSerivce" ref="goodTypeServiceImpl"/>
+    <dubbo:service interface="com.supermarket.service.FreshGoodsService" ref="freshGoodsServiceImpl"/>
     
 
 

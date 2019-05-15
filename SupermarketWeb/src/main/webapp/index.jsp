@@ -1974,7 +1974,8 @@
 			goodType();
 			//获取被选中的种类
 			$(".goodType").on("change",function () {
-				console.log($(this).find(":selected").val());
+				var gtid=$(this).find(":selected").val();
+				location.href="getFreshGoods?gtid="+gtid;
 			});
 
 		});

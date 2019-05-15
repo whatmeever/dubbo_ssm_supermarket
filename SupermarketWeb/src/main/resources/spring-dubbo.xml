@@ -10,5 +10,5 @@
     <!--<dubbo:registry address="zookeeper://192.168.0.110:2181"/>-->
     <dubbo:reference interface="com.supermarket.service.UsersService" id="usersService"/>
     <dubbo:reference interface="com.supermarket.service.GoodTypeSerivce" id="goodTypeService"/>
-
+    <dubbo:reference interface="com.supermarket.service.FreshGoodsService" id="freshGoodsService"/>
 </beans>
