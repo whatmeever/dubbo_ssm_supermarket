@@ -20,4 +20,15 @@ public class FreshGoodsServiceImpl implements FreshGoodsService {
         criteria.andGtidEqualTo(gtid);
         return freshGoodsMapper.selectByExample(example);
     }
+
+    @Override
+    public List<FreshGoods> getFreshGoodsByExample(FreshGoodsExample example) {
+
+        return freshGoodsMapper.selectByExample(example);
+    }
+
+    @Override
+    public List<FreshGoods> getFreshGoodsByDiscount(FreshGoodsExample example) {
+        return freshGoodsMapper.selectByExample(example);
+    }
 }

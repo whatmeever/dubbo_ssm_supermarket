@@ -1,6 +1,7 @@
 package com.supermarket.controller;
 
 import com.supermarket.pojo.FreshGoods;
+import com.supermarket.pojo.FreshGoodsExample;
 import com.supermarket.pojo.GoodType;
 import com.supermarket.service.FreshGoodsService;
 import com.supermarket.service.GoodTypeSerivce;
@@ -43,4 +44,26 @@ public class FreshGoodsController {
         model.addAttribute("freshGoods",list);
         return "product";
     }
+
+    @ResponseBody
+    @GetMapping("/getSpecialGoods")
+    public List<FreshGoods> getSpecialGoods(){
+        FreshGoodsExample example = new FreshGoodsExample();
+        FreshGoodsExample.Criteria criteria = example.createCriteria();
+        criteria.andIfPromotionEqualTo(1);
+        List<FreshGoods> freshGoods = freshGoodsService.getFreshGoodsByExample(example);
+        return freshGoods;
+    }
+
+    @ResponseBody
+    @GetMapping("/getDiscountGoods")
+    public List<FreshGoods> getDiscountGoods(){
+        FreshGoodsExample example = new FreshGoodsExample();
+        FreshGoodsExample.Criteria criteria = example.createCriteria();
+        criteria.andDiscountLessThanOrEqualTo(30);
+        criteria.andDiscountGreaterThan(0);
+        List<FreshGoods> freshGoods = freshGoodsService.getFreshGoodsByDiscount(example);
+        return freshGoods;
+    }
+
 }
