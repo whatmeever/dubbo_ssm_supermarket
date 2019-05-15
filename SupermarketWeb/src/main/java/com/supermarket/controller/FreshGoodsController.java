@@ -55,15 +55,15 @@ public class FreshGoodsController {
         return freshGoods;
     }
 
-    @ResponseBody
+   /* @ResponseBody
     @GetMapping("/getDiscountGoods")
     public List<FreshGoods> getDiscountGoods(){
         FreshGoodsExample example = new FreshGoodsExample();
         FreshGoodsExample.Criteria criteria = example.createCriteria();
         criteria.andDiscountLessThanOrEqualTo(30);
         criteria.andDiscountGreaterThan(0);
-        List<FreshGoods> freshGoods = freshGoodsService.getFreshGoodsByDiscount(example);
-        return freshGoods;
-    }
+        List<FreshGoods> freshGood = freshGoodsService.getFreshGoodsByDiscount(example);
+        return freshGood;
+    }*/
 
 }
