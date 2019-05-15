@@ -17,6 +17,8 @@ public class Users implements Serializable {
 
     private Integer integral;
 
+    private Integer ifNew;
+
     private static final long serialVersionUID = 1L;
 
     public String getUserId() {
@@ -73,5 +75,13 @@ public class Users implements Serializable {
 
     public void setIntegral(Integer integral) {
         this.integral = integral;
+    }
+
+    public Integer getIfNew() {
+        return ifNew;
+    }
+
+    public void setIfNew(Integer ifNew) {
+        this.ifNew = ifNew;
     }
 }
