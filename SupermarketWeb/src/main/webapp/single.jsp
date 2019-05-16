@@ -33,6 +33,9 @@
     <!-- fonts -->
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800"
           rel="stylesheet">
+    <style type="text/css">
+        a{white-space: nowrap; overflow: hidden;display:block;}
+    </style>
 </head>
 
 <body>
@@ -838,36 +841,39 @@
 					</span>
             </div>
             <p>
-                <span class="item_price">${freshGoods.price}</span>
+                <span class="item_price">${freshGoods.price*freshGoods.discount/100}</span>
                 <del>${freshGoods.price}</del>
                 <label>免费邮寄</label>
             </p>
             <div class="single-infoagile">
                 <ul>
                     <li>
-                        Cash on Delivery Eligible.
+                        货到付款符合条件。
                     </li>
                     <li>
-                        Shipping Speed to Delivery.
+                        送货速度
                     </li>
                     <li>
-                        Sold and fulfilled by Supple Tek (3.6 out of 5 | 8 ratings).
+                        由Supple Tek出售和完成（3.6的5 | 8个评分）。
                     </li>
                     <li>
-                        1 offer from
-                        <span class="item_price">$950.00</span>
+                        1件优惠
+                        <span class="item_price">${freshGoods.price*freshGoods.discount/100}</span>起
                     </li>
                 </ul>
             </div>
             <div class="product-single-w3l">
                 <p>
-                    <i class="fa fa-hand-o-right" aria-hidden="true"></i>This is a
-                    <label>Vegetarian</label> product.</p>
+                    <i class="fa fa-hand-o-right" aria-hidden="true"></i>这是
+                    <c:if test="${freshGoods.preference==1}">肉食</c:if>
+                    <c:if test="${freshGoods.preference==2}">素食</c:if>
+                    <c:if test="${freshGoods.preference==0}">其他</c:if>
+                    <label></label>产品</p>
                 <ul>
                     <li>
-                        Best for Biryani and Pulao.
+                        ${freshGoods.summery}
                     </li>
-                    <li>
+                    <%--<li>
                         After cooking, Zeeba Basmati rice grains attain an extra ordinary length of upto 2.4 cm/~1 inch.
                     </li>
                     <li>
@@ -876,11 +882,11 @@
                     </li>
                     <li>
                         Contains only the best and purest grade of basmati rice grain of Export quality.
-                    </li>
+                    </li>--%>
                 </ul>
                 <p>
-                    <i class="fa fa-refresh" aria-hidden="true"></i>All food products are
-                    <label>non-returnable.</label>
+                    <i class="fa fa-refresh" aria-hidden="true"></i>所有食品都是
+                    <label>不可退货的。</label>
                 </p>
             </div>
             <div class="occasion-cart">
@@ -912,7 +918,7 @@
 <div class="featured-section" id="projects">
     <div class="container">
         <!-- tittle heading -->
-        <h3 class="tittle-w3l">Add More
+        <h3 class="tittle-w3l">添加更多
             <span class="heading-style">
 					<i></i>
 					<i></i>
@@ -921,8 +927,8 @@
         </h3>
         <!-- //tittle heading -->
         <div class="content-bottom-in">
-            <ul id="flexiselDemo1">
-                <li>
+            <ul id="flexiselDemo1" class="specialOffers">
+                <%--<li>
                     <div class="w3l-specilamk">
                         <div class="speioffer-agile">
                             <a href="single.jsp">
@@ -955,8 +961,8 @@
                             </div>
                         </div>
                     </div>
-                </li>
-                <li>
+                </li>--%>
+                <%--<li>
                     <div class="w3l-specilamk">
                         <div class="speioffer-agile">
                             <a href="single.jsp">
@@ -1193,7 +1199,7 @@
                             </div>
                         </div>
                     </div>
-                </li>
+                </li>--%>
             </ul>
         </div>
     </div>
@@ -1564,6 +1570,7 @@
         </div>
         <!-- //footer fourth section (text) -->
     </div>
+
 </footer>
 <!-- //footer -->
 <!-- copyright -->
@@ -1571,8 +1578,8 @@
     <div class="container">
         <p>Copyright &copy; 2018.Company name All rights reserved.More Templates <a href="http://www.cssmoban.com/"
                                                                                     target="_blank"
-                                                                                    title="模板之家">模板之家</a> - Collect from
-            <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></p>
+                                                                                    title="在线超市">哲哲超市</a> - Collect from
+            <a href="http://www.cssmoban.com/" title="哲哲超市" target="_blank">哲哲超市</a></p>
     </div>
 </div>
 <!-- //copyright -->
@@ -1727,7 +1734,72 @@
 <!-- flexisel (for special offers) -->
 <script src="js/jquery.flexisel.js"></script>
 <script>
-    $(window).load(function () {
+    $.get("/getGoodDetailsAll",function (data) {
+        for(var key in data){
+            var li = $("<li></li>");
+            var divParent = $("<div class='w3l-specilamk'></div>");
+            var divChild1 = $("<div class='speioffer-agile'></div>");
+            var divChild2 = $("<div class='product-name-w3l'></div>");
+            //第一个子div
+            var imgs = data[key].img.split("-");
+            var img = $("<a href='getGoodDetailsByFdid2?fdid="+data[key].fdid+"'><img src='img/"+imgs[0]+".jpg' style='width: 150px;height: 150px;white-space:nowrap; overflow:hidden;' /></a>");
+            divChild1.append(img);
+
+            //第二个子div
+            var h4 = $("<h4><a href='getGoodDetailsByFdid2?fdid="+data[key].fdid+"'>"+data[key].goodName+"</a></h4>");
+            divChild2.append(h4);
+            var divGrandson1 =$("<div class='w3l-pricehkj'></div>");
+            //divGrandson1中的标签
+            var h6 = $("<h6>$"+data[key].price*data[key].discount/100+"</h6>");
+            var p = $("<p>原价 $"+data[key].price+"</p>")
+            divGrandson1.append(h6);
+            divGrandson1.append(p);
+            var divGrandson2 = $("<div class='snipcart-details top_brand_home_details item_add single-item hvr-outline-out'></div>");
+            //divGrandson2中的标签
+            var form =$("<form action='#' method='post'></form>");
+            var fieldset=$("<fieldset></fieldset>");
+
+            var input1 =$('<input type="hidden" name="cmd" value="_cart" />');
+            var input2 =$('<input type="hidden" name="add" value="1" />');
+            var input3 =$('<input type="hidden" name="business" value=" " />');
+            var input4 =$('<input type="hidden" name="item_name" value="'+data[key].name+'" />');
+            var input5 =$('<input type="hidden" name="amount" value="'+data[key].price+'" />');
+            var input6 =$('<input type="hidden" name="currency_code" value="USD" />');
+            var input7 =$('<input type="hidden" name="return" value=" " />');
+            var input8 =$('<input type="hidden" name="cancel_return" value=" " />');
+            var input9 =$('<input type="submit" name="submit" value="加入购物车" class="button" />');
+
+            fieldset.append(input1);
+            fieldset.append(input2);
+            fieldset.append(input3);
+            fieldset.append(input4);
+            fieldset.append(input5);
+            fieldset.append(input6);
+            fieldset.append(input7);
+            fieldset.append(input8);
+            fieldset.append(input9);
+
+            form.append(fieldset);
+            divGrandson2.append(form);
+
+            /*divChild2.append(divGrandson2);
+            divChild1.append(details);
+            divParent.append(divChild1);
+            divParent.append(divChild2);
+            li.append(divParent);*!/*/
+            divParent.append(divChild1);
+            divChild2.append(divGrandson1);
+            divChild2.append(divGrandson2);
+            divParent.append(divChild2);
+            li.append(divParent);
+            $(".specialOffers").append(li);
+        }
+        lunxun();
+    })
+
+</script>
+<script>
+    function lunxun() {
         $("#flexiselDemo1").flexisel({
             visibleItems: 3,
             animationSpeed: 1000,
@@ -1750,6 +1822,33 @@
                 }
             }
         });
+    }
+</script>
+
+<script>
+    $(window).load(function () {
+      /*  $("#flexiselDemo1").flexisel({
+            visibleItems: 3,
+            animationSpeed: 1000,
+            autoPlay: true,
+            autoPlaySpeed: 3000,
+            pauseOnHover: true,
+            enableResponsiveBreakpoints: true,
+            responsiveBreakpoints: {
+                portrait: {
+                    changePoint: 480,
+                    visibleItems: 1
+                },
+                landscape: {
+                    changePoint: 640,
+                    visibleItems: 2
+                },
+                tablet: {
+                    changePoint: 768,
+                    visibleItems: 2
+                }
+            }
+        });*/
 
     });
 </script>

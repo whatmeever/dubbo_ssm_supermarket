@@ -5,7 +5,7 @@
 <html lang="zxx">
 
 <head>
-	<title>${goodType.gtname}</title>
+	<title>Kitchen Products</title>
 	<!--/tags -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -19,7 +19,7 @@
 			max-width: 180px;
 			overflow: hidden;
 			white-space: nowrap;
-
+			text-overflow: ellipsis;
 			display:block;
 
 		}
@@ -1059,11 +1059,11 @@
 								</div>
 								<div class="item-info-product ">
 									<h4>
-										<a href="getGoodDetailsByFdidTwo?fdid=${goods.fdid}" class="goodsHref">${goods.goodName}</a>
+										<a href="getGoodDetailsByFdid?fdid=${goods.fdid}" class="goodsHref">${goods.goodName}</a>
 									</h4>
 									<div class="info-product-price">
-										<span class="item_price">${goods.price*goods.discount/100}</span>
-										<del>${goods.price}</del>
+										<span class="item_price">${goods.price}</span>
+										<del>${goods.price*goods.discount/100}</del>
 									</div>
 									<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
 										<form action="#" method="post">
