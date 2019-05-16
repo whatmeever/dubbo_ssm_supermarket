@@ -24,4 +24,5 @@ public class GoodType implements Serializable {
     public void setGtname(String gtname) {
         this.gtname = gtname == null ? null : gtname.trim();
     }
+
 }

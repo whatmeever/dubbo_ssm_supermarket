@@ -66,4 +66,20 @@ public class FreshGoodsController {
         return freshGood;
     }
 
+    //获取所有的海鲜产品
+    @ResponseBody
+    @GetMapping("/getHaiXians")
+    public List<FreshGoods> getHaiXians(){
+        List<FreshGoods> haiXians = new ArrayList<>();
+        FreshGoodsExample example = new FreshGoodsExample();
+        FreshGoodsExample.Criteria criteria = example.createCriteria();
+        criteria.andGtidEqualTo(8);
+        List<FreshGoods> haiXian = freshGoodsService.getFreshGoodsByHaiXian(example);
+        for (int i=0;i<3;i++) {
+
+            haiXians.add(haiXian.get(i));
+        }
+        return haiXians;
+    }
+
 }
