@@ -54,6 +54,19 @@ public class FreshGoodsController {
         List<FreshGoods> freshGoods = freshGoodsService.getFreshGoodsByExample(example);
         return freshGoods;
     }
+    @ResponseBody
+    @GetMapping("/getSpecialGood")
+    public List<FreshGoods> getSpecialGood(){
+        FreshGoodsExample example = new FreshGoodsExample();
+        FreshGoodsExample.Criteria criteria = example.createCriteria();
+        criteria.andIfPromotionEqualTo(1);
+        List<FreshGoods> list = new ArrayList<>();
+        List<FreshGoods> freshGoods = freshGoodsService.getFreshGoodsByExample(example);
+        for (int i=0;i<7;i++) {
+            list.add(freshGoods.get(i));
+        }
+        return  list;
+    }
 
    @ResponseBody
     @GetMapping("/getDiscountGoods")
@@ -81,5 +94,6 @@ public class FreshGoodsController {
         }
         return haiXians;
     }
+
 
 }

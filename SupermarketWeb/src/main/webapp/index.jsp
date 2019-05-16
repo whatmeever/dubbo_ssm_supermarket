@@ -224,7 +224,7 @@
 		<div class="container">
 			<div class="agileits-navi_search">
 				<form action="#" method="post">
-					<select id="agileinfo-nav_search" class="goodType" name="agileinfo_search" required>
+					<select id="agileinfo-nav_search" class="goodType" name="agileinfo_search" required="">
 					<%--<option value="Kitchen">Kitchen</option>
 						<option value="Household">Household</option>
 						<option value="Snacks &amp; Beverages">Snacks & Beverages</option>
@@ -1284,7 +1284,7 @@
 					var imgs = data[key].img.split("-");
 					var img = $("<img src='img/"+imgs[0]+".jpg' style='width: 70px;height: 70px' />");
 					var name = $("<h3>"+data[key].goodName+"</h3>");
-					var a = $("<a href='#'>$"+data[key].price*data[key].discount/100+"</a>");
+					var a = $("<a href='getGoodDetailsByFdid2?fdid="+data[key].fdid+"'>$"+data[key].price*data[key].discount/100+"</a>");
 					divChild1.append(img);
 					divChild2.append(name);
 					divChild2.append(a);
@@ -1294,7 +1294,7 @@
 					$("#specialGoods").append(divParent);
 				}
 			});
-			//获取所有的特价产品
+			//获取所有的特别优惠
 			$.get("/getDiscountGoods",function (data) {
 				for (var key in data) {
 					var li=$("<li></li>");
@@ -1304,11 +1304,11 @@
 					//第一个子div
 					var imgs = data[key].img.split("-");
 					var img =
-							$("<a href=''><img src='img/"+imgs[0]+".jpg' style='width: 150px;height: 150px; ' /></a>");
+							$("<a href='getGoodDetailsByFdid2?fdid="+data[key].fdid+"'><img src='img/"+imgs[0]+".jpg' style='width: 150px;height: 150px; ' /></a>");
 					divChild1.append(img);
 
 					//第二个子div
-					var h4 = $("<h4><a href='#'>"+data[key].goodName+"</a></h4>");
+					var h4 = $("<h4><a href='getGoodDetailsByFdid2?fdid="+data[key].fdid+"'>"+data[key].goodName+"</a></h4>");
 					divChild2.append(h4);
 					var divGrandson1 =$("<div class='w3l-pricehkj'></div>");
 					//divGrandson1中的标签
@@ -1325,7 +1325,7 @@
 					var input1 =$('<input type="hidden" name="cmd" value="_cart" />');
 					var input2 =$('<input type="hidden" name="add" value="1" />');
 					var input3 =$('<input type="hidden" name="business" value=" " />');
-					var input4 =$('<input type="hidden" name="item_name" value="'+data[key].name+'" />');
+					var input4 =$('<input type="hidden" name="item_name" value="'+data[key].goodName+'" />');
 					var input5 =$('<input type="hidden" name="amount" value="'+data[key].price+'" />');
 					var input6 =$('<input type="hidden" name="currency_code" value="USD" />');
 					var input7 =$('<input type="hidden" name="return" value=" " />');
@@ -1369,7 +1369,7 @@
 							//0201
 					var div0102 = $('<div class="inner-men-cart-pro"></div>');
 								//020101
-					var a1 =$('<a href="single.jsp" class="link-product-add-cart">Quick View</a>');
+					var a1 =$('<a href="getGoodDetailsByFdid2?fdid='+data[key].fdid+'" class="link-product-add-cart">Quick View</a>');
 						//3
 					var span=$('<span class="product-new-top">New</span>3');
 					div0102.append(a1);
@@ -1381,13 +1381,13 @@
 					//第二个子div
 					var divChild2 = $('<div class="item-info-product "></div>');
 						//1
-					var a2 = $('<h4><a href="single.jsp">'+data[key].name+'</a></h4>');
+					var a2 = $('<h4><a href="getGoodDetailsByFdid2?fdid='+data[key].fdid+'">'+data[key].goodName+'</a></h4>');
 						//2
 					var div02 = $('<div class="info-product-price"></div>');
 							//0201
-					var div0201 = $('<span class="item_price">'+data[key].price+'</span>');
+					var div0201 = $('<span class="item_price">$'+data[key].price+'</span>');
 							//0202
-					var div0202 = $('<del>'+data[key].price+'</del>');
+					var div0202 = $('<del>$'+data[key].price+'</del>');
 					div02.append(div0201);
 					div02.append(div0202);
 						//3
@@ -1400,7 +1400,7 @@
 					var input1 =$('<input type="hidden" name="cmd" value="_cart" />');
 					var input2 =$('<input type="hidden" name="add" value="1" />');
 					var input3 =$('<input type="hidden" name="business" value=" " />');
-					var input4 =$('<input type="hidden" name="item_name" value="'+data[key].name+'" />');
+					var input4 =$('<input type="hidden" name="item_name" value="'+data[key].goodName+'" />');
 					var input5 =$('<input type="hidden" name="amount" value="'+data[key].price+'" />');
 					var input6 =$('<input type="hidden" name="currency_code" value="USD" />');
 					var input7 =$('<input type="hidden" name="return" value=" " />');
@@ -1430,6 +1430,7 @@
 
 
 				}
+				addCart();
 
 
 
@@ -1468,24 +1469,26 @@
 	<!-- cart-js -->
 	<script src="js/minicart.js"></script>
 	<script>
-		paypalm.minicartk.render(); //use only unique class names other than paypalm.minicartk.Also Replace same class name in css and minicart.min.js
+		function addCart() {
+			paypalm.minicartk.render(); //use only unique class names other than paypalm.minicartk.Also Replace same class name in css and minicart.min.js
 
-		paypalm.minicartk.cart.on('checkout', function (evt) {
-			var items = this.items(),
-				len = items.length,
-				total = 0,
-				i;
+			paypalm.minicartk.cart.on('checkout', function (evt) {
+				var items = this.items(),
+						len = items.length,
+						total = 0,
+						i;
 
-			// Count the number of each item in the cart
-			for (i = 0; i < len; i++) {
-				total += items[i].get('quantity');
-			}
+				// Count the number of each item in the cart
+				for (i = 0; i < len; i++) {
+					total += items[i].get('quantity');
+				}
 
-			if (total < 3) {
-				alert('The minimum order quantity is 3. Please add more to your shopping cart before checking out');
-				evt.preventDefault();
-			}
-		});
+				if (total < 3) {
+					alert('The minimum order quantity is 3. Please add more to your shopping cart before checking out');
+					evt.preventDefault();
+				}
+			});
+		}
 	</script>
 	<!-- //cart-js -->
 
