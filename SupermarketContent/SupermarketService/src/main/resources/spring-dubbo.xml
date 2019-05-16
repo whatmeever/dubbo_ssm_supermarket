@@ -8,7 +8,7 @@
 
     <dubbo:application name="Day86SSMDubboService"/>
 
-    <dubbo:registry address="zookeeper://10.12.159.107:2181"/>
+    <dubbo:registry address="zookeeper://119.29.60.31:2181"/>
     <!--<dubbo:registry address="zookeeper://192.168.0.110:2181"/>-->
 
     <dubbo:protocol name="dubbo" port="20880"/>
@@ -16,5 +16,6 @@
     <dubbo:service interface="com.supermarket.service.UsersService" ref="usersServiceImpl"/>
     <dubbo:service interface="com.supermarket.service.GoodTypeSerivce" ref="goodTypeServiceImpl"/>
     <dubbo:service interface="com.supermarket.service.FreshGoodsService" ref="freshGoodsServiceImpl"/>
+    <dubbo:service interface="com.supermarket.service.GoodDetailsService" ref="goodDetailsServiceImpl"/>
 
 </beans>

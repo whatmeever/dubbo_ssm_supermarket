@@ -4,9 +4,10 @@
        xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
     <dubbo:application name="supermarketWeb"/>
-    <dubbo:registry address="zookeeper://10.12.159.107:2181"/>
+    <dubbo:registry address="zookeeper://119.29.60.31:2181"/>
     <!--<dubbo:registry address="zookeeper://192.168.0.110:2181"/>-->
     <dubbo:reference interface="com.supermarket.service.UsersService" id="usersService"/>
     <dubbo:reference interface="com.supermarket.service.GoodTypeSerivce" id="goodTypeService"/>
     <dubbo:reference interface="com.supermarket.service.FreshGoodsService" id="freshGoodsService"/>
+    <dubbo:reference interface="com.supermarket.service.GoodDetailsService" id="goodDetailsService"/>
 </beans>

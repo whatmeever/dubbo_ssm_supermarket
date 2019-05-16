@@ -792,7 +792,7 @@
 <div class="banner-bootom-w3-agileits">
     <div class="container">
         <!-- tittle heading -->
-        <h3 class="tittle-w3l">Single Page
+        <h3 class="tittle-w3l">商品详情
             <span class="heading-style">
 					<i></i>
 					<i></i>
@@ -804,17 +804,17 @@
             <div class="grid images_3_of_2">
                 <div class="flexslider">
                     <ul class="slides">
-                        <li data-thumb="images/si.jpg">
+                        <li data-thumb="img/${imgs[0]}.jpg">
                             <div class="thumb-image">
-                                <img src="images/si.jpg" data-imagezoom="true" class="img-responsive" alt=""></div>
+                                <img src="img/${imgs[0]}.jpg" data-imagezoom="true" class="img-responsive" alt=""></div>
                         </li>
-                        <li data-thumb="images/si2.jpg">
+                        <li data-thumb="img/${imgs[1]}.jpg">
                             <div class="thumb-image">
-                                <img src="images/si2.jpg" data-imagezoom="true" class="img-responsive" alt=""></div>
+                                <img src="img/${imgs[1]}.jpg" data-imagezoom="true" class="img-responsive" alt=""></div>
                         </li>
-                        <li data-thumb="images/si3.jpg">
+                        <li data-thumb="img/${imgs[2]}.jpg">
                             <div class="thumb-image">
-                                <img src="images/si3.jpg" data-imagezoom="true" class="img-responsive" alt=""></div>
+                                <img src="img/${imgs[2]}.jpg" data-imagezoom="true" class="img-responsive" alt=""></div>
                         </li>
                     </ul>
                     <div class="clearfix"></div>
@@ -822,7 +822,7 @@
             </div>
         </div>
         <div class="col-md-7 single-right-left simpleCart_shelfItem">
-            <h3>Zeeba Premium Basmati Rice - 5 KG</h3>
+            <h3>${freshGoods.goodName}</h3>
             <div class="rating1">
 					<span class="starRating">
 						<input id="rating5" type="radio" name="rating" value="5">
@@ -838,9 +838,9 @@
 					</span>
             </div>
             <p>
-                <span class="item_price">$950.00</span>
-                <del>$1300.00</del>
-                <label>Free delivery</label>
+                <span class="item_price">${freshGoods.price}</span>
+                <del>${freshGoods.price}</del>
+                <label>免费邮寄</label>
             </p>
             <div class="single-infoagile">
                 <ul>
@@ -1586,10 +1586,10 @@
         function goodType() {
             $.get("/getGoodTypes", function (data) {
                 var option = "<option value=''>所有种类</option>"
-				for (var key in data){
-				    option += "<option value='"+data[key].gtid+"'>"+data[key].gtname+"</option>"
+                for (var key in data){
+                    option += "<option value='"+data[key].gtid+"'>"+data[key].gtname+"</option>"
                 }
-				$(".goodType").append($(option));
+                $(".goodType").append($(option));
             });
         }
         //初始化下拉框
