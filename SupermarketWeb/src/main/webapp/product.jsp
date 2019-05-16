@@ -1052,7 +1052,7 @@
 
 									<div class="men-cart-pro">
 										<div class="inner-men-cart-pro">
-											<a href="single.jsp" class="link-product-add-cart">Quick View</a>
+											<a href="getGoodDetailsByFdid?fdid=${goods.fdid}" class="link-product-add-cart">Quick View</a>
 										</div>
 									</div>
 									<span class="product-new-top">New</span>
