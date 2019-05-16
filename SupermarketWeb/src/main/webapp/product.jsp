@@ -1062,8 +1062,8 @@
 										<a href="single.jsp" class="goodsHref">${goods.goodName}</a>
 									</h4>
 									<div class="info-product-price">
-										<span class="item_price">${goods.price}</span>
-										<del>${goods.price*goods.discount/100}</del>
+										<span class="item_price">${goods.price*goods.discount/100}</span>
+										<del>${goods.price}</del>
 									</div>
 									<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
 										<form action="#" method="post">

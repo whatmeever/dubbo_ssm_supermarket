@@ -924,8 +924,8 @@
 			</h3>
 			<!-- //tittle heading -->
 			<div class="content-bottom-in">
-				<ul id="flexiselDemo1">
-					<li id="specialOffers">
+				<ul id="flexiselDemo1" class="specialOffers">
+					<li>
 						<%--<div class="w3l-specilamk">
 							<div class="speioffer-agile">
 								<a href="single.jsp">
@@ -1373,10 +1373,12 @@
 				}
 			});
 			//获取所有的特价产品
-/*			$.get("/getDiscountGoods",function (data) {
+			$.get("/getDiscountGoods",function (data) {
+				var li=$("<li></li>");
 				var divParent = $("<div class='w3l-specilamk'></div>");
 				var divChild1 = $("<div class='speioffer-agile'><div>");
 				var divChild2 =$("<div class='product-name-w3l'><div>");
+				console.log(data);
 				for (var key in data) {
 					//第一个子div
 					var imgs = data[key].img.split("-");
@@ -1399,9 +1401,11 @@
 					divChild1.append(details);
 					divParent.append(divChild1);
 					divParent.append(divChild2);
-					$("#specialOffers").append(divParent);
+					li.append(divParent);
+					$(".specialOffers").append(divParent);
 				}
-			});*/
+
+			});
 
 		});
 
