@@ -1059,7 +1059,7 @@
 								</div>
 								<div class="item-info-product ">
 									<h4>
-										<a href="single.jsp" class="goodsHref">${goods.goodName}</a>
+										<a href="getGoodDetailsByFdid?fdid=${goods.fdid}" class="goodsHref">${goods.goodName}</a>
 									</h4>
 									<div class="info-product-price">
 										<span class="item_price">${goods.price}</span>
