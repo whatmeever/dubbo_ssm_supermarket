@@ -5,6 +5,7 @@ import com.supermarket.pojo.UsersExample;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Map;
 
 public interface UsersMapper {
     int countByExample(UsersExample example);
@@ -28,4 +29,6 @@ public interface UsersMapper {
     int updateByPrimaryKeySelective(Users record);
 
     int updateByPrimaryKey(Users record);
+
+    Users selectUserByUser(Map map);
 }

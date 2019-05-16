@@ -66,14 +66,24 @@
 					<li>
 						<span class="fa fa-phone" aria-hidden="true"></span> 18966836506
 					</li>
-					<li>
-						<a href="#" data-toggle="modal" data-target="#myModal1">
-							<span class="fa fa-unlock-alt" aria-hidden="true"></span> 登录 </a>
-					</li>
-					<li>
-						<a href="#" data-toggle="modal" data-target="#myModal2">
-							<span class="fa fa-pencil-square-o" aria-hidden="true"></span> 注册 </a>
-					</li>
+					<c:choose>
+						<c:when test="${sessionScope.users == null}">
+							<li>
+								<a href="#" data-toggle="modal" data-target="#myModal1">
+									<span class="fa fa-unlock-alt" aria-hidden="true"></span> 登录 </a>
+							</li>
+							<li>
+								<a href="#" data-toggle="modal" data-target="#myModal2">
+									<span class="fa fa-pencil-square-o" aria-hidden="true"></span> 注册 </a>
+							</li>
+						</c:when>
+						<c:otherwise>
+							<li>
+								<a href="#" id="logout">
+									<span class="fa fa-unlock-alt" aria-hidden="true"></span> 注销 </a>
+							</li>
+						</c:otherwise>
+					</c:choose>
 				</ul>
 				<!-- //header lists -->
 				<!-- search -->
@@ -152,9 +162,9 @@
 							<a href="#" data-toggle="modal" data-target="#myModal2">
 								请注册</a>
 						</p>
-						<form action="#" method="post">
+						<form action="/userLogin" method="post">
 							<div class="styled-input agile-styled-input-top">
-								<input type="text" placeholder="User Name" name="Name" required="">
+								<input type="text" placeholder="User Name" name="username" required="">
 							</div>
 							<div class="styled-input">
 								<input type="password" placeholder="Password" name="password" required="">
