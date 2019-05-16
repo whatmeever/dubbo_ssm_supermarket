@@ -924,8 +924,8 @@
 			</h3>
 			<!-- //tittle heading -->
 			<div class="content-bottom-in">
-				<ul id="flexiselDemo1">
-					<li id="specialOffers">
+				<ul id="flexiselDemo1" class="specialOffers">
+					<%--<li id="specialOffers">--%>
 						<%--<div class="w3l-specilamk">
 							<div class="speioffer-agile">
 								<a href="single.jsp">
@@ -958,7 +958,7 @@
 								</div>
 							</div>
 						</div>--%>
-					</li>
+					<%--</li>--%>
 
 
 				</ul>
@@ -1337,32 +1337,33 @@
 		$(function () {
 			//获取所有的种类
 			function goodType() {
-				$.get("/getGoodTypes",function (data) {
+				$.get("/getGoodTypes", function (data) {
 					var option = "<option value=''>所有种类</option>";
-					for (var key in data){
-						option += "<option value='"+data[key].gtid+"'>"+data[key].gtname+"</option>";
+					for (var key in data) {
+						option += "<option value='" + data[key].gtid + "'>" + data[key].gtname + "</option>";
 					}
 					$(".goodType").append($(option));
 				});
 			}
+
 			//初始化种类下拉框
 			goodType();
 			//获取被选中的种类
-			$(".goodType").on("change",function () {
-				var gtid=$(this).find(":selected").val();
-				location.href="getFreshGoods?gtid="+gtid;
+			$(".goodType").on("change", function () {
+				var gtid = $(this).find(":selected").val();
+				location.href = "getFreshGoods?gtid=" + gtid;
 			});
 			//获取所有的特价商品
-			$.get("/getSpecialGoods",function (data) {
+			$.get("/getSpecialGoods", function (data) {
 				var divParent = $("<div class='special-sec1'></div>");
 				var divChild1 = $("<div class='col-xs-4 img-deals'></div>");
 				var divChild2 = $("<div class='col-xs-8 img-deal1'></div>");
 				var divChild3 = $("<div class='clearfix'></div>");
-				for(var key in data){
+				for (var key in data) {
 					var imgs = data[key].img.split("-");
-					var img = $("<img src='img/"+imgs[0]+".jpg' style='width: 70px;height: 70px' />");
-					var name = $("<h3>"+data[key].goodName+"</h3>");
-					var a = $("<a href='#'>"+data[key].price*data[key].discount+"</a>");
+					var img = $("<img src='img/" + imgs[0] + ".jpg' style='width: 70px;height: 70px' />");
+					var name = $("<h3>" + data[key].goodName + "</h3>");
+					var a = $("<a href='#'>" + data[key].price * data[key].discount + "</a>");
 					divChild1.append(img);
 					divChild2.append(name);
 					divChild2.append(a);
@@ -1372,6 +1373,7 @@
 					$("#specialGoods").append(divParent);
 				}
 			});
+		});
 			//获取所有的特价产品
 /*			$.get("/getDiscountGoods",function (data) {
 				var divParent = $("<div class='w3l-specilamk'></div>");
@@ -1402,8 +1404,6 @@
 					$("#specialOffers").append(divParent);
 				}
 			});*/
-
-		});
 
 	</script>
 

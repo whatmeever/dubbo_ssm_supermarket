@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -55,7 +54,7 @@ public class FreshGoodsController {
         return freshGoods;
     }
 
-   /* @ResponseBody
+    @ResponseBody
     @GetMapping("/getDiscountGoods")
     public List<FreshGoods> getDiscountGoods(){
         FreshGoodsExample example = new FreshGoodsExample();
@@ -64,6 +63,6 @@ public class FreshGoodsController {
         criteria.andDiscountGreaterThan(0);
         List<FreshGoods> freshGood = freshGoodsService.getFreshGoodsByDiscount(example);
         return freshGood;
-    }*/
+    }
 
 }
