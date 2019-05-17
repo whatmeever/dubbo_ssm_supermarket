@@ -887,7 +887,7 @@
                 <p>
                     <i class="fa fa-refresh" aria-hidden="true"></i>所有食品都是
                     <label>不可退货的。</label>
-                </p>sn
+                </p>
             </div>
             <div class="occasion-cart">
                 <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
