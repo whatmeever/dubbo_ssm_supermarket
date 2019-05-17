@@ -12,4 +12,6 @@ public interface FreshGoodsService {
     List<FreshGoods> getFreshGoodsByExample(FreshGoodsExample example);
     //获取特别优惠，也就是折扣小于30的产品
     List<FreshGoods> getFreshGoodsByDiscount(FreshGoodsExample example);
+    //查询所有的海鲜产品
+    List<FreshGoods> getFreshGoodsByHaiXian(FreshGoodsExample example);
 }

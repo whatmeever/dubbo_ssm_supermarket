@@ -31,4 +31,9 @@ public class FreshGoodsServiceImpl implements FreshGoodsService {
     public List<FreshGoods> getFreshGoodsByDiscount(FreshGoodsExample example) {
         return freshGoodsMapper.selectByExample(example);
     }
+
+    @Override
+    public List<FreshGoods> getFreshGoodsByHaiXian(FreshGoodsExample example) {
+        return freshGoodsMapper.selectByExample(example);
+    }
 }

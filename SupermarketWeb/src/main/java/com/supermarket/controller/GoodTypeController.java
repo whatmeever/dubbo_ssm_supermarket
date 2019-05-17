@@ -14,13 +14,16 @@ import java.util.List;
 public class GoodTypeController {
     @Resource
     private GoodTypeSerivce goodTypeSerivce;
-    private GoodTypeExample example;
+    private static GoodTypeExample example;
+    static {
+        example = new GoodTypeExample();
+    }
 
     @ResponseBody
     @GetMapping("/getGoodTypes")
     public List<GoodType> getGoodTypes(){
+        example.clear();
         return goodTypeSerivce.getGoodTypes(example);
     }
-
 
 }
