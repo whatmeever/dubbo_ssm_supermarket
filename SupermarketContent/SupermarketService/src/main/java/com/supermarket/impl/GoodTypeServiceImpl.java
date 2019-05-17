@@ -15,7 +15,17 @@ import java.util.List;
 public class GoodTypeServiceImpl implements GoodTypeSerivce {
     @Resource
     private GoodTypeMapper goodTypeMapper;
+
     @Override
+    public List<GoodType> selectByExample(GoodTypeExample example) {
+        return goodTypeMapper.selectByExample(example);
+    }
+
+    @Override
+    public GoodType selectByPrimaryKey(Integer gtid) {
+        return goodTypeMapper.selectByPrimaryKey(gtid);
+    }
+    /*@Override
     public List<GoodType> getGoodTypes(GoodTypeExample example) {
         return goodTypeMapper.selectByExample(example);
     }
@@ -23,7 +33,9 @@ public class GoodTypeServiceImpl implements GoodTypeSerivce {
     @Override
     public GoodType getGoodType(int gtid) {
         return goodTypeMapper.selectByPrimaryKey(gtid);
-    }
+    }*/
+
+
 
 
 }
