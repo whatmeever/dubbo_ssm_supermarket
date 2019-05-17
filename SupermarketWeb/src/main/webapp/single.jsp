@@ -887,7 +887,7 @@
                 <p>
                     <i class="fa fa-refresh" aria-hidden="true"></i>所有食品都是
                     <label>不可退货的。</label>
-                </p>
+                </p>sn
             </div>
             <div class="occasion-cart">
                 <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
@@ -1603,9 +1603,11 @@
         goodType();
         //获取被选中的种类
         $(".goodType").on("change",function () {
-            console.log($(this).find(":selected").val());
-
+            var gtid = $(this).find(":selected").val();
+            console.log(gtid);
+            location.href = "getFreshGoods?gtid="+gtid;
         });
+
     });
 </script>
 <!-- popup modal (for signin & signup)-->
