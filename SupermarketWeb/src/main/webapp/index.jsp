@@ -32,6 +32,7 @@
 	<link href="http://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800" rel="stylesheet">
 	<style type="text/css">
 		a{white-space: nowrap; overflow: hidden;display:block;}
+		h3{white-space: nowrap; overflow: hidden;display:block;}
 	</style>
 </head>
 
