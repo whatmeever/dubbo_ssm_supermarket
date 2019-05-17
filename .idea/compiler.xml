@@ -11,6 +11,7 @@
         <module name="SupermarketMapper" />
         <module name="SupermarketPojo" />
         <module name="SupermarketService" />
+        <module name="SupermarketShiro" />
         <module name="SupermarketWeb" />
       </profile>
     </annotationProcessing>

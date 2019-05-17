@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -53,6 +54,19 @@ public class FreshGoodsController {
         List<FreshGoods> freshGoods = freshGoodsService.getFreshGoodsByExample(example);
         return freshGoods;
     }
+    @ResponseBody
+    @GetMapping("/getSpecialGood")
+    public List<FreshGoods> getSpecialGood(){
+        FreshGoodsExample example = new FreshGoodsExample();
+        FreshGoodsExample.Criteria criteria = example.createCriteria();
+        criteria.andIfPromotionEqualTo(1);
+        List<FreshGoods> list = new ArrayList<>();
+        List<FreshGoods> freshGoods = freshGoodsService.getFreshGoodsByExample(example);
+        for (int i = 0;i<7;i++){
+            list.add(freshGoods.get(i));
+        }
+        return  list;
+    }
 
     @ResponseBody
     @GetMapping("/getDiscountGoods")
@@ -64,5 +78,20 @@ public class FreshGoodsController {
         List<FreshGoods> freshGood = freshGoodsService.getFreshGoodsByDiscount(example);
         return freshGood;
     }
+    @ResponseBody
+    @GetMapping("/getHaiXians")
+    public List<FreshGoods> getHaiXians(){
+        FreshGoodsExample example = new FreshGoodsExample();
+        FreshGoodsExample.Criteria criteria = example.createCriteria();
+        criteria.andGtidEqualTo(8);
+        List<FreshGoods> freshGoods = freshGoodsService.getFreshGoodsByHaiXian(example);
+        List<FreshGoods> list = new ArrayList<>();
+        for (int i = 0;i<3;i++){
+            list.add(freshGoods.get(i));
+        }
+        return list;
+    }
+
+
 
 }

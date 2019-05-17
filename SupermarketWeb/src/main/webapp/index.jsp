@@ -30,6 +30,10 @@
 	<link rel="stylesheet" type="text/css" href="css/jquery-ui1.css">
 	<!-- fonts -->
 	<link href="http://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800" rel="stylesheet">
+	<style type="text/css">
+		a{white-space: nowrap; overflow: hidden;display:block;}
+		h3{white-space: nowrap; overflow: hidden;display:block;}
+	</style>
 </head>
 
 <body>
@@ -66,14 +70,24 @@
 					<li>
 						<span class="fa fa-phone" aria-hidden="true"></span> 18966836506
 					</li>
-					<li>
-						<a href="#" data-toggle="modal" data-target="#myModal1">
-							<span class="fa fa-unlock-alt" aria-hidden="true"></span> 登录 </a>
-					</li>
-					<li>
-						<a href="#" data-toggle="modal" data-target="#myModal2">
-							<span class="fa fa-pencil-square-o" aria-hidden="true"></span> 注册 </a>
-					</li>
+					<c:choose>
+						<c:when test="${sessionScope.users == null}">
+							<li>
+								<a href="#" data-toggle="modal" data-target="#myModal1">
+									<span class="fa fa-unlock-alt" aria-hidden="true"></span> 登录 </a>
+							</li>
+							<li>
+								<a href="#" data-toggle="modal" data-target="#myModal2">
+									<span class="fa fa-pencil-square-o" aria-hidden="true"></span> 注册 </a>
+							</li>
+						</c:when>
+						<c:otherwise>
+							<li>
+								<a href="#" id="logout">
+									<span class="fa fa-unlock-alt" aria-hidden="true"></span> 注销 </a>
+							</li>
+						</c:otherwise>
+					</c:choose>
 				</ul>
 				<!-- //header lists -->
 				<!-- search -->
@@ -152,9 +166,9 @@
 							<a href="#" data-toggle="modal" data-target="#myModal2">
 								请注册</a>
 						</p>
-						<form action="#" method="post">
+						<form action="/userLogin" method="post">
 							<div class="styled-input agile-styled-input-top">
-								<input type="text" placeholder="User Name" name="Name" required="">
+								<input type="text" placeholder="User Name" name="username" required="">
 							</div>
 							<div class="styled-input">
 								<input type="password" placeholder="Password" name="password" required="">
@@ -221,7 +235,7 @@
 		<div class="container">
 			<div class="agileits-navi_search">
 				<form action="#" method="post">
-					<select id="agileinfo-nav_search" class="goodType" name="agileinfo_search" required>
+					<select id="agileinfo-nav_search" class="goodType" name="agileinfo_search" required="">
 					<%--<option value="Kitchen">Kitchen</option>
 						<option value="Household">Household</option>
 						<option value="Snacks &amp; Beverages">Snacks & Beverages</option>
@@ -486,7 +500,7 @@
 	<div class="ads-grid">
 		<div class="container">
 			<!-- tittle heading -->
-			<h3 class="tittle-w3l">Our Top Products
+			<h3 class="tittle-w3l">顶级产品
 				<span class="heading-style">
 					<i></i>
 					<i></i>
@@ -519,8 +533,8 @@
 				<div class="wrapper">
 					<!-- first section (nuts) -->
 					<div class="product-sec1">
-						<h3 class="heading-tittle">Nuts</h3>
-						<div class="col-md-4 product-men">
+						<h3 class="heading-tittle">海鲜</h3>
+						<div class="col-md-4 product-men" id="haiXians">
 							<div class="men-pro-item simpleCart_shelfItem">
 								<div class="men-thumb-item">
 									<img src="images/m1.jpg" alt="">
@@ -555,87 +569,6 @@
 											</fieldset>
 										</form>
 									</div>
-
-								</div>
-							</div>
-						</div>
-						<div class="col-md-4 product-men">
-							<div class="men-pro-item simpleCart_shelfItem">
-								<div class="men-thumb-item">
-									<img src="images/m2.jpg" alt="">
-									<div class="men-cart-pro">
-										<div class="inner-men-cart-pro">
-											<a href="single.jsp" class="link-product-add-cart">Quick View</a>
-										</div>
-									</div>
-									<span class="product-new-top">New</span>
-
-								</div>
-								<div class="item-info-product ">
-									<h4>
-										<a href="single.jsp">Cashew Nuts, 100g</a>
-									</h4>
-									<div class="info-product-price">
-										<span class="item_price">$200.00</span>
-										<del>$420.00</del>
-									</div>
-									<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-										<form action="#" method="post">
-											<fieldset>
-												<input type="hidden" name="cmd" value="_cart" />
-												<input type="hidden" name="add" value="1" />
-												<input type="hidden" name="business" value=" " />
-												<input type="hidden" name="item_name" value="Cashew Nuts, 100g" />
-												<input type="hidden" name="amount" value="200.00" />
-												<input type="hidden" name="discount_amount" value="1.00" />
-												<input type="hidden" name="currency_code" value="USD" />
-												<input type="hidden" name="return" value=" " />
-												<input type="hidden" name="cancel_return" value=" " />
-												<input type="submit" name="submit" value="Add to cart" class="button" />
-											</fieldset>
-										</form>
-									</div>
-
-								</div>
-							</div>
-						</div>
-						<div class="col-md-4 product-men">
-							<div class="men-pro-item simpleCart_shelfItem">
-								<div class="men-thumb-item">
-									<img src="images/m3.jpg" alt="">
-									<div class="men-cart-pro">
-										<div class="inner-men-cart-pro">
-											<a href="single.jsp" class="link-product-add-cart">Quick View</a>
-										</div>
-									</div>
-									<span class="product-new-top">New</span>
-
-								</div>
-								<div class="item-info-product ">
-									<h4>
-										<a href="single.jsp">Pista..., 250g</a>
-									</h4>
-									<div class="info-product-price">
-										<span class="item_price">$520.99</span>
-										<del>$600.99</del>
-									</div>
-									<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-										<form action="#" method="post">
-											<fieldset>
-												<input type="hidden" name="cmd" value="_cart" />
-												<input type="hidden" name="add" value="1" />
-												<input type="hidden" name="business" value=" " />
-												<input type="hidden" name="item_name" value="Pista, 250g" />
-												<input type="hidden" name="amount" value="520.99" />
-												<input type="hidden" name="discount_amount" value="1.00" />
-												<input type="hidden" name="currency_code" value="USD" />
-												<input type="hidden" name="return" value=" " />
-												<input type="hidden" name="cancel_return" value=" " />
-												<input type="submit" name="submit" value="Add to cart" class="button" />
-											</fieldset>
-										</form>
-									</div>
-
 								</div>
 							</div>
 						</div>
@@ -925,7 +858,7 @@
 			<!-- //tittle heading -->
 			<div class="content-bottom-in">
 				<ul id="flexiselDemo1" class="specialOffers">
-					<%--<li id="specialOffers">--%>
+
 						<%--<div class="w3l-specilamk">
 							<div class="speioffer-agile">
 								<a href="single.jsp">
@@ -958,7 +891,7 @@
 								</div>
 							</div>
 						</div>--%>
-					<%--</li>--%>
+
 
 
 				</ul>
@@ -1337,33 +1270,32 @@
 		$(function () {
 			//获取所有的种类
 			function goodType() {
-				$.get("/getGoodTypes", function (data) {
+				$.get("/getGoodTypes",function (data) {
 					var option = "<option value=''>所有种类</option>";
-					for (var key in data) {
-						option += "<option value='" + data[key].gtid + "'>" + data[key].gtname + "</option>";
+					for (var key in data){
+						option += "<option value='"+data[key].gtid+"'>"+data[key].gtname+"</option>";
 					}
 					$(".goodType").append($(option));
 				});
 			}
-
 			//初始化种类下拉框
 			goodType();
 			//获取被选中的种类
-			$(".goodType").on("change", function () {
-				var gtid = $(this).find(":selected").val();
-				location.href = "getFreshGoods?gtid=" + gtid;
+			$(".goodType").on("change",function () {
+				var gtid=$(this).find(":selected").val();
+				location.href="getFreshGoods?gtid="+gtid;
 			});
 			//获取所有的特价商品
-			$.get("/getSpecialGoods", function (data) {
+			$.get("/getSpecialGoods",function (data) {
 				var divParent = $("<div class='special-sec1'></div>");
 				var divChild1 = $("<div class='col-xs-4 img-deals'></div>");
 				var divChild2 = $("<div class='col-xs-8 img-deal1'></div>");
 				var divChild3 = $("<div class='clearfix'></div>");
-				for (var key in data) {
+				for(var key in data){
 					var imgs = data[key].img.split("-");
-					var img = $("<img src='img/" + imgs[0] + ".jpg' style='width: 70px;height: 70px' />");
-					var name = $("<h3>" + data[key].goodName + "</h3>");
-					var a = $("<a href='#'>" + data[key].price * data[key].discount + "</a>");
+					var img = $("<img src='img/"+imgs[0]+".jpg' style='width: 70px;height: 70px' />");
+					var name = $("<h3>"+data[key].goodName+"</h3>");
+					var a = $("<a href='getGoodDetailsByFdid2?fdid="+data[key].fdid+"'>$"+data[key].price*data[key].discount/100+"</a>");
 					divChild1.append(img);
 					divChild2.append(name);
 					divChild2.append(a);
@@ -1373,37 +1305,151 @@
 					$("#specialGoods").append(divParent);
 				}
 			});
-		});
-			//获取所有的特价产品
-/*			$.get("/getDiscountGoods",function (data) {
-				var divParent = $("<div class='w3l-specilamk'></div>");
-				var divChild1 = $("<div class='speioffer-agile'><div>");
-				var divChild2 =$("<div class='product-name-w3l'><div>");
+			//获取所有的特别优惠
+			$.get("/getDiscountGoods",function (data) {
 				for (var key in data) {
+					var li=$("<li></li>");
+					var divParent = $("<div class='w3l-specilamk'></div>");
+					var divChild1 = $("<div class='speioffer-agile'><div>");
+					var divChild2 =$("<div class='product-name-w3l'><div>");
 					//第一个子div
 					var imgs = data[key].img.split("-");
-					var details =$("<a href='#'><a>");
-					var img = $("<img src='img/"+imgs[0]+".jpg' style='width: 150px;height: 150px'>");
-					details.append(img);
+					var img =
+							$("<a href='getGoodDetailsByFdid2?fdid="+data[key].fdid+"'><img src='img/"+imgs[0]+".jpg' style='width: 150px;height: 150px; ' /></a>");
+					divChild1.append(img);
+
 					//第二个子div
-					var h4 =$("<h4></h4>");
-					var href = $("<a href='#'>"+data[key].goodName+"</a>");
+					var h4 = $("<h4><a href='getGoodDetailsByFdid2?fdid="+data[key].fdid+"'>"+data[key].goodName+"</a></h4>");
+					divChild2.append(h4);
 					var divGrandson1 =$("<div class='w3l-pricehkj'></div>");
 					//divGrandson1中的标签
-					var h6 = $("<h6>"+data[key].price+"</h6>");
+					var h6 = $("<h6>$"+data[key].price*data[key].discount/100+"</h6>");
+
+					var save =$('<p>原价$'+data[key].price+'</p>');
 					divGrandson1.append(h6);
+					divGrandson1.append(save);
 					var divGrandson2 = $("<div class='snipcart-details top_brand_home_details item_add single-item hvr-outline-out'></div>");
 					//divGrandson2中的标签
 					var form =$("<form action='#' method='post'></form>");
+					var fieldset=$("<fieldset></fieldset>");
+
+					var input1 =$('<input type="hidden" name="cmd" value="_cart" />');
+					var input2 =$('<input type="hidden" name="add" value="1" />');
+					var input3 =$('<input type="hidden" name="business" value=" " />');
+					var input4 =$('<input type="hidden" name="item_name" value="'+data[key].goodName+'" />');
+					var input5 =$('<input type="hidden" name="amount" value="'+data[key].price+'" />');
+					var input6 =$('<input type="hidden" name="currency_code" value="USD" />');
+					var input7 =$('<input type="hidden" name="return" value=" " />');
+					var input8 =$('<input type="hidden" name="cancel_return" value=" " />');
+					var input9 =$('<input type="submit" name="submit" value="加入购物车" class="button" />');
+
+					fieldset.append(input1);
+					fieldset.append(input2);
+					fieldset.append(input3);
+					fieldset.append(input4);
+					fieldset.append(input5);
+					fieldset.append(input6);
+					fieldset.append(input7);
+					fieldset.append(input8);
+					fieldset.append(input9);
+
+					form.append(fieldset);
 					divGrandson2.append(form);
+
+					divParent.append(divChild1);
 					divChild2.append(divGrandson1);
 					divChild2.append(divGrandson2);
-					divChild1.append(details);
+					divParent.append(divChild2);
+					li.append(divParent);
+					$(".specialOffers").append(li);
+				}
+				lunxun();
+			});
+
+			//获取海鲜类产品
+			$.get("/getHaiXians",function (data) {
+				for (var key in data) {
+					var divParent = $('<div class="men-pro-item simpleCart_shelfItem" style="float: left"></div>');
+					//第一个子div
+					var divChild1 = $('<div class="men-thumb-item"></div>');
+					var imgs = data[key].img.split("-");
+						//1
+					var img =$('<img src="img/'+imgs[0]+'.jpg" alt="" style="width: 150px;height: 150px">');
+						//2
+					var div2 = $('<div class="men-cart-pro"></div>');
+							//0201
+					var div0102 = $('<div class="inner-men-cart-pro"></div>');
+								//020101
+					var a1 =$('<a href="getGoodDetailsByFdid2?fdid='+data[key].fdid+'" class="link-product-add-cart">Quick View</a>');
+						//3
+					var span=$('<span class="product-new-top">New</span>3');
+					div0102.append(a1);
+					div2.append(div0102);
+					divChild1.append(img);
+					divChild1.append(div2);
+					divChild1.append(span);
+
+					//第二个子div
+					var divChild2 = $('<div class="item-info-product "></div>');
+						//1
+					var a2 = $('<h4><a href="getGoodDetailsByFdid2?fdid='+data[key].fdid+'">'+data[key].goodName+'</a></h4>');
+						//2
+					var div02 = $('<div class="info-product-price"></div>');
+							//0201
+					var div0201 = $('<span class="item_price">$'+data[key].price+'</span>');
+							//0202
+					var div0202 = $('<del>$'+data[key].price+'</del>');
+					div02.append(div0201);
+					div02.append(div0202);
+						//3
+					var div03=$('<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out"></div>');
+							//0301
+					var div0301 = $('<form action="#" method="post"></form>');
+								//0301f
+					var fieldset = $('<fieldset></fieldset>');
+
+					var input1 =$('<input type="hidden" name="cmd" value="_cart" />');
+					var input2 =$('<input type="hidden" name="add" value="1" />');
+					var input3 =$('<input type="hidden" name="business" value=" " />');
+					var input4 =$('<input type="hidden" name="item_name" value="'+data[key].goodName+'" />');
+					var input5 =$('<input type="hidden" name="amount" value="'+data[key].price+'" />');
+					var input6 =$('<input type="hidden" name="currency_code" value="USD" />');
+					var input7 =$('<input type="hidden" name="return" value=" " />');
+					var input8 =$('<input type="hidden" name="cancel_return" value=" " />');
+					var input9 =$('<input type="submit" name="submit" value="加入购物车" class="button" />');
+
+					fieldset.append(input1);
+					fieldset.append(input2);
+					fieldset.append(input3);
+					fieldset.append(input4);
+					fieldset.append(input5);
+					fieldset.append(input6);
+					fieldset.append(input7);
+					fieldset.append(input8);
+					fieldset.append(input9);
+
+					div0301.append(fieldset);
+					div03.append(div0301);
+					//向子2中添加元素
+					divChild2.append(a2);
+					divChild2.append(div02);
+					divChild2.append(div03);
 					divParent.append(divChild1);
 					divParent.append(divChild2);
-					$("#specialOffers").append(divParent);
+
+					$("#haiXians").append(divParent);
+
+
 				}
-			});*/
+				addCart();
+
+
+
+
+
+			});
+
+		});
 
 	</script>
 
@@ -1434,24 +1480,26 @@
 	<!-- cart-js -->
 	<script src="js/minicart.js"></script>
 	<script>
-		paypalm.minicartk.render(); //use only unique class names other than paypalm.minicartk.Also Replace same class name in css and minicart.min.js
+		function addCart() {
+			paypalm.minicartk.render(); //use only unique class names other than paypalm.minicartk.Also Replace same class name in css and minicart.min.js
 
-		paypalm.minicartk.cart.on('checkout', function (evt) {
-			var items = this.items(),
-				len = items.length,
-				total = 0,
-				i;
+			paypalm.minicartk.cart.on('checkout', function (evt) {
+				var items = this.items(),
+						len = items.length,
+						total = 0,
+						i;
 
-			// Count the number of each item in the cart
-			for (i = 0; i < len; i++) {
-				total += items[i].get('quantity');
-			}
+				// Count the number of each item in the cart
+				for (i = 0; i < len; i++) {
+					total += items[i].get('quantity');
+				}
 
-			if (total < 3) {
-				alert('The minimum order quantity is 3. Please add more to your shopping cart before checking out');
-				evt.preventDefault();
-			}
-		});
+				if (total < 3) {
+					alert('The minimum order quantity is 3. Please add more to your shopping cart before checking out');
+					evt.preventDefault();
+				}
+			});
+		}
 	</script>
 	<!-- //cart-js -->
 
@@ -1478,7 +1526,7 @@
 	<!-- flexisel (for special offers) -->
 	<script src="js/jquery.flexisel.js"></script>
 	<script>
-		$(window).load(function () {
+		function lunxun() {
 			$("#flexiselDemo1").flexisel({
 				visibleItems: 3,
 				animationSpeed: 1000,
@@ -1501,6 +1549,32 @@
 					}
 				}
 			});
+		}
+	</script>
+	<script>
+		$(window).load(function () {
+	/*		$("#flexiselDemo1").flexisel({
+				visibleItems: 3,
+				animationSpeed: 1000,
+				autoPlay: true,
+				autoPlaySpeed: 3000,
+				pauseOnHover: true,
+				enableResponsiveBreakpoints: true,
+				responsiveBreakpoints: {
+					portrait: {
+						changePoint: 480,
+						visibleItems: 1
+					},
+					landscape: {
+						changePoint: 640,
+						visibleItems: 2
+					},
+					tablet: {
+						changePoint: 768,
+						visibleItems: 2
+					}
+				}
+			});*/
 
 		});
 	</script>
