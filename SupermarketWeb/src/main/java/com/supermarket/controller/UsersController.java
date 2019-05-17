@@ -39,7 +39,7 @@ public class UsersController {
         int page = Integer.parseInt(req.getParameter("page"));
         int limit = Integer.parseInt(req.getParameter("limit"));
         System.out.println("==========================page:"+page);
-        System.out.println("==========================page:"+limit);
+        System.out.println("==========================limit:"+limit);
         usersExample.clear();
         UsersExample.Criteria usersExampleCriteria = usersExample.createCriteria();
         if (userId != null && !"".equalsIgnoreCase(userId)){
@@ -54,14 +54,16 @@ public class UsersController {
             }
             usersExampleCriteria.andUserNameLike(name+"%");
         }
-        int count = usersService.countByExample(usersExample);
+        /*int count = usersService.countByExample(usersExample);*/
         //分页
+        /*List<Users> list = usersService.MyPageHpler(page, limit, usersExample);*/
         PageHelper.startPage(page,limit);
         List<Users> users = usersService.selectByExample(usersExample);
         PageInfo<Users> usersPageInfo = new PageInfo<>(users);
         List<Users> list = usersPageInfo.getList();
+        System.out.println("============================size:"+list.size());
         DataUtil<Users> usersDataUtil = new DataUtil<>();
-        usersDataUtil.setCount(count);
+        usersDataUtil.setCount(list.size());
         usersDataUtil.setData(list);
         return usersDataUtil;
     }
@@ -110,7 +112,15 @@ public class UsersController {
             session.setAttribute("users",users);
         } catch (AuthenticationException e) {
             e.printStackTrace();
+            return "index";
         }
+        return "index";
+    }
+    //用户注销
+    @GetMapping("/userLogout")
+    public String userLogout(){
+        Subject subject = SecurityUtils.getSubject();
+        subject.logout();
         return "index";
     }
 }

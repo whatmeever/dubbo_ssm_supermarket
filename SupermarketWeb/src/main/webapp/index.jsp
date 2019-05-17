@@ -83,7 +83,7 @@
 						</c:when>
 						<c:otherwise>
 							<li>
-								<a href="#" id="logout">
+								<a href="/userLogout" id="logout">
 									<span class="fa fa-unlock-alt" aria-hidden="true"></span> 注销 </a>
 							</li>
 						</c:otherwise>
