@@ -5,7 +5,7 @@
 <html lang="zxx">
 
 <head>
-    <title>Single</title>
+    <title>详情-${freshGoods.goodName}</title>
     <!--/tags -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -41,7 +41,7 @@
 <body>
 <!-- top-header -->
 <div class="header-most-top">
-    <p>Grocery Offer Zone Top Deals & Discounts</p>
+    <p>杂货优惠区优惠和折扣</p>
 </div>
 <!-- //top-header -->
 <!-- header-bot-->
@@ -72,14 +72,25 @@
                 <li>
                     <span class="fa fa-phone" aria-hidden="true"></span> 18966836506
                 </li>
-                <li>
-                    <a href="#" data-toggle="modal" data-target="#myModal1">
-                        <span class="fa fa-unlock-alt" aria-hidden="true"></span> 登录 </a>
-                </li>
-                <li>
-                    <a href="#" data-toggle="modal" data-target="#myModal2">
-                        <span class="fa fa-pencil-square-o" aria-hidden="true"></span> 注册 </a>
-                </li>
+                <c:choose>
+                    <c:when test="${sessionScope.users == null}">
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#myModal1">
+                                <span class="fa fa-unlock-alt" aria-hidden="true"></span> 登录 </a>
+                        </li>
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#myModal2">
+                                <span class="fa fa-pencil-square-o" aria-hidden="true"></span> 注
+                                册 </a>
+                        </li>
+                    </c:when>
+                    <c:otherwise>
+                        <li>
+                            <a href="#" id="logout">
+                                <span class="fa fa-unlock-alt" aria-hidden="true"></span> 注销 </a>
+                        </li>
+                    </c:otherwise>
+                </c:choose>
             </ul>
             <!-- //header lists -->
             <!-- search -->
@@ -626,7 +637,7 @@
                             </li>
 
                             <li>
-                                <a class="" href="contact.jsp">联系我们</a>
+                                <a class="nav-stylehead" href="contact.jsp">联系我们</a>
                             </li>
                         </ul>
                     </div>
@@ -648,9 +659,9 @@
             <ul class="w3_short">
                 <li>
                     <a href="index.jsp">主页</a>
-                    <i>|</i>
+                   <%-- <i>|</i>--%>
                 </li>
-                <li>商品详情</li>
+                <li><a>| 商品详情</a></li>
             </ul>
         </div>
     </div>
