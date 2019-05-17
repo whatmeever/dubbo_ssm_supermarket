@@ -1299,8 +1299,8 @@
 					divChild1.append(img);
 					divChild2.append(name);
 					divChild2.append(a);
-					divParent.append(divChild1);
-					divParent.append(divChild2);
+					divChild3.append(divChild1);
+					divChild3.append(divChild2);
 					divParent.append(divChild3);
 					$("#specialGoods").append(divParent);
 				}
