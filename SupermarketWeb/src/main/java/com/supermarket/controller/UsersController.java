@@ -39,6 +39,7 @@ public class UsersController {
         int page = Integer.parseInt(req.getParameter("page"));
         int limit = Integer.parseInt(req.getParameter("limit"));
         System.out.println("==========================page:"+page);
+        System.out.println("==========================page:"+limit);
         usersExample.clear();
         UsersExample.Criteria usersExampleCriteria = usersExample.createCriteria();
         if (userId != null && !"".equalsIgnoreCase(userId)){

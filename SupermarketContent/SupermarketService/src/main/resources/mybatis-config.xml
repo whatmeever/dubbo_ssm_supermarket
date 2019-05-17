@@ -9,8 +9,9 @@
     </settings>
     <!--5.0之前-->
     <plugins>
-        <plugin interceptor="com.github.pagehelper.PageHelper">
+        <plugin interceptor="com.github.pagehelper.PageInterceptor">
             <property name="dialect" value="mysql"/>
+            <property name="reasonable" value="true"/>
         </plugin>
     </plugins>
     <!--5.0之后
