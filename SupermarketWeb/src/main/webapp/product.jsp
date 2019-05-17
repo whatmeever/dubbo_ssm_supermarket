@@ -5,7 +5,7 @@
 <html lang="zxx">
 
 <head>
-	<title>Kitchen Products</title>
+	<title>主页-${goodType.gtname}</title>
 	<!--/tags -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -27,6 +27,10 @@
 			white-space: nowrap;
 			overflow: hidden;display:block;
 		}
+		h3{white-space: nowrap; overflow: hidden;display:block;}
+        #bianJu{
+            margin-top: 20px;
+        }
 
 	</style>
 	<script>
@@ -77,23 +81,33 @@
 				<ul>
 					<li>
 						<a class="play-icon popup-with-zoom-anim" href="#small-dialog1">
-							<span class="fa fa-map-marker" aria-hidden="true"></span> 定位</a>
+							<span class="fa fa-map-marker" aria-hidden="true"></span>商店定位</a>
 					</li>
 					<li>
 						<a href="#" data-toggle="modal" data-target="#myModal1">
 							<span class="fa fa-truck" aria-hidden="true"></span>跟踪订单</a>
 					</li>
 					<li>
-						<span class="fa fa-phone" aria-hidden="true"></span> 001 234 5678
+						<span class="fa fa-phone" aria-hidden="true"></span> 18966836506
 					</li>
-					<li>
-						<a href="#" data-toggle="modal" data-target="#myModal1">
-							<span class="fa fa-unlock-alt" aria-hidden="true"></span> 登录 </a>
-					</li>
-					<li>
-						<a href="#" data-toggle="modal" data-target="#myModal2">
-							<span class="fa fa-pencil-square-o" aria-hidden="true"></span> 注册 </a>
-					</li>
+                    <c:choose>
+                        <c:when test="${sessionScope.users == null}">
+                            <li>
+                                <a href="#" data-toggle="modal" data-target="#myModal1">
+                                    <span class="fa fa-unlock-alt" aria-hidden="true"></span> 登录 </a>
+                            </li>
+                            <li>
+                                <a href="#" data-toggle="modal" data-target="#myModal2">
+                                    <span class="fa fa-pencil-square-o" aria-hidden="true"></span> 注册 </a>
+                            </li>
+                        </c:when>
+                        <c:otherwise>
+                            <li>
+                                <a href="#" id="logout">
+                                    <span class="fa fa-unlock-alt" aria-hidden="true"></span> 注销 </a>
+                            </li>
+                        </c:otherwise>
+                    </c:choose>
 				</ul>
 				<!-- //header lists -->
 				<!-- search -->
@@ -315,6 +329,7 @@
 					<li>${goodType.gtname} </li>
 				</ul>
 			</div>
+
 		</div>
 	</div>
 	<!-- //page -->
@@ -352,20 +367,20 @@
 				</div>
 				<!-- //price range -->
 				<!-- food preference -->
-				<div class="left-side">
+				<div class="left-side" id="preference">
 					<h3 class="agileits-sear-head">食物偏好</h3>
 					<ul>
 						<li>
-							<input type="checkbox" class="checked">
+							<input type="radio" name="pre" value="1" >
 							<span class="span">其他</span>
 						</li>
 						<li>
-							<input type="checkbox" class="checked">
+							<input type="radio" name="pre" value="2" >
 							<span class="span">素食主义</span>
 						</li>
 						<li>
-							<input type="checkbox" class="checked">
-							<span class="span">食肉主义</span>
+							<input type="radio" name="pre" value="3" >
+							<span class="span">荤食主义</span>
 						</li>
 					</ul>
 				</div>
@@ -375,27 +390,27 @@
 					<h3 class="agileits-sear-head">折扣</h3>
 					<ul>
 						<li>
-							<input type="checkbox" class="checked">
+							<input type="radio" class="checked" >
 							<span class="span">5% or More</span>
 						</li>
 						<li>
-							<input type="checkbox" class="checked">
+							<input type="radio" class="checked">
 							<span class="span">10% or More</span>
 						</li>
 						<li>
-							<input type="checkbox" class="checked">
+							<input type="radio" class="checked">
 							<span class="span">20% or More</span>
 						</li>
 						<li>
-							<input type="checkbox" class="checked">
+							<input type="radio" class="checked">
 							<span class="span">30% or More</span>
 						</li>
 						<li>
-							<input type="checkbox" class="checked">
+							<input type="radio" class="checked">
 							<span class="span">50% or More</span>
 						</li>
 						<li>
-							<input type="checkbox" class="checked">
+							<input type="radio" class="checked">
 							<span class="span">60% or More</span>
 						</li>
 					</ul>
@@ -518,11 +533,11 @@
 				<div class="wrapper">
 					<!-- first section -->
 
-					<div class="product-sec1">
+					<div class="product-sec1" >
 							<c:forEach items="${freshGoods}" var="goods">
 
-						<div class="col-xs-4 product-men">
-							<div class="men-pro-item simpleCart_shelfItem">
+						<div class="col-xs-4 product-men" id="bianJu">
+							<div class="men-pro-item simpleCart_shelfItem" id="bianKuang">
 								<div class="men-thumb-item">
 
 									<img src="img/${imgs.get(goods.fdid)}.jpg" alt="" class="goodsImg">
@@ -562,10 +577,11 @@
 								</div>
 							</div>
 						</div>
+
 								<% i=i+1;%>
 							</c:forEach>
+                        <div class="clearfix"></div>
 
-						<div class="clearfix"></div>
 					</div>
 					<!-- //first section -->
 
@@ -1016,11 +1032,15 @@
 			});
 			//获取所有的特价商品
 			$.get("/getSpecialGood",function (data) {
-				var divParent = $("<div class='special-sec1'></div>");
-				var divChild1 = $("<div class='col-xs-4 img-deals'></div>");
-				var divChild2 = $("<div class='col-xs-8 img-deal1'></div>");
-				var divChild3 = $("<div class='clearfix'></div>");
+				var h3 =$('<h3 class="agileits-sear-head">特价促销</h3>');
+
+				$("#specialGoods").append(h3);
+
 				for(var key in data){
+					var divParent = $("<div class='special-sec1'></div>");
+					var divChild1 = $("<div class='col-xs-4 img-deals'></div>");
+					var divChild2 = $("<div class='col-xs-8 img-deal1'></div>");
+					var divChild3 = $("<div class='clearfix'></div>");
 					var imgs = data[key].img.split("-");
 					var img = $("<img src='img/"+imgs[0]+".jpg' style='width: 70px;height: 70px' />");
 					var name = $("<h3>"+data[key].goodName+"</h3>");
@@ -1094,6 +1114,8 @@
 				}
 				lunxun();
 			});
+
+
 
 		});
 	</script>

@@ -78,7 +78,8 @@
 							</li>
 							<li>
 								<a href="#" data-toggle="modal" data-target="#myModal2">
-									<span class="fa fa-pencil-square-o" aria-hidden="true"></span> 注册 </a>
+									<span class="fa fa-pencil-square-o" aria-hidden="true"></span> 注
+                                    册 </a>
 							</li>
 						</c:when>
 						<c:otherwise>
@@ -512,7 +513,7 @@
 			<div class="side-bar col-md-3">
 				<!-- deals -->
 				<div class="deal-leftmk left-side" id="specialGoods">
-					<h3 class="agileits-sear-head">特价促销</h3>
+
 <%--					<div class="special-sec1">
 						<div class="col-xs-4 img-deals">
 							<img src="images/d2.jpg" alt="">
@@ -532,8 +533,8 @@
 			<div class="agileinfo-ads-display col-md-9">
 				<div class="wrapper">
 					<!-- first section (nuts) -->
-					<div class="product-sec1">
-						<h3 class="heading-tittle">海鲜</h3>
+					<div class="product-sec1" id="grandPa">
+						<%--<h3 class="heading-tittle">海鲜</h3>
 						<div class="col-md-4 product-men" id="haiXians">
 							<div class="men-pro-item simpleCart_shelfItem">
 								<div class="men-thumb-item">
@@ -572,7 +573,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="clearfix"></div>
+						<div class="clearfix"></div>--%>
 					</div>
 					<!-- //first section (nuts) -->
 					<!-- second section (nuts special) -->
@@ -590,8 +591,8 @@
 					</div>
 					<!-- //second section (nuts special) -->
 					<!-- third section (oils) -->
-					<div class="product-sec1">
-						<h3 class="heading-tittle">Oils</h3>
+					<div class="product-sec1" id="grandPa1">
+						<%--<h3 class="heading-tittle">Oils</h3>
 						<div class="col-md-4 product-men">
 							<div class="men-pro-item simpleCart_shelfItem">
 								<div class="men-thumb-item">
@@ -631,92 +632,12 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-md-4 product-men">
-							<div class="men-pro-item simpleCart_shelfItem">
-								<div class="men-thumb-item">
-									<img src="images/mk5.jpg" alt="">
-									<div class="men-cart-pro">
-										<div class="inner-men-cart-pro">
-											<a href="single.jsp" class="link-product-add-cart">Quick View</a>
-										</div>
-									</div>
-									<span class="product-new-top">New</span>
-
-								</div>
-								<div class="item-info-product ">
-									<h4>
-										<a href="single.jsp">Saffola Gold, 1L</a>
-									</h4>
-									<div class="info-product-price">
-										<span class="item_price">$130.00</span>
-										<del>$150.00</del>
-									</div>
-									<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-										<form action="#" method="post">
-											<fieldset>
-												<input type="hidden" name="cmd" value="_cart" />
-												<input type="hidden" name="add" value="1" />
-												<input type="hidden" name="business" value=" " />
-												<input type="hidden" name="item_name" value="Saffola Gold, 1L" />
-												<input type="hidden" name="amount" value="130.00" />
-												<input type="hidden" name="discount_amount" value="1.00" />
-												<input type="hidden" name="currency_code" value="USD" />
-												<input type="hidden" name="return" value=" " />
-												<input type="hidden" name="cancel_return" value=" " />
-												<input type="submit" name="submit" value="Add to cart" class="button" />
-											</fieldset>
-										</form>
-									</div>
-
-								</div>
-							</div>
-						</div>
-						<div class="col-md-4 product-men">
-							<div class="men-pro-item simpleCart_shelfItem">
-								<div class="men-thumb-item">
-									<img src="images/mk6.jpg" alt="">
-									<div class="men-cart-pro">
-										<div class="inner-men-cart-pro">
-											<a href="single.jsp" class="link-product-add-cart">Quick View</a>
-										</div>
-									</div>
-									<span class="product-new-top">New</span>
-
-								</div>
-								<div class="item-info-product ">
-									<h4>
-										<a href="single.jsp">Fortune Oil, 5L</a>
-									</h4>
-									<div class="info-product-price">
-										<span class="item_price">$399.99</span>
-										<del>$500.00</del>
-									</div>
-									<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-										<form action="#" method="post">
-											<fieldset>
-												<input type="hidden" name="cmd" value="_cart" />
-												<input type="hidden" name="add" value="1" />
-												<input type="hidden" name="business" value=" " />
-												<input type="hidden" name="item_name" value="Fortune Oil, 5L" />
-												<input type="hidden" name="amount" value="399.99" />
-												<input type="hidden" name="discount_amount" value="1.00" />
-												<input type="hidden" name="currency_code" value="USD" />
-												<input type="hidden" name="return" value=" " />
-												<input type="hidden" name="cancel_return" value=" " />
-												<input type="submit" name="submit" value="Add to cart" class="button" />
-											</fieldset>
-										</form>
-									</div>
-
-								</div>
-							</div>
-						</div>
-						<div class="clearfix"></div>
+						<div class="clearfix"></div>--%>
 					</div>
 					<!-- //third section (oils) -->
 					<!-- fourth section (noodles) -->
-					<div class="product-sec1">
-						<h3 class="heading-tittle">Pasta & Noodles</h3>
+					<div class="product-sec1" id="grandPa2">
+<%--						<h3 class="heading-tittle">Pasta & Noodles</h3>
 						<div class="col-md-4 product-men">
 							<div class="men-pro-item simpleCart_shelfItem">
 								<div class="men-thumb-item">
@@ -755,87 +676,8 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-md-4 product-men">
-							<div class="men-pro-item simpleCart_shelfItem">
-								<div class="men-thumb-item">
-									<img src="images/mk8.jpg" alt="">
-									<div class="men-cart-pro">
-										<div class="inner-men-cart-pro">
-											<a href="single.jsp" class="link-product-add-cart">Quick View</a>
-										</div>
-									</div>
-									<span class="product-new-top">New</span>
 
-								</div>
-								<div class="item-info-product ">
-									<h4>
-										<a href="single.jsp">Wheat Pasta, 500g</a>
-									</h4>
-									<div class="info-product-price">
-										<span class="item_price">$98.00</span>
-										<del>$120.00</del>
-									</div>
-									<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-										<form action="#" method="post">
-											<fieldset>
-												<input type="hidden" name="cmd" value="_cart" />
-												<input type="hidden" name="add" value="1" />
-												<input type="hidden" name="business" value=" " />
-												<input type="hidden" name="item_name" value="Wheat Pasta, 500g" />
-												<input type="hidden" name="amount" value="98.00" />
-												<input type="hidden" name="discount_amount" value="1.00" />
-												<input type="hidden" name="currency_code" value="USD" />
-												<input type="hidden" name="return" value=" " />
-												<input type="hidden" name="cancel_return" value=" " />
-												<input type="submit" name="submit" value="Add to cart" class="button" />
-											</fieldset>
-										</form>
-									</div>
-
-								</div>
-							</div>
-						</div>
-						<div class="col-md-4 product-men">
-							<div class="men-pro-item simpleCart_shelfItem">
-								<div class="men-thumb-item">
-									<img src="images/mk9.jpg" alt="">
-									<div class="men-cart-pro">
-										<div class="inner-men-cart-pro">
-											<a href="single.jsp" class="link-product-add-cart">Quick View</a>
-										</div>
-									</div>
-									<span class="product-new-top">New</span>
-
-								</div>
-								<div class="item-info-product ">
-									<h4>
-										<a href="single.jsp">Chinese Noodles, 68g</a>
-									</h4>
-									<div class="info-product-price">
-										<span class="item_price">$11.99</span>
-										<del>$15.00</del>
-									</div>
-									<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-										<form action="#" method="post">
-											<fieldset>
-												<input type="hidden" name="cmd" value="_cart" />
-												<input type="hidden" name="add" value="1" />
-												<input type="hidden" name="business" value=" " />
-												<input type="hidden" name="item_name" value="Chinese Noodles, 68g" />
-												<input type="hidden" name="amount" value="11.99" />
-												<input type="hidden" name="discount_amount" value="1.00" />
-												<input type="hidden" name="currency_code" value="USD" />
-												<input type="hidden" name="return" value=" " />
-												<input type="hidden" name="cancel_return" value=" " />
-												<input type="submit" name="submit" value="Add to cart" class="button" />
-											</fieldset>
-										</form>
-									</div>
-
-								</div>
-							</div>
-						</div>
-						<div class="clearfix"></div>
+						<div class="clearfix"></div>--%>
 					</div>
 					<!-- //fourth section (noodles) -->
 				</div>
@@ -1287,11 +1129,15 @@
 			});
 			//获取所有的特价商品
 			$.get("/getSpecialGoods",function (data) {
-				var divParent = $("<div class='special-sec1'></div>");
-				var divChild1 = $("<div class='col-xs-4 img-deals'></div>");
-				var divChild2 = $("<div class='col-xs-8 img-deal1'></div>");
-				var divChild3 = $("<div class='clearfix'></div>");
+				var h3 =$('<h3 class="agileits-sear-head">特价促销</h3>');
+
+				$("#specialGoods").append(h3);
+
 				for(var key in data){
+					var divParent = $("<div class='special-sec1'></div>");
+					var divChild1 = $("<div class='col-xs-4 img-deals'></div>");
+					var divChild2 = $("<div class='col-xs-8 img-deal1'></div>");
+					var divChild3 = $("<div class='clearfix'></div>");
 					var imgs = data[key].img.split("-");
 					var img = $("<img src='img/"+imgs[0]+".jpg' style='width: 70px;height: 70px' />");
 					var name = $("<h3>"+data[key].goodName+"</h3>");
@@ -1299,8 +1145,8 @@
 					divChild1.append(img);
 					divChild2.append(name);
 					divChild2.append(a);
-					divChild3.append(divChild1);
-					divChild3.append(divChild2);
+					divParent.append(divChild1);
+					divParent.append(divChild2);
 					divParent.append(divChild3);
 					$("#specialGoods").append(divParent);
 				}
@@ -1368,8 +1214,11 @@
 
 			//获取海鲜类产品
 			$.get("/getHaiXians",function (data) {
+			    var h3 =$('<h3 class="heading-tittle">海鲜</h3>');
+			    $('#grandPa').append(h3);
+			    var divClearfix = $('<div class="clearfix"></div>');
 				for (var key in data) {
-					var divParent = $('<div class="men-pro-item simpleCart_shelfItem" style="float: left"></div>');
+					var divParent = $('<div class="men-pro-item simpleCart_shelfItem" ></div>');
 					//第一个子div
 					var divChild1 = $('<div class="men-thumb-item"></div>');
 					var imgs = data[key].img.split("-");
@@ -1436,20 +1285,179 @@
 					divChild2.append(div03);
 					divParent.append(divChild1);
 					divParent.append(divChild2);
-
-					$("#haiXians").append(divParent);
-
+                    var parents =$('<div class="col-md-4 product-men">');
+					parents.append(divParent);
+                    $('#grandPa').append(parents);
 
 				}
+                $('#grandPa').append(divClearfix);
 				addCart();
-
-
-
-
-
 			});
+            //获取酒水类产品
+            $.get("/getJiuShuis",function (data) {
+                var h3 =$('<h3 class="heading-tittle">酒水</h3>');
+                $('#grandPa1').append(h3);
+                var divClearfix = $('<div class="clearfix"></div>');
+                for (var key in data) {
+                    var divParent = $('<div class="men-pro-item simpleCart_shelfItem" ></div>');
+                    //第一个子div
+                    var divChild1 = $('<div class="men-thumb-item"></div>');
+                    var imgs = data[key].img.split("-");
+                    //1
+                    var img =$('<img src="img/'+imgs[0]+'.jpg" alt="" style="width: 150px;height: 150px">');
+                    //2
+                    var div2 = $('<div class="men-cart-pro"></div>');
+                    //0201
+                    var div0102 = $('<div class="inner-men-cart-pro"></div>');
+                    //020101
+                    var a1 =$('<a href="getGoodDetailsByFdid2?fdid='+data[key].fdid+'" class="link-product-add-cart">Quick View</a>');
+                    //3
+                    var span=$('<span class="product-new-top">New</span>3');
+                    div0102.append(a1);
+                    div2.append(div0102);
+                    divChild1.append(img);
+                    divChild1.append(div2);
+                    divChild1.append(span);
 
-		});
+                    //第二个子div
+                    var divChild2 = $('<div class="item-info-product "></div>');
+                    //1
+                    var a2 = $('<h4><a href="getGoodDetailsByFdid2?fdid='+data[key].fdid+'">'+data[key].goodName+'</a></h4>');
+                    //2
+                    var div02 = $('<div class="info-product-price"></div>');
+                    //0201
+                    var div0201 = $('<span class="item_price">$'+data[key].price+'</span>');
+                    //0202
+                    var div0202 = $('<del>$'+data[key].price+'</del>');
+                    div02.append(div0201);
+                    div02.append(div0202);
+                    //3
+                    var div03=$('<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out"></div>');
+                    //0301
+                    var div0301 = $('<form action="#" method="post"></form>');
+                    //0301f
+                    var fieldset = $('<fieldset></fieldset>');
+
+                    var input1 =$('<input type="hidden" name="cmd" value="_cart" />');
+                    var input2 =$('<input type="hidden" name="add" value="1" />');
+                    var input3 =$('<input type="hidden" name="business" value=" " />');
+                    var input4 =$('<input type="hidden" name="item_name" value="'+data[key].goodName+'" />');
+                    var input5 =$('<input type="hidden" name="amount" value="'+data[key].price+'" />');
+                    var input6 =$('<input type="hidden" name="currency_code" value="USD" />');
+                    var input7 =$('<input type="hidden" name="return" value=" " />');
+                    var input8 =$('<input type="hidden" name="cancel_return" value=" " />');
+                    var input9 =$('<input type="submit" name="submit" value="加入购物车" class="button" />');
+
+                    fieldset.append(input1);
+                    fieldset.append(input2);
+                    fieldset.append(input3);
+                    fieldset.append(input4);
+                    fieldset.append(input5);
+                    fieldset.append(input6);
+                    fieldset.append(input7);
+                    fieldset.append(input8);
+                    fieldset.append(input9);
+
+                    div0301.append(fieldset);
+                    div03.append(div0301);
+                    //向子2中添加元素
+                    divChild2.append(a2);
+                    divChild2.append(div02);
+                    divChild2.append(div03);
+                    divParent.append(divChild1);
+                    divParent.append(divChild2);
+                    var parents =$('<div class="col-md-4 product-men">');
+                    parents.append(divParent);
+                    $('#grandPa1').append(parents);
+
+                }
+                $('#grandPa1').append(divClearfix);
+                addCart();
+            });
+            //获取水果类产品
+            $.get("/getFruits",function (data) {
+                var h3 =$('<h3 class="heading-tittle">水果</h3>');
+                $('#grandPa2').append(h3);
+                var divClearfix = $('<div class="clearfix"></div>');
+                for (var key in data) {
+                    var divParent = $('<div class="men-pro-item simpleCart_shelfItem" ></div>');
+                    //第一个子div
+                    var divChild1 = $('<div class="men-thumb-item"></div>');
+                    var imgs = data[key].img.split("-");
+                    //1
+                    var img =$('<img src="img/'+imgs[0]+'.jpg" alt="" style="width: 150px;height: 150px">');
+                    //2
+                    var div2 = $('<div class="men-cart-pro"></div>');
+                    //0201
+                    var div0102 = $('<div class="inner-men-cart-pro"></div>');
+                    //020101
+                    var a1 =$('<a href="getGoodDetailsByFdid2?fdid='+data[key].fdid+'" class="link-product-add-cart">Quick View</a>');
+                    //3
+                    var span=$('<span class="product-new-top">New</span>3');
+                    div0102.append(a1);
+                    div2.append(div0102);
+                    divChild1.append(img);
+                    divChild1.append(div2);
+                    divChild1.append(span);
+
+                    //第二个子div
+                    var divChild2 = $('<div class="item-info-product "></div>');
+                    //1
+                    var a2 = $('<h4><a href="getGoodDetailsByFdid2?fdid='+data[key].fdid+'">'+data[key].goodName+'</a></h4>');
+                    //2
+                    var div02 = $('<div class="info-product-price"></div>');
+                    //0201
+                    var div0201 = $('<span class="item_price">$'+data[key].price+'</span>');
+                    //0202
+                    var div0202 = $('<del>$'+data[key].price+'</del>');
+                    div02.append(div0201);
+                    div02.append(div0202);
+                    //3
+                    var div03=$('<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out"></div>');
+                    //0301
+                    var div0301 = $('<form action="#" method="post"></form>');
+                    //0301f
+                    var fieldset = $('<fieldset></fieldset>');
+
+                    var input1 =$('<input type="hidden" name="cmd" value="_cart" />');
+                    var input2 =$('<input type="hidden" name="add" value="1" />');
+                    var input3 =$('<input type="hidden" name="business" value=" " />');
+                    var input4 =$('<input type="hidden" name="item_name" value="'+data[key].goodName+'" />');
+                    var input5 =$('<input type="hidden" name="amount" value="'+data[key].price+'" />');
+                    var input6 =$('<input type="hidden" name="currency_code" value="USD" />');
+                    var input7 =$('<input type="hidden" name="return" value=" " />');
+                    var input8 =$('<input type="hidden" name="cancel_return" value=" " />');
+                    var input9 =$('<input type="submit" name="submit" value="加入购物车" class="button" />');
+
+                    fieldset.append(input1);
+                    fieldset.append(input2);
+                    fieldset.append(input3);
+                    fieldset.append(input4);
+                    fieldset.append(input5);
+                    fieldset.append(input6);
+                    fieldset.append(input7);
+                    fieldset.append(input8);
+                    fieldset.append(input9);
+
+                    div0301.append(fieldset);
+                    div03.append(div0301);
+                    //向子2中添加元素
+                    divChild2.append(a2);
+                    divChild2.append(div02);
+                    divChild2.append(div03);
+                    divParent.append(divChild1);
+                    divParent.append(divChild2);
+                    var parents =$('<div class="col-md-4 product-men">');
+                    parents.append(divParent);
+                    $('#grandPa2').append(parents);
+
+                }
+                $('#grandPa2').append(divClearfix);
+                addCart();
+            });
+
+
+        });
 
 	</script>
 

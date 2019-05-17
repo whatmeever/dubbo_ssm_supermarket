@@ -98,6 +98,32 @@ public class FreshGoodsController {
         }
         return list;
     }
+    @ResponseBody
+    @GetMapping("/getJiuShuis")
+    public List<FreshGoods> getJiuShuis(){
+        example.clear();
+        FreshGoodsExample.Criteria criteria = example.createCriteria();
+        criteria.andGtidEqualTo(4);
+        List<FreshGoods> freshGoods = freshGoodsService.selectByExample(example);
+        List<FreshGoods> list = new ArrayList<>();
+        for (int i = 0;i<3;i++){
+            list.add(freshGoods.get(i));
+        }
+        return list;
+    }
+    @ResponseBody
+    @GetMapping("/getFruits")
+    public List<FreshGoods> getFruits(){
+        example.clear();
+        FreshGoodsExample.Criteria criteria = example.createCriteria();
+        criteria.andGtidEqualTo(1);
+        List<FreshGoods> freshGoods = freshGoodsService.selectByExample(example);
+        List<FreshGoods> list = new ArrayList<>();
+        for (int i = 0;i<3;i++){
+            list.add(freshGoods.get(i));
+        }
+        return list;
+    }
 
 
 
