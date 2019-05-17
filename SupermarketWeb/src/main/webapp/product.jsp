@@ -186,9 +186,9 @@
 							<a href="#" data-toggle="modal" data-target="#myModal2">
 								立即注册</a>
 						</p>
-						<form action="#" method="post">
+						<form action="/userLogin" method="post">
 							<div class="styled-input agile-styled-input-top">
-								<input type="text" placeholder="用户名" name="Name" required="">
+								<input type="text" placeholder="用户名" name="username" required="">
 							</div>
 							<div class="styled-input">
 								<input type="password" placeholder="密码" name="password" required="">
@@ -324,9 +324,9 @@
 				<ul class="w3_short">
 					<li>
 						<a href="index.jsp">主页</a>
-						<i>|</i>
+						<%--<i>|</i>--%>
 					</li>
-					<li>${goodType.gtname} </li>
+					<li><a href="#">丨${goodType.gtname}</a> </li>
 				</ul>
 			</div>
 
@@ -367,7 +367,7 @@
 				</div>
 				<!-- //price range -->
 				<!-- food preference -->
-				<div class="left-side" id="preference">
+				<div class="left-side" >
 					<h3 class="agileits-sear-head">食物偏好</h3>
 					<ul>
 						<li>
@@ -390,27 +390,27 @@
 					<h3 class="agileits-sear-head">折扣</h3>
 					<ul>
 						<li>
-							<input type="radio" class="checked" >
+							<input type="radio" name="discount" value="5" >
 							<span class="span">5% or More</span>
 						</li>
 						<li>
-							<input type="radio" class="checked">
+							<input type="radio" name="discount" value="10" >
 							<span class="span">10% or More</span>
 						</li>
 						<li>
-							<input type="radio" class="checked">
+							<input type="radio" name="discount" value="20">
 							<span class="span">20% or More</span>
 						</li>
 						<li>
-							<input type="radio" class="checked">
+							<input type="radio" name="discount" value="30">
 							<span class="span">30% or More</span>
 						</li>
 						<li>
-							<input type="radio" class="checked">
+							<input type="radio" name="discount" value="50">
 							<span class="span">50% or More</span>
 						</li>
 						<li>
-							<input type="radio" class="checked">
+							<input type="radio" name="discount" value="60">
 							<span class="span">60% or More</span>
 						</li>
 					</ul>
@@ -1114,11 +1114,18 @@
 				}
 				lunxun();
 			});
-
-
-
+            $("input").on("click",function () {
+                var pre=$("input[type='radio'][name='pre']:checked").val();
+                var discount=$("input[type='radio'][name='discount']:checked").val();
+                location.href="getFreshGoodsByChoose?pre="+pre+"&discount="+discount+"&gtid="+${goodType.gtid};
+                }
+            );
 		});
 	</script>
+    <script>
+
+
+    </script>
 	<!-- popup modal (for signin & signup)-->
 	<script src="js/jquery.magnific-popup.js"></script>
 	<script>

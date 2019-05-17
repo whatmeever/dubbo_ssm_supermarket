@@ -125,6 +125,28 @@ public class FreshGoodsController {
         return list;
     }
 
+    @GetMapping("/getFreshGoodsByChoose")
+    public String getFreshGoodsByChoose(HttpServletRequest request,Model model){
+        String pre = request.getParameter("pre");
+        String discount = request.getParameter("discount");
+        String gtid = request.getParameter("gtid");
+        example.clear();
+        FreshGoodsExample.Criteria criteria = example.createCriteria();
+        if (pre != null){
+            int i = Integer.parseInt(pre);
+            criteria.andPreferenceEqualTo(i);
+        }else if(discount != null){
+            int i = Integer.parseInt(discount);
+            criteria.andDiscountEqualTo(i);
+        }else if (gtid != null){
+            int i = Integer.parseInt(gtid);
+            criteria.andGtidEqualTo(i);
+        }
+        List<FreshGoods> list = freshGoodsService.selectByExample(example);
+        System.out.println(list);
+        return "product2";
+    }
+
 
 
 }
