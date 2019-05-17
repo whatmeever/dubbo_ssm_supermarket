@@ -3,6 +3,7 @@ package com.supermarket.controller;
 import com.supermarket.pojo.FreshGoods;
 import com.supermarket.pojo.FreshGoodsExample;
 import com.supermarket.pojo.GoodType;
+import com.supermarket.pojo.GoodTypeExample;
 import com.supermarket.service.FreshGoodsService;
 import com.supermarket.service.GoodTypeSerivce;
 import org.springframework.stereotype.Controller;
@@ -23,13 +24,22 @@ public class FreshGoodsController {
     @Resource
     private GoodTypeSerivce goodTypeSerivce;
 
+
+    private static FreshGoodsExample example;
+
+    static{
+
+        example=new FreshGoodsExample();
+    }
     @GetMapping("/getFreshGoods")
     public String getFreshGoodsByGtid(HttpServletRequest request, Model model){
         String id = request.getParameter("gtid");
         int gtid = Integer.parseInt(id);
         HashMap<String, String> hashMap = new HashMap<>();
-        GoodType goodType = goodTypeSerivce.getGoodType(gtid);
-        List<FreshGoods> list= freshGoodsService.getFreshGoodsByGtid(gtid);
+        GoodType goodType = goodTypeSerivce.selectByPrimaryKey(gtid);
+        FreshGoodsExample.Criteria criteria = example.createCriteria();
+        criteria.andGtidEqualTo(gtid);
+        List<FreshGoods> list= freshGoodsService.selectByExample(example);
         for (FreshGoods freshGoods:list){
             String img = freshGoods.getImg();
             String[] splits = img.split("-");
@@ -48,20 +58,18 @@ public class FreshGoodsController {
     @ResponseBody
     @GetMapping("/getSpecialGoods")
     public List<FreshGoods> getSpecialGoods(){
-        FreshGoodsExample example = new FreshGoodsExample();
         FreshGoodsExample.Criteria criteria = example.createCriteria();
         criteria.andIfPromotionEqualTo(1);
-        List<FreshGoods> freshGoods = freshGoodsService.getFreshGoodsByExample(example);
+        List<FreshGoods> freshGoods = freshGoodsService.selectByExample(example);
         return freshGoods;
     }
     @ResponseBody
     @GetMapping("/getSpecialGood")
     public List<FreshGoods> getSpecialGood(){
-        FreshGoodsExample example = new FreshGoodsExample();
         FreshGoodsExample.Criteria criteria = example.createCriteria();
         criteria.andIfPromotionEqualTo(1);
         List<FreshGoods> list = new ArrayList<>();
-        List<FreshGoods> freshGoods = freshGoodsService.getFreshGoodsByExample(example);
+        List<FreshGoods> freshGoods = freshGoodsService.selectByExample(example);
         for (int i = 0;i<7;i++){
             list.add(freshGoods.get(i));
         }
@@ -71,20 +79,18 @@ public class FreshGoodsController {
     @ResponseBody
     @GetMapping("/getDiscountGoods")
     public List<FreshGoods> getDiscountGoods(){
-        FreshGoodsExample example = new FreshGoodsExample();
         FreshGoodsExample.Criteria criteria = example.createCriteria();
         criteria.andDiscountLessThanOrEqualTo(30);
         criteria.andDiscountGreaterThan(0);
-        List<FreshGoods> freshGood = freshGoodsService.getFreshGoodsByDiscount(example);
+        List<FreshGoods> freshGood = freshGoodsService.selectByExample(example);
         return freshGood;
     }
     @ResponseBody
     @GetMapping("/getHaiXians")
     public List<FreshGoods> getHaiXians(){
-        FreshGoodsExample example = new FreshGoodsExample();
         FreshGoodsExample.Criteria criteria = example.createCriteria();
         criteria.andGtidEqualTo(8);
-        List<FreshGoods> freshGoods = freshGoodsService.getFreshGoodsByHaiXian(example);
+        List<FreshGoods> freshGoods = freshGoodsService.selectByExample(example);
         List<FreshGoods> list = new ArrayList<>();
         for (int i = 0;i<3;i++){
             list.add(freshGoods.get(i));

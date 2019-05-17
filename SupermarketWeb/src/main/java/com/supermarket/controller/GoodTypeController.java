@@ -23,7 +23,7 @@ public class GoodTypeController {
     @GetMapping("/getGoodTypes")
     public List<GoodType> getGoodTypes(){
         example.clear();
-        return goodTypeSerivce.getGoodTypes(example);
+        return goodTypeSerivce.selectByExample(example);
     }
 
 }

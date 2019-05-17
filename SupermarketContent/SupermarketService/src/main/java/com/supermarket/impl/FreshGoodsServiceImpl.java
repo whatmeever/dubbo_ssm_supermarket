@@ -14,6 +14,11 @@ public class FreshGoodsServiceImpl implements FreshGoodsService {
     private FreshGoodsMapper freshGoodsMapper;
 
     @Override
+    public List<FreshGoods> selectByExample(FreshGoodsExample example) {
+        return freshGoodsMapper.selectByExample(example);
+    }
+
+    /*@Override
     public List<FreshGoods> getFreshGoodsByGtid(int gtid) {
         FreshGoodsExample example = new FreshGoodsExample();
         FreshGoodsExample.Criteria criteria = example.createCriteria();
@@ -35,5 +40,5 @@ public class FreshGoodsServiceImpl implements FreshGoodsService {
     @Override
     public List<FreshGoods> getFreshGoodsByHaiXian(FreshGoodsExample example) {
         return freshGoodsMapper.selectByExample(example);
-    }
+    }*/
 }
