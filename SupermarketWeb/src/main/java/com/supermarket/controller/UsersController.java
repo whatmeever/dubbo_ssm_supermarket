@@ -6,17 +6,18 @@ import com.layui.utils.DataUtil;
 import com.supermarket.pojo.Users;
 import com.supermarket.pojo.UsersExample;
 import com.supermarket.service.UsersService;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
 
-@RestController
+@Controller
 public class UsersController {
     @Resource
     private UsersService usersService;
@@ -24,7 +25,7 @@ public class UsersController {
     static {
         usersExample = new UsersExample();
     }
-
+    @ResponseBody
     @GetMapping("/getAllUser")
     public DataUtil<Users> getAllUser(HttpServletRequest req){
         String userId = req.getParameter("userId");
@@ -67,10 +68,18 @@ public class UsersController {
         return i;
     }
 
-    //通过userId获得一个用户
+    //通过userId获得一个用户,并返回一个用户信息页面
+    @GetMapping("/getUserByUserId")
+    public String getUserByUserId(HttpServletRequest req, Model model){
+        String userId = req.getParameter("userId");
+        Users users = usersService.selectByPrimaryKey(userId);
+        model.addAttribute("users",users);
+        return "/ht/page/userAdmin/userInfo";
+    }
+
     @ResponseBody
-    @PostMapping("/getUserByUserId")
-    public Users getUserByUserId(HttpServletRequest req){
+    @GetMapping("/getUserByUserId2")
+    public Users getUserByUserId2(HttpServletRequest req){
         String userId = req.getParameter("userId");
         Users users = usersService.selectByPrimaryKey(userId);
         return users;

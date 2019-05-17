@@ -62,13 +62,13 @@ public class FreshGoodsController {
         criteria.andIfPromotionEqualTo(1);
         List<FreshGoods> list = new ArrayList<>();
         List<FreshGoods> freshGoods = freshGoodsService.getFreshGoodsByExample(example);
-        for (int i=0;i<7;i++) {
+        for (int i = 0;i<7;i++){
             list.add(freshGoods.get(i));
         }
         return  list;
     }
 
-   @ResponseBody
+    @ResponseBody
     @GetMapping("/getDiscountGoods")
     public List<FreshGoods> getDiscountGoods(){
         FreshGoodsExample example = new FreshGoodsExample();
@@ -78,22 +78,20 @@ public class FreshGoodsController {
         List<FreshGoods> freshGood = freshGoodsService.getFreshGoodsByDiscount(example);
         return freshGood;
     }
-
-    //获取所有的海鲜产品
     @ResponseBody
     @GetMapping("/getHaiXians")
     public List<FreshGoods> getHaiXians(){
-        List<FreshGoods> haiXians = new ArrayList<>();
         FreshGoodsExample example = new FreshGoodsExample();
         FreshGoodsExample.Criteria criteria = example.createCriteria();
         criteria.andGtidEqualTo(8);
-        List<FreshGoods> haiXian = freshGoodsService.getFreshGoodsByHaiXian(example);
-        for (int i=0;i<3;i++) {
-
-            haiXians.add(haiXian.get(i));
+        List<FreshGoods> freshGoods = freshGoodsService.getFreshGoodsByHaiXian(example);
+        List<FreshGoods> list = new ArrayList<>();
+        for (int i = 0;i<3;i++){
+            list.add(freshGoods.get(i));
         }
-        return haiXians;
+        return list;
     }
+
 
 
 }

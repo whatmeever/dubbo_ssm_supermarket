@@ -26,6 +26,35 @@
 		<table id="useradmin" lay-filter="useradmin"></table>
 	</div>
 	<div id="page"></div>
+    <div id="userInfo" style="display: none">
+        <form class="layui-form" id="add-form" action="">
+            <div class="layui-form-item center" >
+                <label class="layui-form-label" style="width: 100px" >配置名称</label>
+                <div class="layui-input-block">
+                    <input type="text" name="name" required value="" style="width: 240px" lay-verify="required" placeholder="请输入配置名称" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label" style="width: 100px">配置类型</label>
+                <div class="layui-input-block">
+                    <input type="text" name="type" required style="width: 240px" lay-verify="required" placeholder="请输入配置类型" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label" style="width: 100px">配置值 </label>
+                <div class="layui-input-block">
+                    <input type="text" name="value" required style="width: 240px" lay-verify="required" placeholder="请输入配置值" autocomplete="off" class="layui-input">
+                    <!-- <input type="hidden" name="id" style="width: 240px" autocomplete="off" class="layui-input"> -->
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn" lay-submit lay-filter="save" >立即提交</button>
+                    <button type="reset" class="layui-btn layui-btn-primary" id="closeBtn" >重置</button>
+                </div>
+            </div>
+        </form>
+    </div>
 	<script type="text/javascript" src="../../../layui/layui.js"></script>
 	<script type="text/html" id="operate">
 		{{#  if(d.ifNew === 0){ }}
@@ -34,6 +63,7 @@
 		<a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">会员信息</a>
 		{{#  } }}
 	</script>
+
 	<script>
 		layui.use(['form','layer','jquery','laypage','table'],function() {
 			var form = layui.form,
@@ -99,14 +129,15 @@
 					},2000);
 				}
 				if (obj.event === 'detail'){
-					$.post("getUserByUserId",{userId:obj.data.userId},function (data) {
-						/*layer.open({
-							title:'用户信息',
-							content:"<div class='layui-form-item'>" +
-									"<div>"+
-									"</div>"
-						});*/
-					});
+                    layer.open({
+                        type:2,
+                        title:'用户信息',
+                        closeBean:false,/*右上关闭*/
+                        anim:2,
+                        shade:[0.3,'#76EEC6'],
+                        area:['800px','500px'],
+                        content:'http://localhost:8088/getUserByUserId?userId='+obj.data.userId
+                    });
 				}
 			});
 		});
