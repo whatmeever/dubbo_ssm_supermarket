@@ -5,7 +5,7 @@
 <html lang="zxx">
 
 <head>
-    <title>Single</title>
+    <title>详情-${freshGoods.goodName}</title>
     <!--/tags -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -41,7 +41,7 @@
 <body>
 <!-- top-header -->
 <div class="header-most-top">
-    <p>Grocery Offer Zone Top Deals & Discounts</p>
+    <p>杂货优惠区优惠和折扣</p>
 </div>
 <!-- //top-header -->
 <!-- header-bot-->
@@ -72,14 +72,25 @@
                 <li>
                     <span class="fa fa-phone" aria-hidden="true"></span> 18966836506
                 </li>
-                <li>
-                    <a href="#" data-toggle="modal" data-target="#myModal1">
-                        <span class="fa fa-unlock-alt" aria-hidden="true"></span> 登录 </a>
-                </li>
-                <li>
-                    <a href="#" data-toggle="modal" data-target="#myModal2">
-                        <span class="fa fa-pencil-square-o" aria-hidden="true"></span> 注册 </a>
-                </li>
+                <c:choose>
+                    <c:when test="${sessionScope.users == null}">
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#myModal1">
+                                <span class="fa fa-unlock-alt" aria-hidden="true"></span> 登录 </a>
+                        </li>
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#myModal2">
+                                <span class="fa fa-pencil-square-o" aria-hidden="true"></span> 注
+                                册 </a>
+                        </li>
+                    </c:when>
+                    <c:otherwise>
+                        <li>
+                            <a href="#" id="logout">
+                                <span class="fa fa-unlock-alt" aria-hidden="true"></span> 注销 </a>
+                        </li>
+                    </c:otherwise>
+                </c:choose>
             </ul>
             <!-- //header lists -->
             <!-- search -->
@@ -612,156 +623,21 @@
                     <div class="collapse navbar-collapse menu--shylock" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav menu__list">
                             <li>
-                                <a class="nav-stylehead" href="index.jsp">Home
+                                <a class="nav-stylehead" href="index.jsp">主页
                                     <span class="sr-only">(current)</span>
                                 </a>
                             </li>
                             <li class="">
-                                <a class="nav-stylehead" href="about.jsp">About Us</a>
+                                <a class="nav-stylehead" href="about.jsp">关于我们</a>
                             </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle nav-stylehead" data-toggle="dropdown" role="button"
-                                   aria-haspopup="true" aria-expanded="false">Kitchen
-                                    <span class="caret"></span>
-                                </a>
-                                <ul class="dropdown-menu multi-column columns-3">
-                                    <div class="agile_inner_drop_nav_info">
-                                        <div class="col-sm-4 multi-gd-img">
-                                            <ul class="multi-column-dropdown">
-                                                <li>
-                                                    <a href="product.jsp">Bakery</a>
-                                                </li>
-                                                <li>
-                                                    <a href="product.jsp">Baking Supplies</a>
-                                                </li>
-                                                <li>
-                                                    <a href="product.jsp">Coffee, Tea & Beverages</a>
-                                                </li>
-                                                <li>
-                                                    <a href="product.jsp">Dried Fruits, Nuts</a>
-                                                </li>
-                                                <li>
-                                                    <a href="product.jsp">Sweets, Chocolate</a>
-                                                </li>
-                                                <li>
-                                                    <a href="product.jsp">Spices & Masalas</a>
-                                                </li>
-                                                <li>
-                                                    <a href="product.jsp">Jams, Honey & Spreads</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-sm-4 multi-gd-img">
-                                            <ul class="multi-column-dropdown">
-                                                <li>
-                                                    <a href="product.jsp">Pickles</a>
-                                                </li>
-                                                <li>
-                                                    <a href="product.jsp">Pasta & Noodles</a>
-                                                </li>
-                                                <li>
-                                                    <a href="product.jsp">Rice, Flour & Pulses</a>
-                                                </li>
-                                                <li>
-                                                    <a href="product.jsp">Sauces & Cooking Pastes</a>
-                                                </li>
-                                                <li>
-                                                    <a href="product.jsp">Snack Foods</a>
-                                                </li>
-                                                <li>
-                                                    <a href="product.jsp">Oils, Vinegars</a>
-                                                </li>
-                                                <li>
-                                                    <a href="product.jsp">Meat, Poultry & Seafood</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-sm-4 multi-gd-img">
-                                            <img src="images/nav.png" alt="">
-                                        </div>
-                                        <div class="clearfix"></div>
-                                    </div>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle nav-stylehead" data-toggle="dropdown" role="button"
-                                   aria-haspopup="true" aria-expanded="false">Household
-                                    <span class="caret"></span>
-                                </a>
-                                <ul class="dropdown-menu multi-column columns-3">
-                                    <div class="agile_inner_drop_nav_info">
-                                        <div class="col-sm-6 multi-gd-img">
-                                            <ul class="multi-column-dropdown">
-                                                <li>
-                                                    <a href="product2.jsp">Kitchen & Dining</a>
-                                                </li>
-                                                <li>
-                                                    <a href="product2.jsp">Detergents</a>
-                                                </li>
-                                                <li>
-                                                    <a href="product2.jsp">Utensil Cleaners</a>
-                                                </li>
-                                                <li>
-                                                    <a href="product2.jsp">Floor & Other Cleaners</a>
-                                                </li>
-                                                <li>
-                                                    <a href="product2.jsp">Disposables, Garbage Bag</a>
-                                                </li>
-                                                <li>
-                                                    <a href="product2.jsp">Repellents & Fresheners</a>
-                                                </li>
-                                                <li>
-                                                    <a href="product2.jsp"> Dishwash</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-sm-6 multi-gd-img">
-                                            <ul class="multi-column-dropdown">
-                                                <li>
-                                                    <a href="product2.jsp">Pet Care</a>
-                                                </li>
-                                                <li>
-                                                    <a href="product2.jsp">Cleaning Accessories</a>
-                                                </li>
-                                                <li>
-                                                    <a href="product2.jsp">Pooja Needs</a>
-                                                </li>
-                                                <li>
-                                                    <a href="product2.jsp">Crackers</a>
-                                                </li>
-                                                <li>
-                                                    <a href="product2.jsp">Festive Decoratives</a>
-                                                </li>
-                                                <li>
-                                                    <a href="product2.jsp">Plasticware</a>
-                                                </li>
-                                                <li>
-                                                    <a href="product2.jsp">Home Care</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="clearfix"></div>
-                                    </div>
-                                </ul>
-                            </li>
+
+
                             <li>
-                                <a class="nav-stylehead" href="faqs.jsp">Faqs</a>
+                                <a class="nav-stylehead" href="faqs.jsp">常见问题解答</a>
                             </li>
-                            <li class="dropdown">
-                                <a class="nav-stylehead dropdown-toggle" href="#" data-toggle="dropdown">Pages
-                                    <b class="caret"></b>
-                                </a>
-                                <ul class="dropdown-menu agile_short_dropdown">
-                                    <li>
-                                        <a href="icons.jsp">Web Icons</a>
-                                    </li>
-                                    <li>
-                                        <a href="typography.jsp">Typography</a>
-                                    </li>
-                                </ul>
-                            </li>
+
                             <li>
-                                <a class="" href="contact.jsp">Contact</a>
+                                <a class="nav-stylehead" href="contact.jsp">联系我们</a>
                             </li>
                         </ul>
                     </div>
@@ -783,9 +659,9 @@
             <ul class="w3_short">
                 <li>
                     <a href="index.jsp">主页</a>
-                    <i>|</i>
+                   <%-- <i>|</i>--%>
                 </li>
-                <li>商品详情</li>
+                <li><a>| 商品详情</a></li>
             </ul>
         </div>
     </div>
@@ -809,7 +685,7 @@
                     <ul class="slides">
                         <li data-thumb="img/${imgs[0]}.jpg">
                             <div class="thumb-image">
-                                <img src="img/${imgs[0]}.jpg" data-imagezoom="true" class="img-responsive" alt=""></div>
+                                <img src="img/${imgs[0]}.jpg" data-imagezoom="true" class="img-responsive" alt="" ></div>
                         </li>
                         <li data-thumb="img/${imgs[1]}.jpg">
                             <div class="thumb-image">
@@ -1603,9 +1479,11 @@
         goodType();
         //获取被选中的种类
         $(".goodType").on("change",function () {
-            console.log($(this).find(":selected").val());
-
+            var gtid = $(this).find(":selected").val();
+            console.log(gtid);
+            location.href = "getFreshGoods?gtid="+gtid;
         });
+
     });
 </script>
 <!-- popup modal (for signin & signup)-->
