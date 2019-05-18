@@ -13,12 +13,12 @@
             <property name="dialect" value="mysql"/>
         </plugin>
     </plugins>
-    <!--5.0之后
-        <plugins>
+<!--    5.0之后-->
+<!--    <plugins>
         <plugin interceptor="com.github.pagehelper.PageInterceptor">
             <property name="helperDialect" value="mysql"/>
+            <property name="reasonable" value="true"/>
         </plugin>
-    </plugins>
+    </plugins>-->
 
-    -->
 </configuration>

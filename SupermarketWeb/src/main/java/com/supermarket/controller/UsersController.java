@@ -20,6 +20,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.UnsupportedEncodingException;
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.List;
 
@@ -54,12 +55,13 @@ public class UsersController {
         }
         int count = usersService.countByExample(usersExample);
         //分页
+        /*List<Users> list = usersService.MyPageHpler(page, limit, usersExample);*/
         PageHelper.startPage(page,limit);
         List<Users> users = usersService.selectByExample(usersExample);
         PageInfo<Users> usersPageInfo = new PageInfo<>(users);
         List<Users> list = usersPageInfo.getList();
         DataUtil<Users> usersDataUtil = new DataUtil<>();
-        usersDataUtil.setCount(count);
+        usersDataUtil.setCount(list.size());
         usersDataUtil.setData(list);
         return usersDataUtil;
     }
@@ -92,13 +94,13 @@ public class UsersController {
     }
 
     //用户登录
+    @ResponseBody
     @PostMapping("/userLogin")
-    public String userLogin(HttpServletRequest req){
+    public String userLogin(HttpServletRequest req,HttpSession session){
         String username = req.getParameter("username");
         String password = req.getParameter("password");
         try {
             Subject subject = SecurityUtils.getSubject();
-            HttpSession session = req.getSession();
             UsernamePasswordToken token = new UsernamePasswordToken(username,password);
             subject.login(token);
             HashMap<String,String> map = new HashMap<>();
@@ -108,6 +110,49 @@ public class UsersController {
             session.setAttribute("users",users);
         } catch (AuthenticationException e) {
             e.printStackTrace();
+            return "false";
+        }
+        return "true";
+    }
+    //用户注销
+    @GetMapping("/userLogout")
+    public String userLogout(){
+        Subject subject = SecurityUtils.getSubject();
+        subject.logout();
+        return "index";
+    }
+    //用户注册
+    @PostMapping("/createUser")
+    public String createUser(HttpServletRequest req,HttpSession session){
+        Users users1 = (Users) session.getAttribute("users");
+        if (users1 == null){
+            String username = req.getParameter("username");
+            String password = req.getParameter("password");
+            String email = req.getParameter("Email");
+            String tel = req.getParameter("tel");
+            Users users = new Users();
+            users.setUserName(username);
+            users.setPassword(password);
+            users.setEmail(email);
+            users.setTel(tel);
+            users.setIfNew(0);
+            users.setLevel(1);
+            users.setIntegral(0);
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh-mm-ss");
+            String userId = format.format(System.currentTimeMillis()).replaceAll("-", "").replaceAll(" ", "");
+            users.setUserId(userId);
+            int insert = usersService.insert(users);
+            if (insert>0){
+                Subject subject = SecurityUtils.getSubject();
+                UsernamePasswordToken token = new UsernamePasswordToken(username,password);
+                try {
+                    subject.login(token);
+                    session.setAttribute("users",users);
+                } catch (AuthenticationException e) {
+                    e.printStackTrace();
+                    return "index";
+                }
+            }
         }
         return "index";
     }

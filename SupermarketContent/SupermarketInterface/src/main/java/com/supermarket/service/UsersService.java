@@ -12,4 +12,5 @@ public interface UsersService {
     int updateByPrimaryKey(Users record);
     Users selectByPrimaryKey(String userId);
     Users selectUserByUser(Map map);
+    int insert(Users record);
 }

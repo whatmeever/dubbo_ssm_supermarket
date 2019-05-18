@@ -40,4 +40,9 @@ public class UsersServiceImpl implements UsersService {
     public Users selectUserByUser(Map map) {
         return usersMapper.selectUserByUser(map);
     }
+
+    @Override
+    public int insert(Users record) {
+        return usersMapper.insert(record);
+    }
 }

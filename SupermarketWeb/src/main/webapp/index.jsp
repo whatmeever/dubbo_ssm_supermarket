@@ -84,7 +84,7 @@
 						</c:when>
 						<c:otherwise>
 							<li>
-								<a href="#" id="logout">
+								<a href="/userLogout" id="logout">
 									<span class="fa fa-unlock-alt" aria-hidden="true"></span> 注销 </a>
 							</li>
 						</c:otherwise>
@@ -167,14 +167,14 @@
 							<a href="#" data-toggle="modal" data-target="#myModal2">
 								请注册</a>
 						</p>
-						<form action="/userLogin" method="post">
+						<form action="#" method="post">
 							<div class="styled-input agile-styled-input-top">
-								<input type="text" placeholder="User Name" name="username" required="">
+								<input type="text" placeholder="User Name" id="username1" required="">
 							</div>
 							<div class="styled-input">
-								<input type="password" placeholder="Password" name="password" required="">
+								<input type="password" placeholder="Password" id="password1" required="">
 							</div>
-							<input type="submit" value="Sign In">
+							<input type="button" value="Sign In" id="signIn">
 						</form>
 						<div class="clearfix"></div>
 					</div>
@@ -204,18 +204,18 @@
 						<p>
 							Come join the Grocery Shoppy! Let's set up your Account.
 						</p>
-						<form action="#" method="post">
+						<form action="createUser" method="post">
 							<div class="styled-input agile-styled-input-top">
-								<input type="text" placeholder="Name" name="Name" required="">
+								<input type="text" placeholder="Name" name="username2" required="">
 							</div>
 							<div class="styled-input">
 								<input type="email" placeholder="E-mail" name="Email" required="">
 							</div>
 							<div class="styled-input">
-								<input type="password" placeholder="Password" name="password" id="password1" required="">
+								<input type="password" placeholder="Password" name="password2" required="">
 							</div>
 							<div class="styled-input">
-								<input type="password" placeholder="Confirm Password" name="Confirm Password" id="password2" required="">
+								<input type="text" placeholder="tel" name="tel" required="">
 							</div>
 							<input type="submit" value="Sign Up">
 						</form>
@@ -1110,6 +1110,15 @@
 	<!-- //jquery -->
 	<script>
 		$(function () {
+			$("#signIn").click(function () {
+				var name=$("#username1").val();
+				var pass=$("#password1").val();
+				$.post("/userLogin",{username:name,password:pass},function (data) {
+					if (data == "true"){
+						location.href="index.jsp";
+					}
+				});
+			});
 			//获取所有的种类
 			function goodType() {
 				$.get("/getGoodTypes",function (data) {
