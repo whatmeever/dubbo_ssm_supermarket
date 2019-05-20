@@ -1,8 +1,5 @@
 package com.supermarket.impl;
 
-import com.supermarket.mapper.CartMapper;
-import com.supermarket.pojo.Cart;
-import com.supermarket.pojo.CartExample;
 import com.supermarket.service.CartService;
 import org.springframework.stereotype.Service;
 

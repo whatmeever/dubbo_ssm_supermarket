@@ -1,11 +1,14 @@
 package com.supermarket.controller;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.TypeReference;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.layui.utils.DataUtil;
 import com.supermarket.pojo.Users;
 import com.supermarket.pojo.UsersExample;
 import com.supermarket.service.UsersService;
+import com.supermarket.util.RedisSaveManagerUtil;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
@@ -29,6 +32,8 @@ public class UsersController {
     @Resource
     private UsersService usersService;
     private static UsersExample usersExample;
+    @Resource
+    private RedisSaveManagerUtil redisSaveManagerUtil;
     static {
         usersExample = new UsersExample();
     }
@@ -39,31 +44,51 @@ public class UsersController {
         String userName = req.getParameter("userName");
         int page = Integer.parseInt(req.getParameter("page"));
         int limit = Integer.parseInt(req.getParameter("limit"));
-        usersExample.clear();
-        UsersExample.Criteria usersExampleCriteria = usersExample.createCriteria();
-        if (userId != null && !"".equalsIgnoreCase(userId)){
-            usersExampleCriteria.andUserIdLike(userId+"%");
+        String key = "";
+        if (userId == null || "".equalsIgnoreCase(userId)){
+            key += "userId";
+        }else {
+            key += userId;
         }
-        if (userName != null && !"".equalsIgnoreCase(userName)){
-            String name = null;
-            try {
-                 name = new String(userName.getBytes("ISO-8859-1"), "utf-8");
-            } catch (UnsupportedEncodingException e) {
-                e.printStackTrace();
+        if (userName == null || "".equalsIgnoreCase(userName)){
+            key += "userName";
+        }else {
+            key += userName;
+        }
+        key += page+""+limit;
+        System.out.println("====="+key);
+        DataUtil<Users> usersDataUtil1 = JSON.parseObject(redisSaveManagerUtil.get(key), new TypeReference<DataUtil<Users>>(){});
+        if (usersDataUtil1 == null){
+            usersExample.clear();
+            UsersExample.Criteria usersExampleCriteria = usersExample.createCriteria();
+            if (userId != null && !"".equalsIgnoreCase(userId)){
+                usersExampleCriteria.andUserIdLike(userId+"%");
             }
-            usersExampleCriteria.andUserNameLike(name+"%");
+            if (userName != null && !"".equalsIgnoreCase(userName)){
+                String name = null;
+                try {
+                    name = new String(userName.getBytes("ISO-8859-1"), "utf-8");
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                }
+                usersExampleCriteria.andUserNameLike(name+"%");
+            }
+            int count = usersService.countByExample(usersExample);
+            //分页
+            /*List<Users> list = usersService.MyPageHpler(page, limit, usersExample);*/
+            PageHelper.startPage(page,limit);
+            List<Users> users = usersService.selectByExample(usersExample);
+            PageInfo<Users> usersPageInfo = new PageInfo<>(users);
+            List<Users> list = usersPageInfo.getList();
+            DataUtil<Users> usersDataUtil = new DataUtil<>();
+            usersDataUtil.setCount(list.size());
+            usersDataUtil.setData(list);
+            String value = JSON.toJSONString(usersDataUtil);
+            redisSaveManagerUtil.add(key,value);
+            redisSaveManagerUtil.expire(key,60);
+            return usersDataUtil;
         }
-        int count = usersService.countByExample(usersExample);
-        //分页
-        /*List<Users> list = usersService.MyPageHpler(page, limit, usersExample);*/
-        PageHelper.startPage(page,limit);
-        List<Users> users = usersService.selectByExample(usersExample);
-        PageInfo<Users> usersPageInfo = new PageInfo<>(users);
-        List<Users> list = usersPageInfo.getList();
-        DataUtil<Users> usersDataUtil = new DataUtil<>();
-        usersDataUtil.setCount(list.size());
-        usersDataUtil.setData(list);
-        return usersDataUtil;
+        return usersDataUtil1;
     }
     //审核新用户
     @ResponseBody
@@ -73,6 +98,7 @@ public class UsersController {
         Users users = usersService.selectByPrimaryKey(userId);
         users.setIfNew(1);
         int i = usersService.updateByPrimaryKey(users);
+        redisSaveManagerUtil.delete("userIduserName110");
         return i;
     }
 
@@ -84,7 +110,7 @@ public class UsersController {
         model.addAttribute("users",users);
         return "/ht/page/userAdmin/userInfo";
     }
-
+    //获取一个用户信息JSON
     @ResponseBody
     @GetMapping("/getUserByUserId2")
     public Users getUserByUserId2(HttpServletRequest req){
