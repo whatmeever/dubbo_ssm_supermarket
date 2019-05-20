@@ -2,15 +2,16 @@ package com.supermarket.mapper;
 
 import com.supermarket.pojo.Cart;
 import com.supermarket.pojo.CartExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface CartMapper {
     int countByExample(CartExample example);
 
     int deleteByExample(CartExample example);
 
-    int deleteByPrimaryKey(Integer cid);
+    int deleteByPrimaryKey(@Param("cid") String cid, @Param("fdid") String fdid);
 
     int insert(Cart record);
 
@@ -18,7 +19,7 @@ public interface CartMapper {
 
     List<Cart> selectByExample(CartExample example);
 
-    Cart selectByPrimaryKey(Integer cid);
+    Cart selectByPrimaryKey(@Param("cid") String cid, @Param("fdid") String fdid);
 
     int updateByExampleSelective(@Param("record") Cart record, @Param("example") CartExample example);
 

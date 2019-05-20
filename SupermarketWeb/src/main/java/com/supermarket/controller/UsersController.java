@@ -85,6 +85,7 @@ public class UsersController {
             usersDataUtil.setData(list);
             String value = JSON.toJSONString(usersDataUtil);
             redisSaveManagerUtil.add(key,value);
+            redisSaveManagerUtil.expire(key,60);
             return usersDataUtil;
         }
         return usersDataUtil1;
@@ -97,6 +98,7 @@ public class UsersController {
         Users users = usersService.selectByPrimaryKey(userId);
         users.setIfNew(1);
         int i = usersService.updateByPrimaryKey(users);
+        redisSaveManagerUtil.delete("userIduserName110");
         return i;
     }
 
