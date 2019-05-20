@@ -1185,27 +1185,27 @@
 					divGrandson1.append(save);
 					var divGrandson2 = $("<div class='snipcart-details top_brand_home_details item_add single-item hvr-outline-out'></div>");
 					//divGrandson2中的标签
-					var form =$("<form action='#' method='post'></form>");
+					var form =$("<form action='addGoodToCart' method='post'></form>");
 					var fieldset=$("<fieldset></fieldset>");
 
-					var input1 =$('<input type="hidden" name="cmd" value="_cart" />');
-					var input2 =$('<input type="hidden" name="add" value="1" />');
-					var input3 =$('<input type="hidden" name="business" value=" " />');
+					var input1 =$('<input type="hidden" name="fdid" value="'+data[key].fdid+'" />');
+					var input2 =$('<input type="hidden" name="count" value="1" />');
+					/*var input3 =$('<input type="hidden" name="business" value=" " />');
 					var input4 =$('<input type="hidden" name="item_name" value="'+data[key].goodName+'" />');
 					var input5 =$('<input type="hidden" name="amount" value="'+data[key].price+'" />');
 					var input6 =$('<input type="hidden" name="currency_code" value="USD" />');
 					var input7 =$('<input type="hidden" name="return" value=" " />');
-					var input8 =$('<input type="hidden" name="cancel_return" value=" " />');
+					var input8 =$('<input type="hidden" name="cancel_return" value=" " />');*/
 					var input9 =$('<input type="submit" name="submit" value="加入购物车" class="button" />');
 
 					fieldset.append(input1);
 					fieldset.append(input2);
-					fieldset.append(input3);
+					/*fieldset.append(input3);
 					fieldset.append(input4);
 					fieldset.append(input5);
 					fieldset.append(input6);
 					fieldset.append(input7);
-					fieldset.append(input8);
+					fieldset.append(input8);*/
 					fieldset.append(input9);
 
 					form.append(fieldset);
@@ -1300,7 +1300,7 @@
 
 				}
                 $('#grandPa').append(divClearfix);
-				addCart();
+
 			});
             //获取酒水类产品
             $.get("/getJiuShuis",function (data) {
@@ -1381,7 +1381,7 @@
 
                 }
                 $('#grandPa1').append(divClearfix);
-                addCart();
+
             });
             //获取水果类产品
             $.get("/getFruits",function (data) {
@@ -1424,7 +1424,7 @@
                     //3
                     var div03=$('<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out"></div>');
                     //0301
-                    var div0301 = $('<form action="#" method="post"></form>');
+                    /*var div0301 = $('<form action="addGoodToCart" method="post"></form>');
                     //0301f
                     var fieldset = $('<fieldset></fieldset>');
 
@@ -1435,10 +1435,10 @@
                     var input5 =$('<input type="hidden" name="amount" value="'+data[key].price+'" />');
                     var input6 =$('<input type="hidden" name="currency_code" value="USD" />');
                     var input7 =$('<input type="hidden" name="return" value=" " />');
-                    var input8 =$('<input type="hidden" name="cancel_return" value=" " />');
-                    var input9 =$('<input type="submit" name="submit" value="加入购物车" class="button" />');
+                    var input8 =$('<input type="hidden" name="cancel_return" value=" " />');*/
+                    var input9 =$('<input type="button"  value="加入购物车" class="button" id="addCart"/>');
 
-                    fieldset.append(input1);
+                    /*fieldset.append(input1);
                     fieldset.append(input2);
                     fieldset.append(input3);
                     fieldset.append(input4);
@@ -1447,9 +1447,9 @@
                     fieldset.append(input7);
                     fieldset.append(input8);
                     fieldset.append(input9);
-
-                    div0301.append(fieldset);
-                    div03.append(div0301);
+*/
+                    /*div0301.append(input9);*/
+                    div03.append(input9);
                     //向子2中添加元素
                     divChild2.append(a2);
                     divChild2.append(div02);
@@ -1462,9 +1462,12 @@
 
                 }
                 $('#grandPa2').append(divClearfix);
-                addCart();
-            });
 
+            });
+/*			$("#addCart").click(function () {
+				console.log(haha);
+
+			});*/
 
         });
 
@@ -1497,7 +1500,7 @@
 	<!-- cart-js -->
 	<script src="js/minicart.js"></script>
 	<script>
-		function addCart() {
+		/*function addCart() {
 			paypalm.minicartk.render(); //use only unique class names other than paypalm.minicartk.Also Replace same class name in css and minicart.min.js
 
 			paypalm.minicartk.cart.on('checkout', function (evt) {
@@ -1516,7 +1519,7 @@
 					evt.preventDefault();
 				}
 			});
-		}
+		}*/
 	</script>
 	<!-- //cart-js -->
 
@@ -1601,7 +1604,7 @@
 	<script>
 		window.onload = function () {
 			document.getElementById("password1").onchange = validatePassword;
-			document.getElementById("password2").onchange = validatePassword;
+			/*document.getElementById("password2").onchange = validatePassword;*/
 		}
 
 		function validatePassword() {

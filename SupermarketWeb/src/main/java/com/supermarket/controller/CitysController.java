@@ -20,7 +20,7 @@ public class CitysController {
         example = new CitysExample();
     }
 
-    @ResponseBody
+    /*@ResponseBody
     @PostMapping("/getCitys")
     public List<Citys> getCitys(CitysExample example, HttpServletRequest request) {
         String id = request.getParameter("pid");
@@ -30,5 +30,5 @@ public class CitysController {
         criteria.andPidEqualTo(pid);
         List<Citys> citys = citysService.selectByExample(example);
         return citys;
-    }
+    }*/
 }

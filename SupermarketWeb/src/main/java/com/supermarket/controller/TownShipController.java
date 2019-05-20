@@ -22,7 +22,7 @@ public class TownShipController {
         example = new TownshipExample();
     }
 
-    @ResponseBody
+   /* @ResponseBody
     @PostMapping("/getTownShips")
     public List<Township> getTownShips(HttpServletRequest request){
         String id = request.getParameter("tid");
@@ -32,5 +32,5 @@ public class TownShipController {
         criteria.andCidEqualTo(tid);
         List<Township> townships = townShipService.selectByExample(example);
         return  townships;
-    }
+    }*/
 }
