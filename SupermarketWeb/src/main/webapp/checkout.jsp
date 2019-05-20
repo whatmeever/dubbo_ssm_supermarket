@@ -810,7 +810,7 @@
 								<th>Remove</th>
 							</tr>
 						</thead>
-						<tbody>
+						<tbody >
 							<tr class="rem1">
 								<td class="invert">1</td>
 								<td class="invert-image">

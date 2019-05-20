@@ -18,5 +18,8 @@
     <dubbo:service interface="com.supermarket.service.FreshGoodsService" ref="freshGoodsServiceImpl"/>
     <dubbo:service interface="com.supermarket.service.GoodDetailsService" ref="goodDetailsServiceImpl"/>
     <dubbo:service interface="com.supermarket.service.GoodAdminService" ref="goodAdminServiceImpl"/>
+    <dubbo:service interface="com.supermarket.service.ProvinceService" ref="provinceServiceImpl"/>
+    <dubbo:service interface="com.supermarket.service.CitysService" ref="citysServiceImpl"/>
+    <dubbo:service interface="com.supermarket.service.TownShipService" ref="townShipServiceImpl"/>
 
 </beans>

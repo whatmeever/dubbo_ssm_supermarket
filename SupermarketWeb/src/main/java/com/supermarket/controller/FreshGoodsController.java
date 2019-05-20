@@ -8,6 +8,7 @@ import com.supermarket.service.GoodTypeSerivce;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
@@ -124,27 +125,95 @@ public class FreshGoodsController {
         }
         return list;
     }
-
-    @GetMapping("/getFreshGoodsByChoose")
-    public String getFreshGoodsByChoose(HttpServletRequest request,Model model){
+    @ResponseBody
+    @PostMapping("/getFreshGoodsByChoose")
+    public List<FreshGoods> getFreshGoodsByChoose(HttpServletRequest request){
         String pre = request.getParameter("pre");
         String discount = request.getParameter("discount");
         String gtid = request.getParameter("gtid");
+        String minPrice = request.getParameter("minPrice");
+        String maxPrice = request.getParameter("maxPrice");
+
         example.clear();
         FreshGoodsExample.Criteria criteria = example.createCriteria();
-        if (pre != null){
+        if (!pre.equals("-1")){
             int i = Integer.parseInt(pre);
             criteria.andPreferenceEqualTo(i);
-        }else if(discount != null){
+        }
+        if(!discount.equals("0")){
             int i = Integer.parseInt(discount);
-            criteria.andDiscountEqualTo(i);
-        }else if (gtid != null){
+            criteria.andDiscountGreaterThanOrEqualTo(i);
+        }
+        if (minPrice != null && maxPrice != null){
+            double min = Double.parseDouble(minPrice);
+            double max = Double.parseDouble(maxPrice);
+            criteria.andPriceBetween(min,max);
+        }
+        if (gtid != null){
             int i = Integer.parseInt(gtid);
             criteria.andGtidEqualTo(i);
         }
         List<FreshGoods> list = freshGoodsService.selectByExample(example);
-        System.out.println(list);
-        return "product2";
+
+        return list;
+
+    }
+    //小搜索框
+    @PostMapping("/getSouSuoGoods")
+    public  String getSouSuoGoods(HttpServletRequest request,Model model){
+        String id = request.getParameter("gtid");
+        int gtid = Integer.parseInt(id);
+        String goodName = request.getParameter("goodName");
+        HashMap<String, String> hashMap = new HashMap<>();
+        GoodType goodType = goodTypeSerivce.selectByPrimaryKey(gtid);
+        example.clear();
+        FreshGoodsExample.Criteria criteria = example.createCriteria();
+        criteria.andGtidEqualTo(gtid);
+        criteria.andGoodNameLike("%"+goodName+"%");
+        List<FreshGoods> list= freshGoodsService.selectByExample(example);
+        for (FreshGoods freshGoods:list){
+            String img = freshGoods.getImg();
+            String[] splits = img.split("-");
+            String imgs = splits[0];
+            hashMap.put(freshGoods.getFdid(),imgs);
+        }
+        //该物品的类型
+        model.addAttribute("goodType",goodType);
+        //该物品的图片
+        model.addAttribute("imgs",hashMap);
+        //物品
+        model.addAttribute("freshGoods",list);
+
+        return "product";
+
+    }
+    @PostMapping("/getBigSouSuoGoods")
+    public String getBigSouSuoGoods(HttpServletRequest request,Model model){
+        String goodName = request.getParameter("goodName");
+        example.clear();
+        FreshGoodsExample.Criteria criteria = example.createCriteria();
+        criteria.andGoodNameLike("%"+goodName+"%");
+        List<FreshGoods> list = freshGoodsService.selectByExample(example);
+
+        HashMap<String, String> hashMap = new HashMap<>();
+        for (FreshGoods freshGoods:list){
+            String img = freshGoods.getImg();
+            String[] splits = img.split("-");
+            String imgs = splits[0];
+            hashMap.put(freshGoods.getFdid(),imgs);
+        }
+
+        Integer gtid = list.get(0).getGtid();
+        if (gtid != 0){
+            GoodType goodType = goodTypeSerivce.selectByPrimaryKey(gtid);
+            model.addAttribute("goodType",goodType);
+            //该物品的图片
+            model.addAttribute("imgs",hashMap);
+            //物品
+            model.addAttribute("freshGoods",list);
+
+        }
+        return "product";
     }
 
 

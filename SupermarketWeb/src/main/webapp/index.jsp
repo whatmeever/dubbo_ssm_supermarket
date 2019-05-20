@@ -169,12 +169,12 @@
 						</p>
 						<form action="#" method="post">
 							<div class="styled-input agile-styled-input-top">
-								<input type="text" placeholder="User Name" id="username1" required="">
+								<input type="text" placeholder="用户名" id="username1" required="">
 							</div>
 							<div class="styled-input">
-								<input type="password" placeholder="Password" id="password1" required="">
+								<input type="password" placeholder="密码" id="password1" required="">
 							</div>
-							<input type="button" value="Sign In" id="signIn">
+							<input type="button" value="登录" id="signIn">
 						</form>
 						<div class="clearfix"></div>
 					</div>
@@ -200,9 +200,9 @@
 						<span class="fa fa-envelope-o" aria-hidden="true"></span>
 					</div>
 					<div class="modal_body_left modal_body_left1">
-						<h3 class="agileinfo_sign">Sign Up</h3>
+						<h3 class="agileinfo_sign">注册</h3>
 						<p>
-							Come join the Grocery Shoppy! Let's set up your Account.
+							快来加入杂货店吧！请设置您的帐户。
 						</p>
 						<form action="createUser" method="post">
 							<div class="styled-input agile-styled-input-top">
@@ -215,7 +215,7 @@
 								<input type="password" placeholder="Password" name="password2" required="">
 							</div>
 							<div class="styled-input">
-								<input type="text" placeholder="tel" name="tel" required="">
+								<input type="text" placeholder="Tel" name="tel" required="">
 							</div>
 							<input type="submit" value="Sign Up">
 						</form>
