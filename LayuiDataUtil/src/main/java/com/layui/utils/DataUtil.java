@@ -1,8 +1,9 @@
 package com.layui.utils;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class DataUtil<T> {
+public class DataUtil<T> implements Serializable {
     //接口状态，正常情况下为0
     private int code = 0;
     //接口信息,正常情况下为空""
