@@ -1,5 +1,7 @@
 package com.supermarket.service;
 
+import com.supermarket.pojo.Cart;
+
 import java.util.List;
 
 public interface CartService {

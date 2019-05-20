@@ -19,5 +19,6 @@
     <dubbo:service interface="com.supermarket.service.GoodDetailsService" ref="goodDetailsServiceImpl"/>
     <dubbo:service interface="com.supermarket.service.GoodAdminService" ref="goodAdminServiceImpl"/>
     <dubbo:service interface="com.supermarket.service.LogisticsService" ref="logisticsServiceImpl"/>
+    <dubbo:service interface="com.supermarket.service.CartService" ref="cartServiceImpl"/>
 
 </beans>

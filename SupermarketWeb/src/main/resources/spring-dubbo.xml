@@ -11,4 +11,5 @@
     <dubbo:reference interface="com.supermarket.service.FreshGoodsService" id="freshGoodsService"/>
     <dubbo:reference interface="com.supermarket.service.GoodDetailsService" id="goodDetailsService"/>
     <dubbo:reference interface="com.supermarket.service.LogisticsService" id="logisticsService"/>
+    <dubbo:reference interface="com.supermarket.service.CartService" id="cartService"/>
 </beans>
