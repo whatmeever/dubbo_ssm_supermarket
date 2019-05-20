@@ -10,6 +10,7 @@
         <module name="SupermarketInterface" />
         <module name="SupermarketMapper" />
         <module name="SupermarketPojo" />
+        <module name="SupermarketRedis" />
         <module name="SupermarketService" />
         <module name="SupermarketShiro" />
         <module name="SupermarketWeb" />
