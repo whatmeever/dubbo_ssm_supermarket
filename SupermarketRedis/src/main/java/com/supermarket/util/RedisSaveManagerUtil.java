@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 @Component
 public class RedisSaveManagerUtil{
@@ -31,6 +32,18 @@ public class RedisSaveManagerUtil{
             }
         });
         return result;
+    }
+
+    public boolean expire(String key,long time){
+        try {
+            if(time>0){
+                redisTemplate.expire(key, time, TimeUnit.SECONDS);
+            }
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     //批量新增 使用pipeline
