@@ -364,7 +364,7 @@
 					</form>
 				</div>
 				<!-- price range -->
-				<div class="range">
+				<%--<div class="range">
 					<h3 class="agileits-sear-head">价格范围</h3>
 					<ul class="dropdown-menu6">
 						<li>
@@ -372,7 +372,7 @@
 							<input type="text" id="amount" style="border: 0; color: #ffffff; font-weight: normal;"  class="souSuo"/>
 						</li>
 					</ul>
-				</div>
+				</div>--%>
 				<!-- //price range -->
 				<!-- food preference -->
 				<div class="left-side" >
@@ -425,7 +425,7 @@
 				</div>
 				<!-- //discounts -->
 				<!-- reviews -->
-				<div class="customer-rev left-side">
+				<%--<div class="customer-rev left-side">
 					<h3 class="agileits-sear-head">顾客评价</h3>
 					<ul>
 						<li>
@@ -479,7 +479,7 @@
 							</a>
 						</li>
 					</ul>
-				</div>
+				</div>--%>
 				<!-- //reviews -->
 				<!-- cuisine -->
 				<%--<div class="left-side">
@@ -530,7 +530,7 @@
 				<!-- //cuisine -->
 				<!-- deals -->
 				<div class="deal-leftmk left-side" id="specialGoods">
-					<h3 class="agileits-sear-head">Special Deals</h3>
+					<%--<h3 class="agileits-sear-head">Special Deals</h3>--%>
 
 				</div>
 				<!-- //deals -->
@@ -604,7 +604,7 @@
 	<div class="featured-section" id="projects">
 		<div class="container">
 			<!-- tittle heading -->
-			<h3 class="tittle-w3l">Special Offers
+			<h3 class="tittle-w3l">特别优惠
 				<span class="heading-style">
 					<i></i>
 					<i></i>
@@ -1031,7 +1031,7 @@
                     }
                 });
             });
-			function province() {
+			/*function province() {
 				var select1 = "<select id='ddlPROVINCE'></select>";
 				var option1 = "<option value='0'>--请选择省份--</option>";
 				$.get("/getProvinces",function (data) {
@@ -1043,7 +1043,7 @@
 					$(".select-city").append(option);
 					$(".select-city").append(haha);
 				});
-			}
+			}*/
 			function goodType() {
 				$.get("/getGoodTypes",function (data) {
 					var option = "<option value=''>所有种类</option>";
@@ -1056,9 +1056,9 @@
 			//初始化种类下拉框
 			goodType();
 			//初始化省下拉框
-			province();
+			/*province();*/
 			//初始化价格范围
-			priceRange();
+			/*priceRange();*/
 			//获取被选中的种类
 			$(".goodTypes").on("change",function () {
 				var gtid=$(this).find(":selected").val();
@@ -1155,7 +1155,7 @@
 					discount = $("input[type='radio'][name='discount']:checked").val();
 				}
                 var gtid = ${goodType.gtid};
-                console.log(minPrice+"hahah"+maxPrice);
+
                 $.post("/getFreshGoodsByChoose", {pre:pre,discount:discount,gtid:gtid}, function (data) {
 					$("#products").empty();
                 	var list = eval(data);
@@ -1245,7 +1245,7 @@
 					console.log(data)
 				});*!/
 			})*/
-            function priceRange() {
+            /*function priceRange() {
                 $("#slider-range").slider({
                     range: true,
                     min: 0,
@@ -1261,7 +1261,7 @@
 
                 });
                 $("#amount").val("$" + $("#slider-range").slider("values", 0) + " - $" + $("#slider-range").slider("values", 1));
-            }
+            }*/
 		});
 	</script>
     <script>

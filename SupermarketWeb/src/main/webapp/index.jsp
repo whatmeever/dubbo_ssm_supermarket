@@ -5,7 +5,7 @@
 <html lang="zxx">
 
 <head>
-	<title>Home</title>
+	<title>主页</title>
 	<!--/tags -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -39,7 +39,7 @@
 <body>
 	<!-- top-header -->
 	<div class="header-most-top">
-		<p>Grocery Offer Zone Top Deals & Discounts</p>
+		<p>杂货优惠区优惠和折扣</p>
 	</div>
 	<!-- //top-header -->
 	<!-- header-bot-->
@@ -93,8 +93,8 @@
 				<!-- //header lists -->
 				<!-- search -->
 				<div class="agileits_search">
-					<form action="#" method="post">
-						<input name="Search" type="search" placeholder="今天要来点什么？" required="">
+					<form action="getBigSouSuoGoods" method="post">
+						<input name="goodName" type="search" placeholder="今天要来点什么？" required="">
 						<button type="submit" class="btn btn-default" aria-label="Left Align">
 							<span class="fa fa-search" aria-hidden="true"> </span>
 						</button>
@@ -268,18 +268,18 @@
 						<div class="collapse navbar-collapse menu--shylock" id="bs-example-navbar-collapse-1">
 							<ul class="nav navbar-nav menu__list">
 								<li class="active">
-									<a class="nav-stylehead" href="index.jsp">Home
+									<a class="nav-stylehead" href="index.jsp">主页
 										<span class="sr-only">(current)</span>
 									</a>
 								</li>
 								<li class="">
-									<a class="nav-stylehead" href="about.jsp">About Us</a>
+									<a class="nav-stylehead" href="about.jsp">关于我们</a>
 								</li>
-								<li class="dropdown">
+								<%--<li class="dropdown">
 									<a href="#" class="dropdown-toggle nav-stylehead" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Kitchen
 										<span class="caret"></span>
 									</a>
-									<ul class="dropdown-menu multi-column columns-3">
+									&lt;%&ndash;<ul class="dropdown-menu multi-column columns-3">
 										<div class="agile_inner_drop_nav_info">
 											<div class="col-sm-4 multi-gd-img">
 												<ul class="multi-column-dropdown">
@@ -336,7 +336,7 @@
 											</div>
 											<div class="clearfix"></div>
 										</div>
-									</ul>
+									</ul>&ndash;%&gt;
 								</li>
 								<li class="dropdown">
 									<a href="#" class="dropdown-toggle nav-stylehead" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Household
@@ -397,11 +397,11 @@
 											<div class="clearfix"></div>
 										</div>
 									</ul>
-								</li>
+								</li>--%>
 								<li class="">
-									<a class="nav-stylehead" href="faqs.jsp">Faqs</a>
+									<a class="nav-stylehead" href="faqs.jsp">常见问题解答</a>
 								</li>
-								<li class="dropdown">
+								<%--<li class="dropdown">
 									<a class="nav-stylehead dropdown-toggle" href="#" data-toggle="dropdown">Pages
 										<b class="caret"></b>
 									</a>
@@ -413,10 +413,10 @@
 											<a href="typography.jsp">Typography</a>
 										</li>
 									</ul>
-								</li>
-								<li class="">
-									<a class="nav-stylehead" href="contact.jsp">Contact</a>
-								</li>
+								</li>--%>
+								<%--<li class="">
+									<a class="nav-stylehead" href="contact.jsp">联系我们</a>
+								</li>--%>
 							</ul>
 						</div>
 					</div>
@@ -690,7 +690,7 @@
 	<div class="featured-section" id="projects">
 		<div class="container">
 			<!-- tittle heading -->
-			<h3 class="tittle-w3l">Special Offers
+			<h3 class="tittle-w3l">特别优惠
 				<span class="heading-style">
 					<i></i>
 					<i></i>
@@ -1190,22 +1190,22 @@
 
 					var input1 =$('<input type="hidden" name="fdid" value="'+data[key].fdid+'" />');
 					var input2 =$('<input type="hidden" name="count" value="1" />');
-					/*var input3 =$('<input type="hidden" name="business" value=" " />');
+					var input3 =$('<input type="hidden" name="business" value=" " />');
 					var input4 =$('<input type="hidden" name="item_name" value="'+data[key].goodName+'" />');
 					var input5 =$('<input type="hidden" name="amount" value="'+data[key].price+'" />');
 					var input6 =$('<input type="hidden" name="currency_code" value="USD" />');
 					var input7 =$('<input type="hidden" name="return" value=" " />');
-					var input8 =$('<input type="hidden" name="cancel_return" value=" " />');*/
+					var input8 =$('<input type="hidden" name="cancel_return" value=" " />');
 					var input9 =$('<input type="submit" name="submit" value="加入购物车" class="button" />');
 
 					fieldset.append(input1);
 					fieldset.append(input2);
-					/*fieldset.append(input3);
+					fieldset.append(input3);
 					fieldset.append(input4);
 					fieldset.append(input5);
 					fieldset.append(input6);
 					fieldset.append(input7);
-					fieldset.append(input8);*/
+					fieldset.append(input8);
 					fieldset.append(input9);
 
 					form.append(fieldset);

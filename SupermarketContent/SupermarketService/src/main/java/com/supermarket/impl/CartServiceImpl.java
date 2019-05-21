@@ -21,4 +21,9 @@ public class CartServiceImpl implements CartService {
         criteria.andUserIdEqualTo(userId);
         return cartMapper.selectByExample(example);
     }
+
+    @Override
+    public int insertSelective(Cart record) {
+        return cartMapper.insertSelective(record);
+    }
 }
