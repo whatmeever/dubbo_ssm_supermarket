@@ -42,6 +42,7 @@
 			window.scrollTo(0, 1);
 		}
 	</script>
+
 	<!--//tags -->
 	<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 	<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
@@ -98,12 +99,13 @@
                             </li>
                             <li>
                                 <a href="#" data-toggle="modal" data-target="#myModal2">
-                                    <span class="fa fa-pencil-square-o" aria-hidden="true"></span> 注册 </a>
+                                    <span class="fa fa-pencil-square-o" aria-hidden="true"></span> 注
+                                    册 </a>
                             </li>
                         </c:when>
                         <c:otherwise>
                             <li>
-                                <a href="#" id="logout">
+                                <a href="/userLogout" id="logout">
                                     <span class="fa fa-unlock-alt" aria-hidden="true"></span> 注销 </a>
                             </li>
                         </c:otherwise>
@@ -112,9 +114,10 @@
 				<!-- //header lists -->
 				<!-- search -->
 				<div class="agileits_search">
-					<form action="#" method="post">
-						<input name="Search" type="search" placeholder="How can we help you today?" required="">
-						<button type="submit" class="btn btn-default" aria-label="Left Align">
+					<form action="getBigSouSuoGoods" method="post">
+						<input name="goodName" type="search" placeholder="How can we help you today?" required="">
+
+						<button type="submit" class="btn btn-default" aria-label="Left Align" >
 							<span class="fa fa-search" aria-hidden="true"> </span>
 						</button>
 					</form>
@@ -143,9 +146,9 @@
 	<div id="small-dialog1" class="mfp-hide">
 		<div class="select-city">
 			<h3>请选择您的位置</h3>
-			<select class="list_of_cities">
+			<%--<select class="list_of_cities">
 				<optgroup label="Popular Cities">
-					<option selected style="display:none;color:#eee;">请选择城市</option>
+					<option selected style="display:none;color:#eee;" value="0" id="locations">请选择城市</option>
 					<option>Birmingham</option>
 					<option>Anchorage</option>
 					<option>Phoenix</option>
@@ -161,8 +164,13 @@
 					<option>Chicago</option>
 					<option>Indianapolis</option>
 				</optgroup>
-			</select>
-			<div class="clearfix"></div>
+			</select>--%>
+			<%--<select id="province" onchange="showCity()"><option value="0">--请选择--</option></select>
+			&nbsp;&nbsp;&nbsp;&nbsp;
+			<select id="city" onchange="showPiece()"><option value="0">--请选择--</option></select>
+			&nbsp;&nbsp;&nbsp;&nbsp;
+			<select id="piecearea"><option value="0">--请选择--</option></select>
+			<div class="clearfix"></div>--%>
 		</div>
 	</div>
 	<!-- //shop locator (popup) -->
@@ -184,16 +192,16 @@
 						<p>
 							现在，让我们开始您的杂货店购物。没有帐户?
 							<a href="#" data-toggle="modal" data-target="#myModal2">
-								立即注册</a>
+								请注册</a>
 						</p>
 						<form action="#" method="post">
 							<div class="styled-input agile-styled-input-top">
-								<input type="text" placeholder="用户名" name="Name" required="">
+								<input type="text" placeholder="用户名" id="username1" required="">
 							</div>
 							<div class="styled-input">
-								<input type="password" placeholder="密码" name="password" required="">
+								<input type="password" placeholder="密码" id="password1" required="">
 							</div>
-							<input type="submit" value="登录">
+							<input type="button" value="登录" id="signIn">
 						</form>
 						<div class="clearfix"></div>
 					</div>
@@ -223,19 +231,19 @@
 						<p>
 							快来加入杂货店吧！请设置您的帐户。
 						</p>
-						<form action="#" method="post">
+						<form action="createUser" method="post">
 							<div class="styled-input agile-styled-input-top">
-								<input type="text" placeholder="用户名" name="Name" required="">
+								<input type="text" placeholder="Name" name="username" required="">
 							</div>
 							<div class="styled-input">
 								<input type="email" placeholder="E-mail" name="Email" required="">
 							</div>
 							<div class="styled-input">
-								<input type="password" placeholder="密码" name="password" id="password1" required="">
+								<input type="password" placeholder="Password" name="password"  required="">
 							</div>
-							<div class="styled-input">
-								<input type="password" placeholder="确认密码" name="Confirm Password" id="password2" required="">
-							</div>
+                            <div class="styled-input">
+                                <input type="text" placeholder="Tel" name="tel" required="">
+                            </div>
 							<input type="submit" value="注册">
 						</form>
 						<p>
@@ -324,9 +332,9 @@
 				<ul class="w3_short">
 					<li>
 						<a href="index.jsp">主页</a>
-						<i>|</i>
+						<%--<i>|</i>--%>
 					</li>
-					<li>${goodType.gtname} </li>
+					<li><a href="#">丨${goodType.gtname}</a> </li>
 				</ul>
 			</div>
 
@@ -349,37 +357,37 @@
 			<div class="side-bar col-md-3">
 				<div class="search-hotel">
 					<h3 class="agileits-sear-head">搜索</h3>
-					<form action="#" method="post">
-						<input type="search" placeholder="物品名字" name="search" required="">
+					<form action="getSouSuoGoods" method="post">
+						<input type="search" placeholder="物品名字" name="goodName" required="">
+						<input type="hidden" name="gtid" value="${goodType.gtid}">
 						<input type="submit" value=" ">
 					</form>
 				</div>
 				<!-- price range -->
-				<div class="range">
+				<%--<div class="range">
 					<h3 class="agileits-sear-head">价格范围</h3>
 					<ul class="dropdown-menu6">
 						<li>
-
 							<div id="slider-range"></div>
-							<input type="text" id="amount" style="border: 0; color: #ffffff; font-weight: normal;" />
+							<input type="text" id="amount" style="border: 0; color: #ffffff; font-weight: normal;"  class="souSuo"/>
 						</li>
 					</ul>
-				</div>
+				</div>--%>
 				<!-- //price range -->
 				<!-- food preference -->
-				<div class="left-side" id="preference">
+				<div class="left-side" >
 					<h3 class="agileits-sear-head">食物偏好</h3>
 					<ul>
 						<li>
-							<input type="radio" name="pre" value="1" >
+							<input type="radio" name="pre" value="1" class="souSuo">
 							<span class="span">其他</span>
 						</li>
 						<li>
-							<input type="radio" name="pre" value="2" >
+							<input type="radio" name="pre" value="2" class="souSuo">
 							<span class="span">素食主义</span>
 						</li>
 						<li>
-							<input type="radio" name="pre" value="3" >
+							<input type="radio" name="pre" value="3" class="souSuo">
 							<span class="span">荤食主义</span>
 						</li>
 					</ul>
@@ -390,34 +398,34 @@
 					<h3 class="agileits-sear-head">折扣</h3>
 					<ul>
 						<li>
-							<input type="radio" class="checked" >
+							<input type="radio" name="discount" value="5" class="souSuo">
 							<span class="span">5% or More</span>
 						</li>
 						<li>
-							<input type="radio" class="checked">
+							<input type="radio" name="discount" value="10" class="souSuo">
 							<span class="span">10% or More</span>
 						</li>
 						<li>
-							<input type="radio" class="checked">
+							<input type="radio" name="discount" value="20" class="souSuo">
 							<span class="span">20% or More</span>
 						</li>
 						<li>
-							<input type="radio" class="checked">
+							<input type="radio" name="discount" value="30" class="souSuo">
 							<span class="span">30% or More</span>
 						</li>
 						<li>
-							<input type="radio" class="checked">
+							<input type="radio" name="discount" value="50" class="souSuo">
 							<span class="span">50% or More</span>
 						</li>
 						<li>
-							<input type="radio" class="checked">
+							<input type="radio" name="discount" value="60" class="souSuo">
 							<span class="span">60% or More</span>
 						</li>
 					</ul>
 				</div>
 				<!-- //discounts -->
 				<!-- reviews -->
-				<div class="customer-rev left-side">
+				<%--<div class="customer-rev left-side">
 					<h3 class="agileits-sear-head">顾客评价</h3>
 					<ul>
 						<li>
@@ -471,7 +479,7 @@
 							</a>
 						</li>
 					</ul>
-				</div>
+				</div>--%>
 				<!-- //reviews -->
 				<!-- cuisine -->
 				<%--<div class="left-side">
@@ -522,7 +530,7 @@
 				<!-- //cuisine -->
 				<!-- deals -->
 				<div class="deal-leftmk left-side" id="specialGoods">
-					<h3 class="agileits-sear-head">Special Deals</h3>
+					<%--<h3 class="agileits-sear-head">Special Deals</h3>--%>
 
 				</div>
 				<!-- //deals -->
@@ -533,11 +541,11 @@
 				<div class="wrapper">
 					<!-- first section -->
 
-					<div class="product-sec1" >
+					<div class="product-sec1"  id="products">
 							<c:forEach items="${freshGoods}" var="goods">
 
 						<div class="col-xs-4 product-men" id="bianJu">
-							<div class="men-pro-item simpleCart_shelfItem" id="bianKuang">
+							<div class="men-pro-item simpleCart_shelfItem" >
 								<div class="men-thumb-item">
 
 									<img src="img/${imgs.get(goods.fdid)}.jpg" alt="" class="goodsImg">
@@ -596,7 +604,7 @@
 	<div class="featured-section" id="projects">
 		<div class="container">
 			<!-- tittle heading -->
-			<h3 class="tittle-w3l">Special Offers
+			<h3 class="tittle-w3l">特别优惠
 				<span class="heading-style">
 					<i></i>
 					<i></i>
@@ -1013,7 +1021,29 @@
 	<script src="js/jquery-2.1.4.min.js"></script>
 	<!-- //jquery -->
 	<script>
-		$(function () {
+        $(function () {
+            $("#signIn").click(function () {
+               var name=$("#username1").val();
+                var pass=$("#password1").val();
+                $.post("/userLogin",{username:name,password:pass},function (data) {
+                    if (data == "true"){
+                        location.href="index.jsp";
+                    }
+                });
+            });
+			/*function province() {
+				var select1 = "<select id='ddlPROVINCE'></select>";
+				var option1 = "<option value='0'>--请选择省份--</option>";
+				$.get("/getProvinces",function (data) {
+					for (var key in data){
+						option1+= "<option value='"+data[key].pid+"'>"+data[key].pname+"</option>";
+					}
+					var haha ="<input type='hidden' id='hidPROVINCE_NAME' name='PROVINCE_NAME' />";
+					select1.append(option1);
+					$(".select-city").append(option);
+					$(".select-city").append(haha);
+				});
+			}*/
 			function goodType() {
 				$.get("/getGoodTypes",function (data) {
 					var option = "<option value=''>所有种类</option>";
@@ -1025,6 +1055,10 @@
 			}
 			//初始化种类下拉框
 			goodType();
+			//初始化省下拉框
+			/*province();*/
+			//初始化价格范围
+			/*priceRange();*/
 			//获取被选中的种类
 			$(".goodTypes").on("change",function () {
 				var gtid=$(this).find(":selected").val();
@@ -1081,7 +1115,6 @@
 					//divGrandson2中的标签
 					var form =$("<form action='#' method='post'></form>");
 					var fieldset=$("<fieldset></fieldset>");
-
 					var input1 =$('<input type="hidden" name="cmd" value="_cart" />');
 					var input2 =$('<input type="hidden" name="add" value="1" />');
 					var input3 =$('<input type="hidden" name="business" value=" " />');
@@ -1091,7 +1124,6 @@
 					var input7 =$('<input type="hidden" name="return" value=" " />');
 					var input8 =$('<input type="hidden" name="cancel_return" value=" " />');
 					var input9 =$('<input type="submit" name="submit" value="加入购物车" class="button" />');
-
 					fieldset.append(input1);
 					fieldset.append(input2);
 					fieldset.append(input3);
@@ -1101,10 +1133,8 @@
 					fieldset.append(input7);
 					fieldset.append(input8);
 					fieldset.append(input9);
-
 					form.append(fieldset);
 					divGrandson2.append(form);
-
 					divParent.append(divChild1);
 					divChild2.append(divGrandson1);
 					divChild2.append(divGrandson2);
@@ -1114,11 +1144,130 @@
 				}
 				lunxun();
 			});
+			//搜索折扣和商品喜好
+            $(".souSuo").on("click",function () {
+				var pre ="-1";
+				var discount="0";
+				if ($("input[type='radio'][name='pre']:checked").val() != null){
+					pre = $("input[type='radio'][name='pre']:checked").val();
+				}
+                if ($("input[type='radio'][name='discount']:checked").val() != null){
+					discount = $("input[type='radio'][name='discount']:checked").val();
+				}
+                var gtid = ${goodType.gtid};
 
+                $.post("/getFreshGoodsByChoose", {pre:pre,discount:discount,gtid:gtid}, function (data) {
+					$("#products").empty();
+                	var list = eval(data);
+                        if (list == null) {
+                            $("#products").val("你查找的没有该类物品的数据");
+                        }else {
+                            var divClearfix = $('<div class="clearfix"></div>');
+                            for (var key in list) {
+                                var divParent = $('<div class="men-pro-item simpleCart_shelfItem" ></div>');
+                                //第一个子div
+                                var divChild1 = $('<div class="men-thumb-item"></div>');
+                                var imgs = list[key].img.split("-");
+                                //1
+                                var img =$('<img src="img/'+imgs[0]+'.jpg" alt="" style="width: 150px;height: 150px">');
+                                //2
+                                var div2 = $('<div class="men-cart-pro"></div>');
+                                //0201
+                                var div0102 = $('<div class="inner-men-cart-pro"></div>');
+                                //020101
+                                var a1 =$('<a href="getGoodDetailsByFdid2?fdid='+list[key].fdid+'" class="link-product-add-cart">Quick View</a>');
+                                //3
+                                var span=$('<span class="product-new-top">New</span>3');
+                                div0102.append(a1);
+                                div2.append(div0102);
+                                divChild1.append(img);
+                                divChild1.append(div2);
+                                divChild1.append(span);
+                                //第二个子div
+                                var divChild2 = $('<div class="item-info-product "></div>');
+                                //1
+                                var a2 = $('<h4><a href="getGoodDetailsByFdid2?fdid='+list[key].fdid+'">'+list[key].goodName+'</a></h4>');
+                                //2
+                                var div02 = $('<div class="info-product-price"></div>');
+                                //0201
+                                var div0201 = $('<span class="item_price">$'+list[key].price+'</span>');
+                                //0202
+                                var div0202 = $('<del>$'+list[key].price+'</del>');
+                                div02.append(div0201);
+                                div02.append(div0202);
+                                //3
+                                var div03=$('<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out"></div>');
+                                //0301
+                                var div0301 = $('<form action="#" method="post"></form>');
+                                //0301f
+                                var fieldset = $('<fieldset></fieldset>');
 
+                                var input1 =$('<input type="hidden" name="cmd" value="_cart" />');
+                                var input2 =$('<input type="hidden" name="add" value="1" />');
+                                var input3 =$('<input type="hidden" name="business" value=" " />');
+                                var input4 =$('<input type="hidden" name="item_name" value="'+list[key].goodName+'" />');
+                                var input5 =$('<input type="hidden" name="amount" value="'+list[key].price+'" />');
+                                var input6 =$('<input type="hidden" name="currency_code" value="USD" />');
+                                var input7 =$('<input type="hidden" name="return" value=" " />');
+                                var input8 =$('<input type="hidden" name="cancel_return" value=" " />');
+                                var input9 =$('<input type="submit" name="submit" value="加入购物车" class="button" />');
 
+                                fieldset.append(input1);
+                                fieldset.append(input2);
+                                fieldset.append(input3);
+                                fieldset.append(input4);
+                                fieldset.append(input5);
+                                fieldset.append(input6);
+                                fieldset.append(input7);
+                                fieldset.append(input8);
+                                fieldset.append(input9);
+
+                                div0301.append(fieldset);
+                                div03.append(div0301);
+                                //向子2中添加元素
+                                divChild2.append(a2);
+                                divChild2.append(div02);
+                                divChild2.append(div03);
+                                divParent.append(divChild1);
+                                divParent.append(divChild2);
+                                var parents =$('<div class="col-md-4 product-men">');
+                                parents.append(divParent);
+                                $("#products").append(parents);
+                            }
+                            $("#products").append(divClearfix);
+                        }
+                });
+            });
+
+/*			$("#slider-range").onclick(function () {
+				console.log(minPrice+"++++++++++++++++++++++++"+maxPrice);
+				/!*$.post("/getFreshGoodsByChoose",{minPrice:minPrice,maxPrice:maxPrice,gtid:${goodType.gtid}},function (data) {
+					console.log(data)
+				});*!/
+			})*/
+            /*function priceRange() {
+                $("#slider-range").slider({
+                    range: true,
+                    min: 0,
+                    max: 5000,
+                    values: [10, 2500],
+                    slide: function (event, ui) {
+                        $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
+                    },
+                    stop: function( event, ui ) {
+                        minPrice=ui.values[0];
+                        maxPrice=ui.values[1];
+                    },
+
+                });
+                $("#amount").val("$" + $("#slider-range").slider("values", 0) + " - $" + $("#slider-range").slider("values", 1));
+            }*/
 		});
 	</script>
+    <script>
+
+
+    </script>
 	<!-- popup modal (for signin & signup)-->
 	<script src="js/jquery.magnific-popup.js"></script>
 	<script>
@@ -1170,18 +1319,24 @@
 	<!-- price range (top products) -->
 	<script src="js/jquery-ui.js"></script>
 	<script>
-		//<![CDATA[ 
+		//<![CDATA[
+        var minPrice=0;
+        var maxPrice=0;
 		$(window).load(function () {
-			$("#slider-range").slider({
+			/*$("#slider-range").slider({
 				range: true,
 				min: 0,
-				max: 9000,
-				values: [50, 6000],
+				max: 5000,
+				values: [50, 3000],
 				slide: function (event, ui) {
 					$("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
-				}
+				},
+                stop: function( event, ui ) {
+				    minPrice=ui.values[0];
+				    maxPrice=ui.values[1];
+                }
 			});
-			$("#amount").val("$" + $("#slider-range").slider("values", 0) + " - $" + $("#slider-range").slider("values", 1));
+			$("#amount").val("$" + $("#slider-range").slider("values", 0) + " - $" + $("#slider-range").slider("values", 1));*/
 
 		}); //]]>
 	</script>

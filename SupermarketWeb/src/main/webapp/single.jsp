@@ -95,8 +95,8 @@
             <!-- //header lists -->
             <!-- search -->
             <div class="agileits_search">
-                <form action="#" method="post">
-                    <input name="Search" type="search" placeholder="今天要来点什么？" required="">
+                <form action="getBigSouSuoGoods" method="post">
+                    <input name="goodName" type="search" placeholder="今天要来点什么？" required="">
                     <button type="submit" class="btn btn-default" aria-label="Left Align">
                         <span class="fa fa-search" aria-hidden="true"> </span>
                     </button>

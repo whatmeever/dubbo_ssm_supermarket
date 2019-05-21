@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface CartService {
     List<Cart> getCartByUserId(String userId);
+
+    int insertSelective(Cart record);
 }

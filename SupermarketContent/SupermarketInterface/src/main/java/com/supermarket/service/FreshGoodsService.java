@@ -18,4 +18,6 @@ public interface FreshGoodsService {
     //通过gtid来获取该类型的产品
     List<FreshGoods> selectByExample(FreshGoodsExample example);
 
+    FreshGoods selectByPrimaryKey(String fdid);
+
 }

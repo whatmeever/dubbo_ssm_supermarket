@@ -18,6 +18,11 @@ public class FreshGoodsServiceImpl implements FreshGoodsService {
         return freshGoodsMapper.selectByExample(example);
     }
 
+    @Override
+    public FreshGoods selectByPrimaryKey(String fdid) {
+        return freshGoodsMapper.selectByPrimaryKey(fdid);
+    }
+
     /*@Override
     public List<FreshGoods> getFreshGoodsByGtid(int gtid) {
         FreshGoodsExample example = new FreshGoodsExample();

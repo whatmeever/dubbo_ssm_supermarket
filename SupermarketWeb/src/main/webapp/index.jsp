@@ -5,7 +5,7 @@
 <html lang="zxx">
 
 <head>
-	<title>Home</title>
+	<title>主页</title>
 	<!--/tags -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -39,7 +39,7 @@
 <body>
 	<!-- top-header -->
 	<div class="header-most-top">
-		<p>Grocery Offer Zone Top Deals & Discounts</p>
+		<p>杂货优惠区优惠和折扣</p>
 	</div>
 	<!-- //top-header -->
 	<!-- header-bot-->
@@ -93,8 +93,8 @@
 				<!-- //header lists -->
 				<!-- search -->
 				<div class="agileits_search">
-					<form action="#" method="post">
-						<input name="Search" type="search" placeholder="今天要来点什么？" required="">
+					<form action="getBigSouSuoGoods" method="post">
+						<input name="goodName" type="search" placeholder="今天要来点什么？" required="">
 						<button type="submit" class="btn btn-default" aria-label="Left Align">
 							<span class="fa fa-search" aria-hidden="true"> </span>
 						</button>
@@ -169,12 +169,12 @@
 						</p>
 						<form action="#" method="post">
 							<div class="styled-input agile-styled-input-top">
-								<input type="text" placeholder="User Name" id="username1" required="">
+								<input type="text" placeholder="用户名" id="username1" required="">
 							</div>
 							<div class="styled-input">
-								<input type="password" placeholder="Password" id="password1" required="">
+								<input type="password" placeholder="密码" id="password1" required="">
 							</div>
-							<input type="button" value="Sign In" id="signIn">
+							<input type="button" value="登录" id="signIn">
 						</form>
 						<div class="clearfix"></div>
 					</div>
@@ -200,9 +200,9 @@
 						<span class="fa fa-envelope-o" aria-hidden="true"></span>
 					</div>
 					<div class="modal_body_left modal_body_left1">
-						<h3 class="agileinfo_sign">Sign Up</h3>
+						<h3 class="agileinfo_sign">注册</h3>
 						<p>
-							Come join the Grocery Shoppy! Let's set up your Account.
+							快来加入杂货店吧！请设置您的帐户。
 						</p>
 						<form action="createUser" method="post">
 							<div class="styled-input agile-styled-input-top">
@@ -215,7 +215,7 @@
 								<input type="password" placeholder="Password" name="password2" required="">
 							</div>
 							<div class="styled-input">
-								<input type="text" placeholder="tel" name="tel" required="">
+								<input type="text" placeholder="Tel" name="tel" required="">
 							</div>
 							<input type="submit" value="Sign Up">
 						</form>
@@ -268,18 +268,18 @@
 						<div class="collapse navbar-collapse menu--shylock" id="bs-example-navbar-collapse-1">
 							<ul class="nav navbar-nav menu__list">
 								<li class="active">
-									<a class="nav-stylehead" href="index.jsp">Home
+									<a class="nav-stylehead" href="index.jsp">主页
 										<span class="sr-only">(current)</span>
 									</a>
 								</li>
 								<li class="">
-									<a class="nav-stylehead" href="about.jsp">About Us</a>
+									<a class="nav-stylehead" href="about.jsp">关于我们</a>
 								</li>
-								<li class="dropdown">
+								<%--<li class="dropdown">
 									<a href="#" class="dropdown-toggle nav-stylehead" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Kitchen
 										<span class="caret"></span>
 									</a>
-									<ul class="dropdown-menu multi-column columns-3">
+									&lt;%&ndash;<ul class="dropdown-menu multi-column columns-3">
 										<div class="agile_inner_drop_nav_info">
 											<div class="col-sm-4 multi-gd-img">
 												<ul class="multi-column-dropdown">
@@ -336,7 +336,7 @@
 											</div>
 											<div class="clearfix"></div>
 										</div>
-									</ul>
+									</ul>&ndash;%&gt;
 								</li>
 								<li class="dropdown">
 									<a href="#" class="dropdown-toggle nav-stylehead" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Household
@@ -397,11 +397,11 @@
 											<div class="clearfix"></div>
 										</div>
 									</ul>
-								</li>
+								</li>--%>
 								<li class="">
-									<a class="nav-stylehead" href="faqs.jsp">Faqs</a>
+									<a class="nav-stylehead" href="faqs.jsp">常见问题解答</a>
 								</li>
-								<li class="dropdown">
+								<%--<li class="dropdown">
 									<a class="nav-stylehead dropdown-toggle" href="#" data-toggle="dropdown">Pages
 										<b class="caret"></b>
 									</a>
@@ -413,10 +413,10 @@
 											<a href="typography.jsp">Typography</a>
 										</li>
 									</ul>
-								</li>
-								<li class="">
-									<a class="nav-stylehead" href="contact.jsp">Contact</a>
-								</li>
+								</li>--%>
+								<%--<li class="">
+									<a class="nav-stylehead" href="contact.jsp">联系我们</a>
+								</li>--%>
 							</ul>
 						</div>
 					</div>
@@ -690,7 +690,7 @@
 	<div class="featured-section" id="projects">
 		<div class="container">
 			<!-- tittle heading -->
-			<h3 class="tittle-w3l">Special Offers
+			<h3 class="tittle-w3l">特别优惠
 				<span class="heading-style">
 					<i></i>
 					<i></i>
@@ -1185,11 +1185,11 @@
 					divGrandson1.append(save);
 					var divGrandson2 = $("<div class='snipcart-details top_brand_home_details item_add single-item hvr-outline-out'></div>");
 					//divGrandson2中的标签
-					var form =$("<form action='#' method='post'></form>");
+					var form =$("<form action='addGoodToCart' method='post'></form>");
 					var fieldset=$("<fieldset></fieldset>");
 
-					var input1 =$('<input type="hidden" name="cmd" value="_cart" />');
-					var input2 =$('<input type="hidden" name="add" value="1" />');
+					var input1 =$('<input type="hidden" name="fdid" value="'+data[key].fdid+'" />');
+					var input2 =$('<input type="hidden" name="count" value="1" />');
 					var input3 =$('<input type="hidden" name="business" value=" " />');
 					var input4 =$('<input type="hidden" name="item_name" value="'+data[key].goodName+'" />');
 					var input5 =$('<input type="hidden" name="amount" value="'+data[key].price+'" />');
@@ -1300,7 +1300,7 @@
 
 				}
                 $('#grandPa').append(divClearfix);
-				addCart();
+
 			});
             //获取酒水类产品
             $.get("/getJiuShuis",function (data) {
@@ -1381,7 +1381,7 @@
 
                 }
                 $('#grandPa1').append(divClearfix);
-                addCart();
+
             });
             //获取水果类产品
             $.get("/getFruits",function (data) {
@@ -1424,7 +1424,7 @@
                     //3
                     var div03=$('<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out"></div>');
                     //0301
-                    var div0301 = $('<form action="#" method="post"></form>');
+                    /*var div0301 = $('<form action="addGoodToCart" method="post"></form>');
                     //0301f
                     var fieldset = $('<fieldset></fieldset>');
 
@@ -1435,10 +1435,10 @@
                     var input5 =$('<input type="hidden" name="amount" value="'+data[key].price+'" />');
                     var input6 =$('<input type="hidden" name="currency_code" value="USD" />');
                     var input7 =$('<input type="hidden" name="return" value=" " />');
-                    var input8 =$('<input type="hidden" name="cancel_return" value=" " />');
-                    var input9 =$('<input type="submit" name="submit" value="加入购物车" class="button" />');
+                    var input8 =$('<input type="hidden" name="cancel_return" value=" " />');*/
+                    var input9 =$('<input type="button"  value="加入购物车" class="button" id="addCart"/>');
 
-                    fieldset.append(input1);
+                    /*fieldset.append(input1);
                     fieldset.append(input2);
                     fieldset.append(input3);
                     fieldset.append(input4);
@@ -1447,9 +1447,9 @@
                     fieldset.append(input7);
                     fieldset.append(input8);
                     fieldset.append(input9);
-
-                    div0301.append(fieldset);
-                    div03.append(div0301);
+*/
+                    /*div0301.append(input9);*/
+                    div03.append(input9);
                     //向子2中添加元素
                     divChild2.append(a2);
                     divChild2.append(div02);
@@ -1462,9 +1462,12 @@
 
                 }
                 $('#grandPa2').append(divClearfix);
-                addCart();
-            });
 
+            });
+/*			$("#addCart").click(function () {
+				console.log(haha);
+
+			});*/
 
         });
 
@@ -1497,7 +1500,7 @@
 	<!-- cart-js -->
 	<script src="js/minicart.js"></script>
 	<script>
-		function addCart() {
+		/*function addCart() {
 			paypalm.minicartk.render(); //use only unique class names other than paypalm.minicartk.Also Replace same class name in css and minicart.min.js
 
 			paypalm.minicartk.cart.on('checkout', function (evt) {
@@ -1516,7 +1519,7 @@
 					evt.preventDefault();
 				}
 			});
-		}
+		}*/
 	</script>
 	<!-- //cart-js -->
 
@@ -1601,7 +1604,7 @@
 	<script>
 		window.onload = function () {
 			document.getElementById("password1").onchange = validatePassword;
-			document.getElementById("password2").onchange = validatePassword;
+			/*document.getElementById("password2").onchange = validatePassword;*/
 		}
 
 		function validatePassword() {
