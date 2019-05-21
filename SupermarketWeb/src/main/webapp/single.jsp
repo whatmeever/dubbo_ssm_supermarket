@@ -294,9 +294,9 @@
                                 <a class="nav-stylehead" href="faqs.jsp">常见问题解答</a>
                             </li>
 
-                            <li>
+                            <%--<li>
                                 <a class="nav-stylehead" href="contact.jsp">联系我们</a>
-                            </li>
+                            </li>--%>
                         </ul>
                     </div>
                 </div>

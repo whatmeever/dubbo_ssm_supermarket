@@ -359,8 +359,8 @@
                         <th>去掉</th>
                     </tr>
                     </thead>
-                    <tbody id="cart1">
-                    <tr class="rem1">
+                    <tbody class="cart1">
+                   <%-- <tr class="rem1">
                         <td class="invert">1</td>
                         <td class="invert-image">
                             <a href="single2.jsp">
@@ -385,7 +385,7 @@
                                 <div class="close1"></div>
                             </div>
                         </td>
-                    </tr>
+                    </tr>--%>
                    <%-- <tr class="rem2">
                         <td class="invert">2</td>
                         <td class="invert-image">
@@ -1062,16 +1062,53 @@
 <!-- //for bootstrap working -->
 <!-- //js-files -->
 <script>
-   /* $.get("/",function (data) {
+    $.get("/",function (data) {
         for(var key in data){
-            var tr = "<tr class='rem1'></tr>"
-            var td1 = "<td class='invert'>1</td>";
-            var td2 = "<td class='invert-image'></td>"
+            var tr = $("<tr class='rem1'></tr>");
+
+            var td1 = $("<td class='invert'>1</td>");
+            var td2 = $("<td class='invert-image'></td>");
+
+            var imgs = data[key].img.split("-");
+            var img = $("<a href='single2.jsp'><img src='img/"+imgs[0]+".jpg' alt='' class='img-responsive'></a>");
+            td2.append(img);
 
 
+            var td3 = $("<td class='invert'></td>");
 
+            var div1 = $("<div class='quantity'></div>");
+            var div2 = $("<div class='quantity-select'></div>");
+            var div3 = $("<div class='entry value-minus'>&nbsp;</div>");
+            var div4 = $("<div class='entry value'></div>");
+            var spann = $("<span>1</span>");
+            div4.append(spann);
+            var div5 = $("<div class='entry value-plus active'>&nbsp;</div>");
+            div2.append(div3);
+            div2.append(div4);
+            div2.append(div5);
+
+            div1.append(div2);
+            td3.append(div1);
+
+            var td4 =$("<td class='invert'>Spotzero Spin Mop</td>");
+            var td5 = $("<td class='invert'>$888.00</td>");
+            var td6 = $("<td class='invert'></td>");
+            var div6 = $("<div class='rem'></div>");
+            var div7 = $("<div class='close1'></div>");
+
+            div6.append(div7);
+            td6.append(div6);
+
+            tr.append(td1);
+            tr.append(td2);
+            tr.append(td3);
+            tr.append(td4);
+            tr.append(td5);
+            tr.append(td6);
+            $(".cart1").append(li);
         }
-    })*/
+
+    });
 </script>
 </body>
 

@@ -289,9 +289,9 @@
                                 <a class="nav-stylehead" href="faqs.jsp">常见问题解答</a>
                             </li>
 
-                            <li>
+                            <%--<li>
                                 <a class="nav-stylehead" href="contact.jsp">联系我们</a>
-                            </li>
+                            </li>--%>
                         </ul>
                     </div>
                 </div>
@@ -870,6 +870,15 @@
 <!-- //jquery -->
 <script>
     $(function () {
+        $("#signIn").click(function () {
+            var name=$("#username1").val();
+            var pass=$("#password1").val();
+            $.post("/userLogin",{username:name,password:pass},function (data) {
+                if (data == "true"){
+                    location.href="index.jsp";
+                }
+            });
+        });
         function goodType() {
             $.get("/getGoodTypes", function (data) {
                 var option = "<option value=''>所有种类</option>"
