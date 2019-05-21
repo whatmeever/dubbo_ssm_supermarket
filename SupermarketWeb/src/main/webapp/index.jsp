@@ -1185,10 +1185,10 @@
 					divGrandson1.append(save);
 					var divGrandson2 = $("<div class='snipcart-details top_brand_home_details item_add single-item hvr-outline-out'></div>");
 					//divGrandson2中的标签
-					var form =$("<form action='#' method='post'></form>");
+					var form =$("<form action='/addGoodToCart?fdid=+"+data[key].fdid+"'></form>");
 					var fieldset=$("<fieldset></fieldset>");
 
-					var input1 =$('<input type="hidden" name="cmd" value="_cart" />');
+					var input1 =$('<input type="hidden" name="cmd" value="'+data[key].fdid+'" />');
 					var input2 =$('<input type="hidden" name="add" value="1" />');
 					var input3 =$('<input type="hidden" name="business" value=" " />');
 					var input4 =$('<input type="hidden" name="item_name" value="'+data[key].goodName+'" />');
@@ -1196,7 +1196,7 @@
 					var input6 =$('<input type="hidden" name="currency_code" value="USD" />');
 					var input7 =$('<input type="hidden" name="return" value=" " />');
 					var input8 =$('<input type="hidden" name="cancel_return" value=" " />');
-					var input9 =$('<input type="submit" name="submit" value="加入购物车" class="button" />');
+					var input9 =$('<input type="button" name="submit" value="加入购物车" class="addCart" />');
 
 					fieldset.append(input1);
 					fieldset.append(input2);
@@ -1262,12 +1262,12 @@
 						//3
 					var div03=$('<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out"></div>');
 							//0301
-					var div0301 = $('<form action="#" method="post"></form>');
+					var div0301 = $('<form action="/addGoodToCart?fdid='+data[key].fdid+'" method="post"></form>');
 								//0301f
 					var fieldset = $('<fieldset></fieldset>');
 
 					var input1 =$('<input type="hidden" name="cmd" value="_cart" />');
-					var input2 =$('<input type="hidden" name="add" value="1" />');
+					var input2 =$('<input type="hidden" name="count" value="1" />');
 					var input3 =$('<input type="hidden" name="business" value=" " />');
 					var input4 =$('<input type="hidden" name="item_name" value="'+data[key].goodName+'" />');
 					var input5 =$('<input type="hidden" name="amount" value="'+data[key].price+'" />');

@@ -40,8 +40,10 @@ public class CartController {
         if (users == null){
             return -1;
         }else {
-            carts = JSON.parseObject(redisSaveManagerUtil.get(users.getUserId()),new TypeReference<List<Cart>>(){});
-            if (carts == null){
+            System.out.println("=============================fdid="+fdid);
+            System.out.println("=============================userId="+users.getUserId());
+            String s = redisSaveManagerUtil.get(users.getUserId());
+            if (s == null){
                 carts = new ArrayList<>();
                 String uuid = UUID.randomUUID().toString().replaceAll("-", "");
                 Cart cart = new Cart();
@@ -54,6 +56,7 @@ public class CartController {
                 redisSaveManagerUtil.add(users.getUserId(),cartsJson);
                 return 1;
             }else {
+                carts = carts = JSON.parseObject(s,new TypeReference<List<Cart>>(){});
                 for (Cart cart : carts) {
                     if (cart.getFdid().equalsIgnoreCase(fdid)){
                         cart.setCount(cart.getCount()+Integer.parseInt(count));

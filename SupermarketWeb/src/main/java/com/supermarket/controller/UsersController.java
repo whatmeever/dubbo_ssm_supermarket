@@ -132,7 +132,11 @@ public class UsersController {
             HashMap<String,String> map = new HashMap<>();
             map.put("username",username);
             map.put("password",password);
-            Users users = usersService.selectUserByUser(map);
+            usersExample.clear();
+            UsersExample.Criteria usersExampleCriteria = usersExample.createCriteria();
+            usersExampleCriteria.andUserNameEqualTo(username);
+            usersExampleCriteria.andPasswordEqualTo(password);
+            Users users = usersService.selectByExample(usersExample).get(0);
             session.setAttribute("users",users);
         } catch (AuthenticationException e) {
             e.printStackTrace();
