@@ -379,7 +379,7 @@
 					<h3 class="agileits-sear-head">食物偏好</h3>
 					<ul>
 						<li>
-							<input type="radio" name="pre" value="1" class="souSuo">
+							<input type="radio" name="pre" value="0" class="souSuo">
 							<span class="span">其他</span>
 						</li>
 						<li>
@@ -387,7 +387,7 @@
 							<span class="span">素食主义</span>
 						</li>
 						<li>
-							<input type="radio" name="pre" value="3" class="souSuo">
+							<input type="radio" name="pre" value="1" class="souSuo">
 							<span class="span">荤食主义</span>
 						</li>
 					</ul>
